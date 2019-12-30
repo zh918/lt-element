@@ -18,12 +18,8 @@
   "keywords": [
     "element",
     "theme"
-  ],
-  "author": "yi.shyang@ele.me",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ElementUI/theme-chalk/issues"
-  },
+  ], 
+  "license": "MIT", 
   "homepage": "https://github.com/ElementUI/theme-chalk#readme",
   "devDependencies": {
     "gulp": "^3.9.1",

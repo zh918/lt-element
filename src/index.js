@@ -82,6 +82,7 @@ import CascaderPanel from '../packages/cascader-panel/index.js';
 import Avatar from '../packages/avatar/index.js';
 import Drawer from '../packages/drawer/index.js';
 import Popconfirm from '../packages/popconfirm/index.js';
+import DataContainer from '../packages/data-container/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
 
@@ -163,6 +164,7 @@ const components = [
   Avatar,
   Drawer,
   Popconfirm,
+  DataContainer,
   CollapseTransition
 ];
 
@@ -284,5 +286,6 @@ export default {
   CascaderPanel,
   Avatar,
   Drawer,
-  Popconfirm
+  Popconfirm,
+  DataContainer
 };

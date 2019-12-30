@@ -150,6 +150,15 @@
               label: 'Badge 标记'
             }]
           }, {
+            value: 'data-container',
+            label: '数据容器',
+            children: [
+              {
+                value: 'page-list',
+                label: '列表页'
+              }
+            ]
+          }, {
             value: 'notice',
             label: 'Notice',
             children: [{
@@ -348,11 +357,11 @@
               label: 'Form 表单'
             }]
           }, {
-            value: 'data',
-            label: 'Data',
+            value: 'data1',
+            label: 'Data1',
             children: [{
               value: 'table',
-              label: 'Table 表格'
+              label: 'Table 表格1'
             }, {
               value: 'tag',
               label: 'Tag 标签'

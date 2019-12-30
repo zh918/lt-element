@@ -180,6 +180,15 @@
           ]
         },
         {
+          "groupName": "数据容器",
+          "list": [
+            {
+              "path": "/data-container",
+              "title": "列表页"
+            }
+          ]
+        },
+        {
           "groupName": "Notice",
           "list": [
             {
