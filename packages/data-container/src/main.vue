@@ -144,7 +144,7 @@
           s.span = 4;
         });
 
-        let p = 6;
+        let p = 4;
         let col = len % cols;
         this.btn.offset = cols - col - p;
         this.btn.span = p;
