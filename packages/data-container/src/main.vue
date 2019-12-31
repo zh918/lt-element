@@ -60,11 +60,10 @@
       <div class="operator-container">
         <el-button :key="index" :type="(item.type || 'primary')" :size="(item.size || 'mini')" :icon="(item.icon || '')" v-for="(item, index) in operatorContainer" @click="item.cb">{{item.text}}</el-button>
       </div>
-
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table border :data="tableContainer.data" style="width: 100%">
+      <el-table border :data="tableContainer.data" class="data-table">
         <el-table-column :key="index" v-for="(item, index) in tableContainer.head" :label="item.label" :fixed="item.fixed == true">
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>

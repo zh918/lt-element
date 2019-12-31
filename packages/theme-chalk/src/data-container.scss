@@ -16,3 +16,8 @@
 @include b(pagination) {
   text-align: right;
 }
+
+.data-table {
+  width: 100%;
+  font-size: 12px;
+}
