@@ -1,6 +1,7 @@
 <template>
   <div class="el-data-container">
-    <slot name="search-container">
+    <!-- 检索 -->
+    <slot name="search-container" v-if="searchContainer">
       <el-row :gutter="20">
         <el-col :span="item.span || 4" :key="'col_' + index" v-for="(item,index) in searchContainer.list">
           <!-- 文本框 -->
@@ -48,20 +49,49 @@
           ></el-autocomplete>
         </el-col>
 
-        <el-col :span="searchContainer.btn.span" :offset="searchContainer.btn.offset" class="text-align-right">
+        <el-col :span="btn.span || 4" :offset="btn.offset || 6" class="text-align-right">
           <el-button id="btn_search" type="info" plain size="small" @click="handleSearch">搜索</el-button>
           <el-button id="btn_reset" type="info" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
     </slot>
-    <slot name="operator-container">
+    <!-- 操作 -->
+    <slot name="operator-container" v-if="operatorContainer">
+      <div class="operator-container">
+        <el-button :key="index" :type="(item.type || 'primary')" :size="(item.size || 'mini')" :icon="(item.icon || '')" v-for="(item, index) in operatorContainer" @click="item.cb">{{item.text}}</el-button>
+      </div>
 
     </slot>
+    <!-- 数据 -->
     <slot name="list-container">
-
+      <el-table border :data="tableContainer.data" style="width: 100%">
+        <el-table-column :key="index" v-for="(item, index) in tableContainer.head" :label="item.label" :fixed="item.fixed == true">
+          <template slot-scope="scope">
+            <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
+          </template>
+        </el-table-column>
+        <el-table-column fixed="right" label="操作" width="220" v-if="tableContainer.operate">
+          <template slot-scope="scope">
+            <slot name="operate" v-bind="scope.row">
+              <el-button v-for="(item, index) in tableContainer.operate" @click.native.prevent="item.cb(scope.row)" type="text" size="small">
+                {{item.label}}
+              </el-button>
+            </slot>
+          </template>
+        </el-table-column>
+      </el-table>
     </slot>
-    <slot name="pagination-container">
-
+    <!-- 分页 -->
+    <slot name="pagination-container" v-if="paginationContainer">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="paginationContainer.currentPage"
+        :page-sizes="pagination.pageSizes"
+        :page-size="pagination.pageSize"
+        :layout="paginationContainer.layout"
+        :total="paginationContainer.total">
+      </el-pagination>
     </slot>
   </div>
 </template>
@@ -74,17 +104,30 @@
       searchContainer: {
         // isResetAutoSearch: false,
         // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
-        // btn: {
-        //   span: 4,
-        //   offset: 6 
-        // }
       },
       operatorContainer: [],
-      tableContainer: [],
-      paginationContainer: []
+      tableContainer: {
+        // operate: []
+        // head: [],
+        // data: []
+      },
+      paginationContainer: {
+        currentPage: 1,
+        total: 0,
+        layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
+      }
     },
     data() {
       return {
+        btn: {
+          span: 4,
+          offset: 6
+        },
+        parameter: {},
+        pagination: {
+          pageSize: 10,
+          pageSizes: [10, 20, 50]
+        }
       };
     },
     created() {
@@ -104,14 +147,48 @@
 
         let p = 6;
         let col = len % cols;
-        this.searchContainer.btn.offset = cols - col - p;
-        this.searchContainer.btn.span = p;
-        console.log(this.searchContainer);
+        this.btn.offset = cols - col - p;
+        this.btn.span = p;
       },
       handleSearch() {
-        this.$emit('search', this.searchContainer.list);
+        this._getParms();
+        this.$emit('search', {parameter: this.parameter, pagination: this.paginationContainer});
       },
       handleReset() {
+        this._clearn();
+        if (this.searchContainer.isResetAutoSearch) this.handleSearch();
+      },
+      handleSizeChange() {
+        // 变更size currentPage 设置为1
+        this._clearnPagination();
+        this.handleSearch();
+      },
+      handleCurrentChange(val) {
+        // 变更页码
+        this.paginationContainer.currentPage = val;
+        this.handleSearch();
+      },
+      _getParms() {
+        let _this = this;
+        // 获取参数
+        if (_this.searchContainer && _this.searchContainer.list && _this.searchContainer.list.length > 0) {
+          _this.searchContainer.list.forEach(function(obj, i) {
+            if (obj.key) _this.parameter[obj.key] = obj.value;
+          });
+        }
+      },
+      _clearn() {
+        let _this = this;
+        // 获取参数
+        if (_this.searchContainer && _this.searchContainer.list && _this.searchContainer.list.length > 0) {
+          _this.searchContainer.list.forEach(function(obj, i) {
+            obj.value = '';
+            _this.parameter[obj.key] = obj.value;
+          });
+        }
+      },
+      _clearnPagination() {
+        this.paginationContainer.currentPage = 1;
       }
     }
   };
