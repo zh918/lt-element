@@ -153,7 +153,7 @@
       },
       handleSearch() {
         this._getParms();
-        this.$emit('search', {parameter: this.parameter, pagination: this.paginationContainer});
+        this.$emit('search', {parameter: this.parameter, pagination: {...this.paginationContainer,...this.pagination}});
       },
       handleReset() {
         this._clearn();

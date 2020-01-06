@@ -58,7 +58,7 @@
 
     &:disabled {
       color: $--pagination-button-disabled-color;
-      background-color: $--pagination-button-disabled-background-color;
+      // background-color: $--pagination-button-disabled-background-color;
       cursor: not-allowed;
     }
   }
