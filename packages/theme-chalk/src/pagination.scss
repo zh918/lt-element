@@ -67,7 +67,7 @@
   .btn-next {
     background: center center no-repeat;
     background-size: 16px;
-    background-color: $--pagination-background-color;
+    // background-color: $--pagination-background-color;
     cursor: pointer;
     margin: 0;
     color: $--pagination-button-color;
@@ -194,7 +194,7 @@
     .btn-next,
     .el-pager li {
       margin: 0 5px;
-      background-color: $--color-info-lighter;
+      // background-color: $--color-info-lighter;
       color: $--color-text-regular;
       min-width: 30px;
       border-radius: 2px;
@@ -249,7 +249,7 @@
 
   li {
     padding: 0 4px;
-    background: $--pagination-background-color;
+    // background: $--pagination-background-color;
     vertical-align: top;
     display: inline-block;
     font-size: $--pagination-font-size;

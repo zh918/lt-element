@@ -85,7 +85,7 @@
       <el-pagination
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
-        :current-page="paginationContainer.currentPage"
+        :current-page="paginationContainer.pageNum"
         :page-sizes="pagination.pageSizes"
         :page-size="pagination.pageSize"
         :layout="paginationContainer.layout"
@@ -111,7 +111,7 @@
         // data: []
       },
       paginationContainer: {
-        currentPage: 1,
+        pageNum: 1,
         total: 0,
         layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
       }
@@ -132,9 +132,11 @@
     created() {
       console.log('hello data container');
       this._resetOffset();
+      this.handleSearch();
     },
     methods: {
       _resetOffset() {
+        if (!this.searchContainer || !this.searchContainer.list) return;
         let cols = 24;
         let len = 0;
         this.searchContainer.list.forEach((s, i) => {
@@ -158,13 +160,13 @@
         if (this.searchContainer.isResetAutoSearch) this.handleSearch();
       },
       handleSizeChange() {
-        // 变更size currentPage 设置为1
+        // 变更size pageNum 设置为1
         this._clearnPagination();
         this.handleSearch();
       },
       handleCurrentChange(val) {
         // 变更页码
-        this.paginationContainer.currentPage = val;
+        this.paginationContainer.pageNum = val;
         this.handleSearch();
       },
       _getParms() {
@@ -187,7 +189,7 @@
         }
       },
       _clearnPagination() {
-        this.paginationContainer.currentPage = 1;
+        this.paginationContainer.pageNum = 1;
       }
     }
   };
