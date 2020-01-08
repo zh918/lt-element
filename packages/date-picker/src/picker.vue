@@ -47,7 +47,9 @@
     v-clickoutside="handleClose"
     v-else>
     <i :class="['el-input__icon', 'el-range__icon', triggerClass]"></i>
-    <input
+    <div class="overMask" v-if="!displayValue">{{startPlaceholder}}</div>
+    <div v-else>
+      <input
       autocomplete="off"
       :placeholder="startPlaceholder"
       :value="displayValue && displayValue[0]"
@@ -74,6 +76,9 @@
       @change="handleEndChange"
       @focus="handleFocus"
       class="el-range-input">
+    </div>
+    
+   
     <i
       @click="handleClickIcon"
       v-if="haveTrigger"
