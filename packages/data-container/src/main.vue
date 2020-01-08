@@ -50,7 +50,7 @@
         </el-col>
 
         <el-col :span="btn.span || 4" :offset="btn.offset || 6" class="text-align-right">
-          <el-button id="btn_search" type="info" plain size="small" @click="handleSearch">搜索</el-button>
+          <el-button id="btn_search" type="info" plain size="small" @click="handleBeginSearch">搜索</el-button>
           <el-button id="btn_reset" type="info" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
@@ -154,6 +154,10 @@
       handleSearch() {
         this._getParms();
         this.$emit('search', {parameter: this.parameter, page: {...this.paginationContainer,...this.pagination}});
+      },
+      handleBeginSearch() {
+        this._clearnPagination();
+        this.handleSearch();
       },
       handleReset() {
         this._clearn();
