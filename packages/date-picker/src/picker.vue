@@ -78,7 +78,7 @@
       class="el-range-input">
     </div>
     
-   
+    
     <i
       @click="handleClickIcon"
       v-if="haveTrigger"
