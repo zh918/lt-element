@@ -53,7 +53,7 @@
       autocomplete="off"
       :placeholder="startPlaceholder"
       :value="displayValue && displayValue[0]"
-      :disabled="pickerDisabled"
+      :disabled="pickerDisabled" 
       v-bind="firstInputId"
       :readonly="!editable || readonly"
       :name="name && name[0]"
