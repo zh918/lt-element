@@ -140,7 +140,8 @@
       v-model="value1"
       type="daterange"
       range-separator="至"
-      placeholder="日期">
+      start-placeholder="开始日期"
+      end-placeholder="结束日期">
     </el-date-picker>
   </div>
   <div class="block">
@@ -151,7 +152,8 @@
       align="right"
       unlink-panels
       range-separator="至"
-      placeholder="日期"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
       :picker-options="pickerOptions">
     </el-date-picker>
   </div>
@@ -211,7 +213,8 @@
       v-model="value1"
       type="monthrange"
       range-separator="至"
-      placeholder="月份">
+      start-placeholder="开始月份"
+      end-placeholder="结束月份">
     </el-date-picker>
   </div>
   <div class="block">
@@ -222,7 +225,8 @@
       align="right"
       unlink-panels
       range-separator="至"
-      placeholder="月份"
+      start-placeholder="开始月份"
+      end-placeholder="结束月份"
       :picker-options="pickerOptions">
     </el-date-picker>
   </div>
@@ -360,7 +364,8 @@
     <el-date-picker
       v-model="value"
       type="daterange"
-      placeholder="日期"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
       :default-time="['00:00:00', '23:59:59']">
     </el-date-picker>
   </div>
@@ -382,12 +387,14 @@
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | value / v-model | 绑定值 | date(DatePicker) / array(DateRangePicker) | — | — |
-| readonly | 完全只读 | boolean | — | false | 
+| readonly | 完全只读 | boolean | — | false |
 | disabled | 禁用 | boolean | — | false |
 | editable | 文本框可输入 | boolean | — | true |
 | clearable | 是否显示清除按钮 | boolean | — | true |
 | size          | 输入框尺寸     | string          | large, small, mini  | — |
-| placeholder | 选择时的占位内容 | string | — | — |
+| placeholder | 非范围选择时的占位内容 | string | — | — |
+| start-placeholder | 范围选择时开始日期的占位内容 | string | — | — |
+| end-placeholder | 范围选择时结束日期的占位内容 | string | — | — |
 | type | 显示类型 | string | year/month/date/dates/ week/datetime/datetimerange/ daterange/monthrange | date |
 | format | 显示在输入框中的格式 | string | 见[日期格式](#/zh-CN/component/date-picker#ri-qi-ge-shi) | yyyy-MM-dd |
 | align | 对齐方式 | string | left, center, right | left |

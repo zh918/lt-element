@@ -47,13 +47,11 @@
     v-clickoutside="handleClose"
     v-else>
     <i :class="['el-input__icon', 'el-range__icon', triggerClass]"></i>
-    <div class="overMask" v-if="!displayValue">{{placeholder}}</div>
-    <div v-else>
-      <input
+    <input
       autocomplete="off"
       :placeholder="startPlaceholder"
       :value="displayValue && displayValue[0]"
-      :disabled="pickerDisabled" 
+      :disabled="pickerDisabled"
       v-bind="firstInputId"
       :readonly="!editable || readonly"
       :name="name && name[0]"
@@ -76,9 +74,6 @@
       @change="handleEndChange"
       @focus="handleFocus"
       class="el-range-input">
-    </div>
-    
-    
     <i
       @click="handleClickIcon"
       v-if="haveTrigger"
