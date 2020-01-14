@@ -1,0 +1,37 @@
+@import "mixins/mixins";
+
+@include b(cell-container) {
+    box-sizing: border-box;
+    min-width: 0;
+}
+.el-cell-container-1{
+    .cell-container {
+      width: 100%;
+    }
+}
+.el-cell-container-2{
+    .cell-container {
+      width: 49.5%;
+    }
+}
+.el-cell-container-3{
+    .cell-container {
+      width: 32.5%;
+    }
+}
+.el-cell-container-4{
+    .cell-container {
+      width: 24.5%;
+    }
+}
+.el-cell-container-5{
+    .cell-container {
+      width: 19.5%;
+    }
+}
+.el-cell-container-6{
+    .cell-container {
+      width: 16%;
+    }
+}
+
