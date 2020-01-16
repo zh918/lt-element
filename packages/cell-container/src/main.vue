@@ -2,7 +2,7 @@
   <div :class="'el-cell-container-'+cols">
     <slot></slot>
   </div>
-</template>
+</template> 
 
 <script>
 export default {
