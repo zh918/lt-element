@@ -1,6 +1,5 @@
 <template>
   <div :class="'el-cell-container-'+cols">
-
     <slot></slot>
   </div>
 </template>
@@ -13,7 +12,7 @@ export default {
     cols: {
       type: String,
       default: '1'
-    },
+    }
   },
   data() {
     return {};
