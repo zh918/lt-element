@@ -2,7 +2,7 @@
   <div class="cell-container-full" v-if="cols && cols=='full'">
     <div class="cell-value-full">
       <div :class="'cell-label-full-'+labelWidth">{{label}}</div>
-      <div :class="'cell-value full-value-width-'+fullValueWidth">
+      <div :class="'cell-value full-value-width-'+fullValueWidth" :title="value"> 
         <slot>{{value}}</slot>
       </div>
     </div>
@@ -10,7 +10,7 @@
   <div class="cell-container" v-else>
     <div class="no-full">
       <div :class="'cell-label-'+labelWidth">{{label}}</div>
-      <div class="cell-value"> 
+      <div class="cell-value" :title="value"> 
         <slot>{{value}}</slot>
       </div>
     </div>
