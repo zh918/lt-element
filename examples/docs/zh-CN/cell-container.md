@@ -10,7 +10,7 @@
 <template> 
     <el-cell-container cols='3'>
         <h3>基础信息</h3>
-        <el-cell label='姓名姓名：' :value='value' label-width='1' cols='full'></el-cell>
+        <el-cell label='姓名姓名：' :value='value' label-width='1'></el-cell>
         
         <el-cell label='年龄：' :value='value' label-width='1' cols='full' full-value-width='9'>
           <template>
@@ -27,7 +27,7 @@
   export default {
     data() {
       return {
-        value:'dd',
+        value:'dd记对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对对',
         textarea:'mmm'
       }
     },
