@@ -7,7 +7,7 @@
 .cell-container {
     width: 24.5%;
     display: inline-block;
-   
+    margin-bottom: 10px;
     .no-full {
         display: flex;
         justify-content: flex-start;
@@ -17,19 +17,29 @@
         line-height: 32px;
         font-size: 14px;
         .cell-label-1 {
-            flex:0 0 10%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 60px;
         }
         .cell-label-2 {
-            flex:0 0 20%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 120px;
         }
         .cell-label-3 {
-            flex:0 0 30%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 180px;
         }
         .cell-label-4 {
-            flex:0 0 40%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 240px;
         }
         .cell-label-5 {
-            flex:0 0 50%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 300px;
         }
         .cell-value {
             flex: 1;
@@ -37,12 +47,15 @@
             word-wrap: break-word;
             word-break: break-all;
             font-size: 14px;
+            min-width: 50px;
+            max-width: 290px;
         }
         
     }
 }
 .cell-container-full {
     width: 100%;
+    margin-bottom: 10px;
     .cell-value-full {
         display: flex;
         justify-content: flex-start;
@@ -50,27 +63,40 @@
         height: 32px;
         line-height: 32px;
         font-size: 14px;
-        // width: 100%;
+        width: 100%;
         .cell-label-full-1 {
-            flex:0 0 10%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 60px;
         }
         .cell-label-full-2 {
-            flex:0 0 20%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 120px;
         }
         .cell-label-full-3 {
-            flex:0 0 30%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 180px;
         }
         .cell-label-full-4 {
-            flex:0 0 40%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 240px;
         }
         .cell-label-full-5 {
-            flex:0 0 50%;
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 300px;
         }
         .cell-value {
             flex: 1;
             word-wrap: break-word;
             word-break: break-all;
             font-size: 14px;
+            padding-right: 20px;
+            min-width: 50px;
+            max-width: 200px;
         }
         
     }

@@ -8,15 +8,15 @@
 
 ```html
 <template> 
-    <el-cell label='姓名：' :value='value'>
-      <!-- <template>
+    <el-cell label='姓名：' :value='value' label-width='1'>
+      <template>
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
-      </template> -->
+      </template>
     </el-cell>
-     <el-cell label='姓名：' :value='value'>
-      <!-- <template>
+    <el-cell label='姓名：' :value='value' cols='full' label-width='1'>
+      <template>
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
-      </template> -->
+      </template>
     </el-cell>
 </template>
 
@@ -42,5 +42,5 @@
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | label     | 声明标题           | string | — | — |
 | value     | 声明内容           | string | — | — |
-| label-width | 声明标题的宽度 | string | 1/2/3/4 | 1 |
+| label-width | 声明标题的宽度 | string | 1/2/3/4 | 3 |
 | cols      | 是否独占一行 | string | full | - |
