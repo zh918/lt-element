@@ -41,7 +41,7 @@
             word-break: break-all;
             flex:0 0 192px;
         }
-        .cell-label-6 {
+        .cell-label-6 { 
             word-wrap: break-word;
             word-break: break-all;
             flex:0 0 220px;
@@ -64,13 +64,13 @@
         .cell-value {
             flex: 1;
             padding-right: 20px;
-            word-wrap: break-word;
-            word-break: break-all;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
             font-size: 14px;
             min-width: 20px;
             max-width: 290px;
         }
-        
     }
 }
 .cell-container-full {
@@ -129,8 +129,9 @@
         }
         .cell-value {
             flex: 1;
-            word-wrap: break-word;
-            word-break: break-all;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
             font-size: 14px;
             padding-right: 20px;
             min-width: 50px;
