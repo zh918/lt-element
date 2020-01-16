@@ -15,18 +15,42 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
   :visible.sync="dialogVisible"
   width="30%"
   :before-close="handleClose">
+  <el-cell-container :cols='2'>
+        <h3>基础信息</h3>
+        <el-cell label='工作单位：'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='工作单位及所在部门：' :value='value' label-width='4'></el-cell> 
+        <el-cell label='部门名称：'>
+          <template>
+            <el-input v-model='value' placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='备注信息：' :value='value' cols='full' full-value-width='9'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+    </el-cell-container>
   <span>这是一段信息</span>
   <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible = false">取 消</el-button>
     <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
   </span>
+   
 </el-dialog>
-
+ 
 <script>
   export default {
     data() {
       return {
-        dialogVisible: false
+        dialogVisible: false,
+        value:'sds',
+        textarea:'sdsd'
       };
     },
     methods: {

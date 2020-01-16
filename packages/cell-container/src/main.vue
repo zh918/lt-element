@@ -3,14 +3,13 @@
     <slot></slot>
   </div>
 </template> 
-
 <script>
 export default {
   name: 'ElCellContainer',
   componentName: 'ElCellContainer',
   props: {
     cols: {
-      type: String,
+      type: [String, Number],
       default: '1'
     }
   },

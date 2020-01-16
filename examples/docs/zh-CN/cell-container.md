@@ -8,21 +8,20 @@
 
 ```html
 <template> 
-    <el-cell-container cols='3'>
+    <el-cell-container :cols='2'>
         <h3>基础信息</h3>
         <el-cell label='姓名姓名：' :value='value' label-width='1'></el-cell>
-        
-        <el-cell label='年龄：' :value='value' label-width='1' cols='full' full-value-width='9'>
+        <el-cell label='年龄：' :value='value' label-width='1' >
           <template>
-            <el-input type="textarea" :rows="3" placeholder="请输入内容" v-model="textarea" size='small'></el-input>
+            <el-input placeholder="请输入内容" size='small'></el-input>
           </template>
-        </el-cell>
+        </el-cell> 
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell> 
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
     </el-cell-container>
 </template>
-
+ 
 <script>
   export default {
     data() {
