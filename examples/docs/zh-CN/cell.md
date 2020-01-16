@@ -43,3 +43,4 @@
 | label-width | 声明标题的宽度 | string | 1-5 | 1 |
 | full-value-width | 声明full行的值宽度 | string | 1-9 | 1 |
 | cols      | 是否独占一行 | string | full | - |
+ 
