@@ -10,12 +10,12 @@
 <template> 
     <el-cell-container cols='3'>
         <h3>基础信息</h3>
-        <el-cell label='姓名：' :value='value' label-width='4' cols='full'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='4'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='4'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='4'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='4'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='4'></el-cell>
+        <el-cell label='姓名：' :value='value' label-width='1' cols='full'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
     </el-cell-container>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
   <div class="cell-container-full" v-if="cols && cols=='full'">
-    <div class="cell-value-full" >
+    <div class="cell-value-full">
       <div :class="'cell-label-full-'+labelWidth">{{label}}</div>
-      <div class="cell-value">
+      <div :class="'cell-value full-value-width-'+fullValueWidth">
         <slot>{{value}}</slot>
       </div>
     </div>
@@ -24,12 +24,16 @@ export default {
     label: String,
     value: String,
     labelWidth: {
-      type: String,
+      type: [String, Number],
       default: '1'
     },
-    cols: String
+    fullValueWidth: {
+      type: [String, Number],
+      default: '1'
+    },
+    cols: [String, Number]
   },
-  data() { 
+  data() {
     return {};
   },
   created() {},
