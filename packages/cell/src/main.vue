@@ -25,16 +25,14 @@ export default {
     value: String,
     labelWidth: {
       type: String,
-      default: '3'
+      default: '1'
     },
     cols: String
   },
-  data() {
+  data() { 
     return {};
   },
-  created() {
-    this.$props.labelWidth ? this.$props.labelWidth : '1';
-  },
+  created() {},
   methods: {}
 };
 </script>
