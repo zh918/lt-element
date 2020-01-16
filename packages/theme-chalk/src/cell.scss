@@ -19,27 +19,47 @@
         .cell-label-1 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 50px;
+            flex:0 0 80px;
         }
         .cell-label-2 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 100px;
+            flex:0 0 108px;
         }
         .cell-label-3 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 150px;
+            flex:0 0 136px;
         }
         .cell-label-4 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 200px;
+            flex:0 0 164px;
         }
         .cell-label-5 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 250px;
+            flex:0 0 192px;
+        }
+        .cell-label-6 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 220px;
+        }
+        .cell-label-7 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 248px;
+        }
+        .cell-label-8 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 276px;
+        }
+        .cell-label-9 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 304px;
         }
         .cell-value {
             flex: 1;
@@ -60,34 +80,52 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        height: 32px;
         line-height: 32px;
-        font-size: 14px;
-        // width: 100%;
+        font-size: 14px; 
         .cell-label-full-1 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 50px;
+            flex:0 0 80px;
         }
         .cell-label-full-2 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 100px;
+            flex:0 0 108px;
         }
         .cell-label-full-3 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 150px;
+            flex:0 0 136px;
         }
         .cell-label-full-4 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 200px;
+            flex:0 0 164px;
         }
         .cell-label-full-5 {
             word-wrap: break-word;
             word-break: break-all;
-            flex:0 0 250px;
+            flex:0 0 192px;
+        }
+        .cell-label-full-6 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 220px;
+        }
+        .cell-label-full-7 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 248px;
+        }
+        .cell-label-full-8 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 276px;
+        }
+        .cell-label-full-9 {
+            word-wrap: break-word;
+            word-break: break-all;
+            flex:0 0 304px;
         }
         .cell-value {
             flex: 1;
@@ -122,7 +160,7 @@
             flex: 0 0 80%;
         }
         .full-value-width-9 {
-            flex: 0 0 90%;
+            flex: 0 0 86%;
         }
     }
 }
