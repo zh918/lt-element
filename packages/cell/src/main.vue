@@ -6,8 +6,8 @@
         <slot>{{value}}</slot>
       </div>
     </div>
-  </div>
-  <div class="cell-container" v-else>
+  </div>  
+  <div class="cell-container" v-else> 
     <div class="no-full">
       <div :class="'cell-label-'+labelWidth">{{label}}</div>
       <div class="cell-value" :title="value"> 

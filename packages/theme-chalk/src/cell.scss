@@ -69,7 +69,12 @@
             white-space: nowrap;
             font-size: 14px;
             min-width: 20px;
-            max-width: 290px;
+            // max-width: 290px;
+            
+        }
+        .cell-value .el-input {
+            flex: 1 !important; 
+            width: 100%;
         }
     }
 }
@@ -156,13 +161,11 @@
         }
         .full-value-width-7 {
             flex: 0 0 70%;
-        }
+        } 
         .full-value-width-8 {
-            flex: 0 0 80%;
+            flex: 0 0 80%; 
         }
-        .full-value-width-9 {
-            flex: 0 0 86%;
-        }
+        
     }
 }
 
