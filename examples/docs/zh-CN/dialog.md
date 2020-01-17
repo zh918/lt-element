@@ -29,9 +29,10 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
           </template>
         </el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
-        <el-cell label='备注信息：' :value='value' cols='full' full-value-width='9'>
+        <el-cell label='备注信息：' :value='value' cols='full' full-value-width='8'>
           <template>
             <el-input placeholder="请输入内容" size='small'></el-input>
+         
           </template>
         </el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
@@ -50,7 +51,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
       return {
         dialogVisible: false,
         value:'sds',
-        textarea:'sdsd'
+        textarea:'sdsd',
       };
     },
     methods: {
