@@ -13,7 +13,7 @@
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
       </template>
     </el-cell>
-    <el-cell label='姓名：' :value='value' cols='full' label-width='1' full-value-width='9'>
+    <el-cell label='姓名：' :value='value' cols='full' label-width='1' full-value-width='8'>
       <template>
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
       </template>
