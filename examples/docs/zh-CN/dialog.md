@@ -11,24 +11,43 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
 <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
 
 <el-dialog
-  title="提示"
+  title="提示" 
   :visible.sync="dialogVisible"
-  width="30%"
+  width="50%"
   :before-close="handleClose">
   <el-cell-container :cols='2'>
         <h3>基础信息</h3>
-        <el-cell label='工作单位：'>
-          <template>
-            <el-input placeholder="请输入内容" size='small'></el-input>
-          </template>
-        </el-cell>
-        <el-cell label='工作单位及所在部门：' :value='value' label-width='4'></el-cell> 
+         
         <el-cell label='部门名称：'>
           <template>
             <el-input v-model='value' placeholder="请输入内容" size='small'></el-input>
           </template>
         </el-cell>
-        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='工作单位：' >
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+         <el-cell label='工作单位：'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='工作单位：'> 
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='工作单位：'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
+        <el-cell label='工作单位：'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template>
+        </el-cell>
         <el-cell label='备注信息：' :value='value' cols='full' full-value-width='8'>
           <template>
             <el-input placeholder="请输入内容" size='small'></el-input>

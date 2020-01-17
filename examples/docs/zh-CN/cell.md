@@ -6,7 +6,7 @@
 
 :::demo 用于描述信息
 
-```html
+```html 
 <template> 
     <el-cell label='姓名：' :value='value' :label-width='1'>
       <template>

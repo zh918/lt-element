@@ -2,7 +2,7 @@
 用于高效快捷搭建详情页面基础结构
 
 ### 基础用法
- 
+  
 
 :::demo 用于布局页面
 
@@ -16,9 +16,13 @@
             <el-input placeholder="请输入内容" size='small'></el-input>
           </template>
         </el-cell> 
+           <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell> 
-        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+         <el-cell label='工作单位：'>
+          <template>
+            <el-input placeholder="请输入内容" size='small'></el-input>
+          </template> 
+        </el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
