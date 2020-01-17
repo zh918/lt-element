@@ -29,7 +29,7 @@ export default {
     },
     fullValueWidth: {
       type: [String, Number],
-      default: '1'
+      default: '8'
     },
     cols: [String, Number]
   },

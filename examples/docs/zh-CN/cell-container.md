@@ -6,7 +6,7 @@
 
 :::demo 用于布局页面
 
-```html
+```html 
 <template>  
     <el-cell-container cols='2'>
         <h3>基础信息</h3> 
@@ -19,7 +19,6 @@
               <el-input  v-model='value' placeholder='请输入内容' size='small'></el-input>
           </template>
         </el-cell>
-        <el-cell label='年龄' :value='value'></el-cell>  
     </el-cell-container>
 </template>
  

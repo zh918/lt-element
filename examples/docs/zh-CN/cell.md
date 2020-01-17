@@ -13,7 +13,7 @@
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
       </template>
     </el-cell>
-    <el-cell label='姓名：' :value='value' cols='full' label-width='1' full-value-width='9'>
+    <el-cell label='姓名：' :value='value' cols='full' label-width='1' full-value-width='8'>
       <template>
           <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
       </template>
@@ -41,6 +41,6 @@
 | label     | 声明标题           | string | — | — |
 | value     | 声明内容           | string | — | — |
 | label-width | 声明标题的宽度 | string | 1-9 | 1 |
-| full-value-width | 声明full行的值宽度 | string | 1-8 | 1 |
+| full-value-width | 声明full行的值宽度 | string | 1-8 | 8 |
 | cols      | 是否独占一行 | string | full | - |
   
