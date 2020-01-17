@@ -5,7 +5,7 @@
     min-width: 0;
 }
 .cell-container {
-    width: 24.5%;
+    width: 25%;
     display: inline-block;
     margin-bottom: 10px;
     .no-full {
@@ -69,7 +69,6 @@
             white-space: nowrap;
             font-size: 14px;
             min-width: 20px;
-            max-width: 290px;
             
         }
         .cell-value .el-input {
@@ -133,12 +132,16 @@
         }
         .cell-value {
             flex: 1;
-            overflow: hidden;
-            text-overflow:ellipsis;
-            white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow:ellipsis;
+            // white-space: nowrap;
             font-size: 14px;
-            padding-right: 20px;
+            // padding-right: 20px;
             min-width: 50px;
+        }
+        .cell-value .el-input {
+            width: 100%;
+            padding-right: 23px;
         }
         .full-value-width-1 {
             flex: 0 0 10%;
@@ -155,14 +158,16 @@
         .full-value-width-5 {
             flex: 0 0 50%;
         }
-        .full-value-width-6 {
+        .full-value-width-6 { 
             flex: 0 0 60%;
         }
         .full-value-width-7 {
             flex: 0 0 70%;
         } 
         .full-value-width-8 {
-            flex: 0 0 80%; 
+            width: auto;
+            padding-right: 23px;
+           
         }
         
     }
