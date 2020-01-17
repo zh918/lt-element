@@ -8,15 +8,18 @@
 
 ```html
 <template> 
-    <el-cell-container :cols='2'>
+    <el-cell-container :cols='3'>
         <h3>基础信息</h3>
         <el-cell label='姓名姓名：' :value='value' label-width='1'></el-cell>
-        <el-cell label='年龄：' :value='value' label-width='1' >
+        <el-cell label='年龄：' :value='value' label-width='1' cols='full' full-value-width='8'>
           <template>
             <el-input placeholder="请输入内容" size='small'></el-input>
           </template>
         </el-cell> 
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell> 
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
+        <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
         <el-cell label='年龄：' :value='value' label-width='1'></el-cell>
     </el-cell-container>
