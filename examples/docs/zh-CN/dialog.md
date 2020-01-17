@@ -11,7 +11,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
 <el-button type="text" @click="dialogVisible = true">点击打开 Dialog cell</el-button>
 
 <el-dialog
-  title="提示"
+  title="提示" 
   :visible.sync="dialogVisible"
   width="50%"
   :before-close="handleClose">
@@ -29,7 +29,7 @@ Dialog 弹出一个对话框，适合需要定制性更大的场景。
         </el-cell> 
         <el-cell label='部门名称：'>
           <template>
-            <el-input v-model='value' placeholder="请输入内容" size='small'></el-input>
+            <el-input placeholder="请输入内容" size='small'></el-input>
           </template>
         </el-cell>
         <el-cell label='年龄：' :value='value' label-width='4'>
