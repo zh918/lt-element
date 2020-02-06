@@ -72,7 +72,7 @@
         <el-table-column fixed="right" label="操作" width="220" v-if="tableContainer.operate">
           <template slot-scope="scope">
             <slot name="operate" v-bind="scope.row">
-              <el-button v-for="(item, index) in tableContainer.operate" @click.native.prevent="item.cb(scope.row)" type="text" size="small">
+              <el-button :key="'operate_'+index" v-for="(item, index) in tableContainer.operate" @click.native.prevent="item.cb(scope.row)" type="text" size="small">
                 {{item.label}}
               </el-button>
             </slot>
