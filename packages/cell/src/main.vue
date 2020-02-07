@@ -16,7 +16,7 @@
     </div>
   </div>
 </template>
-<script> 
+<script>
 export default {
   name: 'ElCell',
   componentName: 'ElCell',
