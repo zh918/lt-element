@@ -16,7 +16,7 @@
 @include b(pagination) {
   text-align: right;
 }
-
+ 
 .data-table {
   width: 100%;
   font-size: 12px;
@@ -32,4 +32,22 @@
 
 .el-data-container .el-select {
   width: 100%;
+}
+
+.flex-auto-operator {
+  display: flex;
+}
+
+.item-box {
+  margin-bottom: 10px;
+}
+
+// search-container
+.search-container {
+  display: flex;
+
+  .item-box {
+    width: 250px;
+    // max-width: 300px;
+  }
 }

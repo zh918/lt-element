@@ -4,7 +4,8 @@
     <slot name="search-container" v-if="searchContainer">
       <el-row :gutter="20">
         <el-col
-          :span="item.span"
+          class="item-box"
+          :span="searchContainer.itemSpan"
           :key="'col_' + index"
           v-for="(item,index) in searchContainer.list"
         >
@@ -58,7 +59,7 @@
           ></el-autocomplete>
         </el-col>
 
-        <el-col :span="btn.span" :offset="btn.offset" class="text-align-right">
+        <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
           <el-button id="btn_search" type="info" plain size="small" @click="handleBeginSearch">搜索</el-button>
           <el-button id="btn_reset" type="info" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
@@ -126,6 +127,7 @@ export default {
   props: {
     searchContainer: {
       // isResetAutoSearch: false,
+      // itemSpan: 4,
       // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
     },
     operatorContainer: [],
@@ -143,8 +145,8 @@ export default {
   data() {
     return {
       btn: {
-        span: 5,
-        offset: 6
+        span: 0,
+        offset: 0
       },
       parameter: {},
       pagination: {
@@ -166,22 +168,22 @@ export default {
       let cols = 24;
       let len = 0;
       this.searchContainer.list.forEach((s, i) => {
-        if (s.span) {
-          len += Number(s.span);
-        }
-        else {
+        if (this.searchContainer.itemSpan) {
+          len += Number(this.searchContainer.itemSpan);
+        } else {
           len += defaultSpan;
-          s.span = defaultSpan;
+          this.searchContainer.itemSpan = defaultSpan;
         }
       });
 
       let p = defaultOperatorSpan; // 按钮栅格容器大小
-      let col = cols - len; // 剩余栅格数
-      
-      if (col == p) this.btn.offset = 0;
+      let col = 0; // 剩余未填满的栅格数量
+      if (cols < len) col = cols - len % cols;
+      else col = cols - len;
+      if (col === p) this.btn.offset = 0;
       else if (col > p) this.btn.offset = col - p;
+      else if (col < 0) this.btn.offset = cols - p - Math.abs(col);
       else this.btn.offset = cols - p;
-      
       this.btn.span = p;
     },
     handleSearch() {
