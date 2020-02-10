@@ -127,7 +127,7 @@ export default {
   props: {
     searchContainer: {
       // isResetAutoSearch: false,
-      // itemSpan: 4,
+      // itemSpan: 4, // 请设置成偶数
       // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
     },
     operatorContainer: [],

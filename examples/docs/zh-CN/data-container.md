@@ -19,7 +19,7 @@
       return {
         searchContainer: {
           isResetAutoSearch: false,
-          itemSpan: 4,
+          itemSpan: 6,
           list: [
             { key: 'name1', type: 'input', class: '', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name2', type: 'input', class: '', placeholder: '姓名', value: '1', fetch: '', cb: ''},
