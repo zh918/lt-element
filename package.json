@@ -1,6 +1,6 @@
 {
   "name": "lt-element",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "description": "A Component Library",
   "main": "lib/lt-element.common.js",
   "files": [

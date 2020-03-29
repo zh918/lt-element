@@ -80,7 +80,14 @@
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table border :data="tableContainer.data" class="data-table">
+      <el-table 
+        border
+        v-loading="loading"
+        element-loading-text="数据加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+        :data="tableContainer.data" 
+        class="data-table">
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
