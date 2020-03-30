@@ -37,8 +37,8 @@
 
   @include e(headerbtn) {
     position: absolute;
-    top: $--dialog-padding-primary;
-    right: $--dialog-padding-primary;
+    top: $--dialog-padding-primary; 
+    right: $--dialog-padding-primary; 
     padding: 0;
     background: transparent;
     border: none;

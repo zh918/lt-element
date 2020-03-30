@@ -83,6 +83,8 @@ import Avatar from '../packages/avatar/index.js';
 import Drawer from '../packages/drawer/index.js';
 import Popconfirm from '../packages/popconfirm/index.js';
 import DataContainer from '../packages/data-container/index.js';
+import CellContainer from '../packages/cell-container/index.js';
+import Cell from '../packages/cell/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
 
@@ -165,6 +167,8 @@ const components = [
   Drawer,
   Popconfirm,
   DataContainer,
+  CellContainer,
+  Cell,
   CollapseTransition
 ];
 
@@ -200,7 +204,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.12',
+  version: '1.0.18',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -287,5 +291,7 @@ export default {
   Avatar,
   Drawer,
   Popconfirm,
-  DataContainer
+  DataContainer,
+  CellContainer,
+  Cell
 };
