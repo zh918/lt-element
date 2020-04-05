@@ -158,7 +158,7 @@ export default {
       },
       parameter: {},
       pagination: {
-        pageSize: 10,
+        pageSize: this.paginationContainer.pageSize | 10,
         pageSizes: [10, 20, 50]
       }
     };
