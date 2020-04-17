@@ -9,13 +9,13 @@
 ```html 
 <template> 
   <div style="overflow: hidden;">
-    <el-cell icon="*" title="身份证号码" :rules="rules.idNo">
+    <el-cell icon="*" title="身份证号码" :rules="rules.idNo" size="medium">
       <el-input v-model='frm.idNo' placeholder='请输入内容' size='small'></el-input>
     </el-cell>
-    <el-cell title="姓名" :rules="rules.des">
+    <el-cell title="有效期结束日期日期日期" :rules="rules.des">
       <el-input v-model='frm.des' placeholder='请输入内容' size='small'></el-input>
     </el-cell>
-    <el-cell title="其它信息" :full="true">
+    <el-cell title="其它" :full="true">
       <el-input v-model='frm.des' placeholder='请输入内容' size='small'></el-input>
     </el-cell>
   </div>
@@ -55,4 +55,5 @@
 | title     | 标题           | string | — | — |
 | rules | 校验规则数组 | array | [] |  |
 | full | 是否整列 | boolean | true/false | false |
+| size | title的宽度配置 | string | large / medium / small / mini | mini |
   

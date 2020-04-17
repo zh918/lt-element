@@ -1,6 +1,6 @@
 <template>
   <div class="el-cell-box-container" :class="{'full':full,'el-cell-box-margin':margin}">
-    <div class="box-title"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
+    <div class="box-title" :class="'box-title-'+size"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
     <div class="box-content">
       <slot></slot>
     </div>
@@ -29,6 +29,10 @@ export default {
     margin: {
       type: Boolean,
       default: true
+    },
+    size: {
+      type: String,
+      default: 'mini'
     },
     rules: {
       type: Array,

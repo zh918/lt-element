@@ -106,7 +106,7 @@
 ```html 
 <template> 
   <el-cell-container :auto="false" :cols="2">
-    <el-cell title="身份证号码" :margin="false">
+    <el-cell title="有效期结束日期" :margin="false">
       {{a}}
     </el-cell>
     <el-cell title="姓名" :margin="false">
