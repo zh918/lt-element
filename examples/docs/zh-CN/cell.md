@@ -55,5 +55,5 @@
 | title     | 标题           | string | — | — |
 | rules | 校验规则数组 | array | [] |  |
 | full | 是否整列 | boolean | true/false | false |
-| size | title的宽度配置 | string | large / medium / small / mini | mini |
+| size | title的宽度配置 | string | large / medium / small / mini | small |
   
