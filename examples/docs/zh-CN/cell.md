@@ -8,24 +8,37 @@
 
 ```html 
 <template> 
-    <el-cell label='姓名：' :value='value' :label-width='1'>
-      <template>
-          <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
-      </template>
+  <div style="overflow: hidden;">
+    <el-cell icon="*" title="身份证号码" :rules="rules.idNo">
+      <el-input v-model='frm.idNo' placeholder='请输入内容' size='small'></el-input>
     </el-cell>
-    <el-cell label='姓名：' :value='value' cols='full' label-width='1' full-value-width='8'>
-      <template>
-          <el-input class='cell-input' v-model='value' placeholder='请输入内容' size='small'></el-input>
-      </template>
+    <el-cell title="姓名" :rules="rules.des">
+      <el-input v-model='frm.des' placeholder='请输入内容' size='small'></el-input>
     </el-cell>
+    <el-cell title="其它信息" :full="true">
+      <el-input v-model='frm.des' placeholder='请输入内容' size='small'></el-input>
+    </el-cell>
+  </div>
 </template>
 
 <script>
   export default {
     data() {
       return {
-        value:'张三'
-      }
+        frm: {
+          idNo: null,
+          des: null,
+          other: null
+        },
+        rules: {
+          idNo: [
+            { type:'required', required: true, message: '请输入活动名称', isError:true},
+          ],
+          des: [
+            { type:'required', required: true, message: '请输入活动名称'},
+          ]
+        }
+      };
     },
     methods: {}
   }
@@ -38,9 +51,8 @@
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| label     | 声明标题           | string | — | — |
-| value     | 声明内容           | string | — | — |
-| label-width | 声明标题的宽度 | string | 1-9 | 1 |
-| full-value-width | 声明full行的值宽度 | string | 1-8 | 8 |
-| cols      | 是否独占一行 | string | full | - |
+| icon     | *号，前置符号           | string | — | — |
+| title     | 标题           | string | — | — |
+| rules | 校验规则数组 | array | [] |  |
+| full | 是否整列 | boolean | true/false | false |
   

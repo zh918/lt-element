@@ -2,36 +2,31 @@
 
 @include b(cell-container) {
     box-sizing: border-box;
-    min-width: 0;
-}
-.el-cell-container-1{
-    .cell-container { 
-      width: 100%;  
-    } 
-}
-.el-cell-container-2{
-    .cell-container {
-      width: 49.6%;
-    }
-}
-.el-cell-container-3{
-    .cell-container {
-      width: 32.8%;
-    }
-}
-.el-cell-container-4{
-    .cell-container {
-      width: 24.6%;
-    }
-}
-.el-cell-container-5{
-    .cell-container {
-      width: 19.6%;
-    }
-}
-.el-cell-container-6{
-    .cell-container {
-      width: 16.3%; 
-    }
+    width: 100%;
 }
 
+.el-cell-auto-container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.el-cell-1-cols-container {
+  width: 420px;
+  overflow: hidden;
+}
+
+.el-cell-2-cols-container {
+  width: 840px;
+  overflow: hidden;
+}
+
+.el-cell-3-cols-container {
+  width: 1260px;
+  overflow: hidden;
+}
+
+.el-cell-4-cols-container {
+  width: 1680px;
+  overflow: hidden;
+}

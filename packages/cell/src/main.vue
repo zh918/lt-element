@@ -1,42 +1,56 @@
 <template>
-  <div class="cell-container-full" v-if="cols && cols=='full'"> 
-    <div class="cell-value-full">
-      <div :class="'cell-label-full-'+labelWidth">{{label}}</div>
-      <div :class="'cell-value full-value-width-'+fullValueWidth" :title="value"> 
-        <slot>{{value}}</slot>
-      </div> 
+  <div class="el-cell-box-container" :class="{'full':full,'el-cell-box-margin':margin}">
+    <div class="box-title"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
+    <div class="box-content">
+      <slot></slot>
     </div>
-  </div>  
-  <div class="cell-container" v-else> 
-    <div class="no-full">
-      <div :class="'cell-label-'+labelWidth">{{label}}</div>
-      <div class="cell-value" :title="value"> 
-        <slot>{{value}}</slot>
-      </div>
-    </div>
+    <div class="box-error" v-if="errorMsg">{{errorMsg}}</div>
   </div>
 </template>
+
 <script>
+
 export default {
   name: 'ElCell',
   componentName: 'ElCell',
   props: {
-    label: String,
-    value: String,
-    labelWidth: {
-      type: [String, Number],
-      default: '1'
+    icon: {
+      type: String,
+      default: ''
     },
-    fullValueWidth: {
-      type: [String, Number],
-      default: '8'
+    title: {
+      type: String,
+      default: ''
     },
-    cols: [String, Number]
+    full: {
+      type: Boolean,
+      default: false
+    },
+    margin: {
+      type: Boolean,
+      default: true
+    },
+    rules: {
+      type: Array,
+      default: ()=>[]
+    }
   },
   data() {
-    return {};
+    return {
+      errorMsg: null
+    };
   },
-  created() {},
-  methods: {}
+  created() {
+    this._initData();
+  },
+  methods: {
+    _initData() {
+      let ruleObj = this.rules.find(r=>r.isError);
+
+      if (ruleObj) this.errorMsg = ruleObj.message;
+      else this.errorMsg = null;
+    }
+  }
 };
+
 </script>
