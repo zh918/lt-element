@@ -12,8 +12,11 @@
 }
 
 .el-cell-1-cols-container {
-  width: 370px;
   overflow: hidden;
+
+  .el-cell-box-container {
+    float: none;
+  }
 }
 
 .el-cell-2-cols-container {

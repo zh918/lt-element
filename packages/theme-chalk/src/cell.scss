@@ -45,18 +45,26 @@
       width: 150px;
     }
 
+    .box-title-left {
+      text-align: left;
+    }
+
+    .box-title-center {
+      text-align: center;
+    }
+
+    .box-title-right {
+      text-align: right;
+    }
+
     .box-content {
         flex: 1;
         font-size: 13px;
         overflow: hidden;
-        // border: 1px solid yellow;
-
-        // .el-input--small {
-        //   height: 40px;
-        //   input {
-        //     height: 40px;
-        //   }
-        // }
+        
+        .el-select {
+          width: 100%;
+        }
     }
 
     .box-error {
@@ -71,7 +79,9 @@
 }
 
 .el-cell-box-container.full {
-  width: calc(100% - 100px);
+  // width: calc(100% - 100px);
+  width: 100%;
+  // 这里需要动态计算出宽度，要看有多少列先出现，cell宽度*列数
 }
 
 // .el-cell-box-container .title.max {

@@ -165,7 +165,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
 ```
 :::
 
-### 表单验证
+### 表单验证1
 
 在防止用户犯错的前提下，尽可能让用户更早地发现并纠正错误。
 
@@ -261,6 +261,8 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
     },
     methods: {
       submitForm(formName) {
+        debugger
+        console.log('frm=>',this.$refs[formName])
         this.$refs[formName].validate((valid) => {
           if (valid) {
             alert('submit!');
@@ -271,6 +273,7 @@ W3C 标准中有如下[规定](https://www.w3.org/MarkUp/html-spec/html-spec_8.h
         });
       },
       resetForm(formName) {
+        debugger
         this.$refs[formName].resetFields();
       }
     }

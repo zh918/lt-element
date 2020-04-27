@@ -85,6 +85,8 @@ import Popconfirm from '../packages/popconfirm/index.js';
 import DataContainer from '../packages/data-container/index.js';
 import CellContainer from '../packages/cell-container/index.js';
 import Cell from '../packages/cell/index.js';
+import Label from '../packages/label/index.js';
+import Title from '../packages/title/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
 
@@ -169,6 +171,8 @@ const components = [
   DataContainer,
   CellContainer,
   Cell,
+  Label,
+  Title,
   CollapseTransition
 ];
 
@@ -293,5 +297,6 @@ export default {
   Popconfirm,
   DataContainer,
   CellContainer,
+  Label,
   Cell
 };
