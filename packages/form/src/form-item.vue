@@ -299,7 +299,8 @@
     },
     mounted() {
       if (this.prop) {
-        this.dispatch('ElForm', 'el.form.addField', [this]);
+        this.$emit('el.form.addField', [this]);
+        // this.dispatch('ElForm', 'el.form.addField', [this]);
 
         let initialValue = this.fieldValue;
         if (Array.isArray(initialValue)) {
@@ -313,7 +314,7 @@
       }
     },
     beforeDestroy() {
-      this.dispatch('ElForm', 'el.form.removeField', [this]);
+      this.$off('el.form.removeField', [this]);
     }
   };
 </script>

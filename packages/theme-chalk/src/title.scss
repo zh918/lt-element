@@ -1,0 +1,43 @@
+@import "mixins/mixins";
+
+@include b(title-container) {
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.el-title-container {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #ebebeb;
+  clear: both;
+}
+
+.title-size-h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.title-size-h3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.title-size-h4 {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.title-align-left {
+  text-align: left;
+}
+
+.title-align-center {
+  text-align: center;
+}
+
+.title-align-right {
+  text-align: right;
+}
