@@ -87,8 +87,8 @@ import CellContainer from '../packages/cell-container/index.js';
 import Cell from '../packages/cell/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
-import Title from '../packages/title/index.js';
 import Label from '../packages/label/index.js';
+import Title from '../packages/title/index.js';
 
 const components = [
   Pagination,
