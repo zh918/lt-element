@@ -85,8 +85,6 @@ import Popconfirm from '../packages/popconfirm/index.js';
 import DataContainer from '../packages/data-container/index.js';
 import CellContainer from '../packages/cell-container/index.js';
 import Cell from '../packages/cell/index.js';
-import Label from '../packages/label/index.js';
-import Title from '../packages/title/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
 
@@ -171,8 +169,6 @@ const components = [
   DataContainer,
   CellContainer,
   Cell,
-  Label,
-  Title,
   CollapseTransition
 ];
 
@@ -208,7 +204,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  version: '1.0.23',
+  version: '1.0.26',
   locale: locale.use,
   i18n: locale.i18n,
   install,
@@ -297,6 +293,5 @@ export default {
   Popconfirm,
   DataContainer,
   CellContainer,
-  Label,
   Cell
 };

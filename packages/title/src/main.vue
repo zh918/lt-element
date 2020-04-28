@@ -9,10 +9,6 @@
     name: 'ElTitle',
     componentName: 'ElTitle',
     props: {
-      style: {
-        type: String,
-        default: ''
-      },
       size: {
         type: String,
         default: 'h4' // h2/h3/h4
