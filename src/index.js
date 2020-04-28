@@ -87,6 +87,8 @@ import CellContainer from '../packages/cell-container/index.js';
 import Cell from '../packages/cell/index.js';
 import locale from 'lt-element/src/locale';
 import CollapseTransition from 'lt-element/src/transitions/collapse-transition';
+import Title from '../packages/title/index.js';
+import Label from '../packages/label/index.js';
 
 const components = [
   Pagination,
@@ -169,7 +171,9 @@ const components = [
   DataContainer,
   CellContainer,
   Cell,
-  CollapseTransition
+  CollapseTransition,
+  Label,
+  Title
 ];
 
 const install = function(Vue, opts = {}) {
@@ -293,5 +297,7 @@ export default {
   Popconfirm,
   DataContainer,
   CellContainer,
-  Cell
+  Cell,
+  Label,
+  Title
 };

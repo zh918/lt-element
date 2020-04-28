@@ -81,6 +81,10 @@ import { ElAvatar } from './avatar'
 import { ElDrawer } from './drawer'
 import { ElPopconfirm } from './popconfirm'
 import { ElDataContainer } from './data-container'
+import { ElCellContainer } from './cell-container'
+import { ElCell } from './cell'
+import { ElLabel } from './label'
+import { ElTitle } from './title'
 
 export interface InstallationOptions {
   locale: any,
@@ -348,3 +352,15 @@ export class Popconfirm extends ElPopconfirm {}
 
 /** data-container Component */
 export class DataContainer extends ElDataContainer {}
+
+/** cell-container Component */
+export class CellContainer extends ElCellContainer {}
+
+/** cell Component */
+export class Cell extends ElCell {}
+
+/** Label Component */
+export class Label extends ElLabel {}
+
+/** Title Component */
+export class Title extends ElTitle {}
