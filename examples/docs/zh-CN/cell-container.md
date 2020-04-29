@@ -2,12 +2,14 @@
 用于高效快捷搭建详情页面基础结构
 
 ### auto自适应布局——表单
+
 :::demo 适用于单页、dialog、及自定义
-```html 
+```html
 <template>
   <div style="width:100%;height:100%;">
     <el-cell-container ref="frm_validate" :model="frm" :rules="rules">
       <el-title>基本信息</el-title>
+
       <el-cell icon="*" title="姓名" prop="name">
         <el-input v-model='frm.name' placeholder='请输入姓名' size='small'></el-input>
       </el-cell>
@@ -123,17 +125,20 @@
     }
   }
 </script>
-
 ```
 :::
 
+
+
 ### auto自适应布局——详情展示
+
 :::demo 适用于单页、dialog、及自定义
 ```html 
 <template>
   <div>
     <el-cell-container>
       <el-title align="center">基本信息</el-title>
+
       <el-cell title="姓名">
         <el-label :value="frm1.name"></el-label>
       </el-cell>
@@ -152,7 +157,7 @@
       <el-cell title="总价2">
         <el-label :value="frm1.total" icon="$" unit="万元" type="money"></el-label>
       </el-cell>
-      <el-cell title="详细地址" full="true">
+      <el-cell title="详细地址" :full="true">
         <el-label :value="frm1.address"></el-label>
       </el-cell>
       <el-cell title="担保人">
@@ -174,27 +179,51 @@
     data() {
       return {
         frm1: {
-          name: '张三丰',
-          age: 118,
-          typeId: 1,
-          joinDate: '1902-05-01',
-          address: '中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边',
-          total: 15000088.62,
+          name: null,
+          age: null,
+          typeId: null,
+          joinDate: null,
+          address: null,
+          total: null,
           otherObject: {
-            name: '张无忌',
-            phone: 18888888888
+            name: null,
+            phone: null
           }
         }
       };
+    },
+    created() {
+      this.initData();
+    },
+    methods: {
+      initData() {
+        let _this = this;
+        setTimeout(()=>{
+          let result = {
+            name: '张三丰',
+            age: 118,
+            typeId: 1,
+            joinDate: '1902-05-01',
+            address: '中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边中国武当山山顶第99棵松树旁边',
+            total: 15000088.62,
+            otherObject: {
+              name: '张无忌',
+              phone: '18888888888'
+            }
+          };
+
+          _this.frm1 = result;
+        },1000 * 3)
+      }
     }
   }
 </script>
-
 ```
 :::
 
 
 ### 固定列数布局——表单
+
 :::demo 适用于单页、dialog、及自定义
 ```html 
 <template>
@@ -315,11 +344,11 @@
     }
   }
 </script>
-
 ```
 :::
 
 ### 固定列数布局——详情展示
+
 :::demo 适用于单页、dialog、及自定义
 ```html 
 <template>
@@ -344,7 +373,7 @@
       <el-cell title="总价2" :margin="false" align="right">
         <el-label :value="frm3.total" icon="$" unit="万元" type="money"></el-label>
       </el-cell>
-      <el-cell title="详细地址" full="true" :margin="false" align="right">
+      <el-cell title="详细地址" :full="true" :margin="false" align="right">
         <el-label :value="frm3.address"></el-label>
       </el-cell>
       <el-cell title="担保人" :margin="false" align="right">
@@ -381,9 +410,11 @@
     }
   }
 </script>
-
 ```
 :::
+
+
+
 
   
 ### cell-container Attributes
