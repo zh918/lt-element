@@ -63,6 +63,18 @@ export default {
         parentName = parent.$options.componentName;
       }
       return parent;
+    },
+    currentValue() {
+      if (this.parentEl && this.parentEl.model) {
+        return this.parentEl.model[this.$props.prop];
+      } else {
+        return null;
+      }
+    }
+  },
+  watch: {
+    currentValue(val) {
+      this.validate(()=>{});
     }
   },
   methods: {
@@ -76,12 +88,12 @@ export default {
         let tempModel = {};
         let tempRules = {};
         let propArray = this.prop.split('.');
-        console.log('属性：', propArray);
+        // console.log('属性：', propArray);
         propArray.forEach(k=>{
           if (!key) {
             tempModel = this.parentEl.model[k];
             tempRules = this.parentEl.rules[k];
-            console.log('---->', tempModel, tempRules);
+            // console.log('---->', tempModel, tempRules);
           } else {
             tempModel = tempModel[k];
             tempRules = tempRules[k];
@@ -90,7 +102,7 @@ export default {
         });
         model[key] = tempModel;
         rules[key] = tempRules;
-        console.log('====>', model, rules);
+        // console.log('====>', model, rules);
         _validate(rules, model);
       } else {
         key = this.prop;

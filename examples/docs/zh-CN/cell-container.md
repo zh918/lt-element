@@ -78,12 +78,12 @@
             { type:'string', required: true, message: '姓名不能为空'},
           ],
           age: [
-            { type:'number', required: true, message: '年龄不能为空'},
-            { type:'number',  
-              asyncValidator: (rule, value) => {
+            { type:'string', required: true, message: '年龄不能为空'},
+            {
+              validator: (rule, value) => {
                 return new Promise((resolve, reject) => {
                   if (value < 18) {
-                    reject("不能小于18岁");  // reject with error message
+                    reject("不能小于18岁"); 
                   } else if (value > 90) {
                     reject("年龄太大，不适合");
                   } else {
@@ -97,8 +97,7 @@
             { type:'date', required: true, message: '加入日期不能为空'},
           ],
           address: [
-            { type:'string', required: true, message: '地址不能为空'},
-            { type:'string', Range: {min: 5, max: 20}, message: '字符只能在5到20个之间'},
+            { type:'string', required: true, message: '地址不能为空'}
           ],
           otherObject: {
             name: [
@@ -128,12 +127,10 @@
 ```
 :::
 
-
-
 ### auto自适应布局——详情展示
 
 :::demo 适用于单页、dialog、及自定义
-```html 
+```html
 <template>
   <div>
     <el-cell-container>
@@ -221,11 +218,10 @@
 ```
 :::
 
-
 ### 固定列数布局——表单
 
 :::demo 适用于单页、dialog、及自定义
-```html 
+```html
 <template>
   <div>
     <el-cell-container ref="frm2_validate" :model="frm2" :rules="rules2" :auto="false" :cols="1">
@@ -234,7 +230,7 @@
         <el-input v-model='frm2.name' placeholder='请输入姓名' size='small'></el-input>
       </el-cell>
       <el-cell icon="*" title="年龄" prop="age">
-        <el-input v-model='frm2.age' placeholder='请输入年龄' size='small'></el-input>
+        <el-input v-model='frm2.age' type="number" placeholder='请输入年龄' size='small'></el-input>
       </el-cell>
       <el-cell icon="*" title="证件类型" prop="typeId">
         <el-select v-model="frm2.typeId" placeholder="请选择证件类型"  size='small'>
@@ -297,9 +293,9 @@
             { type:'string', required: true, message: '姓名不能为空'},
           ],
           age: [
-            { type:'number', required: true, message: '年龄不能为空'},
-            { type:'number',  
-              asyncValidator: (rule, value) => {
+            { type:'string', required: true, message: '年龄不能为空'},
+            {   
+              validator: (rule, value) => {
                 return new Promise((resolve, reject) => {
                   if (value < 18) {
                     reject("不能小于18岁");  // reject with error message
@@ -316,8 +312,7 @@
             { type:'date', required: true, message: '加入日期不能为空'},
           ],
           address: [
-            { type:'string', required: true, message: '地址不能为空'},
-            { type:'string', Range: {min: 5, max: 20}, message: '字符只能在5到20个之间'},
+            { type:'string', required: true, message: '地址不能为空'}
           ],
           otherObject: {
             name: [
@@ -350,7 +345,7 @@
 ### 固定列数布局——详情展示
 
 :::demo 适用于单页、dialog、及自定义
-```html 
+```html
 <template>
   <div>
     <el-cell-container  :auto="false" :cols="2">
@@ -412,9 +407,6 @@
 </script>
 ```
 :::
-
-
-
 
   
 ### cell-container Attributes
