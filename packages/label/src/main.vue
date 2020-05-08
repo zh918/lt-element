@@ -29,8 +29,6 @@
     },
     computed: {
       description() {
-        console.log('computed->description', this.value);
-        // setTimeout(()=> {this.flag = !this.flag;}, 4000);
         if (this.value === null || this.value === undefined || this.value === '') {
           return '';
         } else if (this.type === 'string') {
@@ -59,10 +57,5 @@
         }
       }
     }
-    // watch: {
-    //   value(val, val2) {
-    //     console.log('watch=>', val);
-    //   }
-    // }
   };
 </script>

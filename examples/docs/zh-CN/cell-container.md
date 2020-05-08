@@ -77,6 +77,9 @@
           name: [
             { type:'string', required: true, message: '姓名不能为空'},
           ],
+          typeId: [
+            { type:'number', required: true, message: '证件类型不能为空'},
+          ],
           age: [
             { type:'string', required: true, message: '年龄不能为空'},
             {
@@ -126,6 +129,8 @@
 </script>
 ```
 :::
+
+注意：1.rules中的对象如果需自定义规则，请使用validator函数；2.rules中支持多级对象规则制定，对象结构跟model要保持一致,参考frm.otherObject对象；3.cell-container 在dialog组件中使用时，如果需要兼容移动设备，请使用auto=true的默认配置，不要指定cols;
 
 ### auto自适应布局——详情展示
 

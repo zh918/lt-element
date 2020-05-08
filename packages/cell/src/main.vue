@@ -66,15 +66,35 @@ export default {
     },
     currentValue() {
       if (this.parentEl && this.parentEl.model) {
-        return this.parentEl.model[this.$props.prop];
+        if (this.$props.prop.indexOf('.') !== -1) {
+          let propArray = this.$props.prop.split('.');
+          let tempModel = this.parentEl.model[propArray[0]];
+          let attrObj = {};
+          let returnModel = {};
+
+          for (let k in tempModel) {
+            if (k === propArray[1]) {
+              attrObj.k = tempModel[k];
+            }
+          }
+
+          returnModel[propArray[0]] = attrObj;
+          return {...returnModel};
+        } else {
+          return this.parentEl.model[this.$props.prop];
+        }
       } else {
         return null;
       }
     }
   },
   watch: {
-    currentValue(val) {
-      this.validate(()=>{});
+    currentValue: {
+      handler(val) {
+        // console.log('watch====>', this.$props.prop, val);
+        this.validate(()=>{});
+      },
+      deep: true
     }
   },
   methods: {
@@ -124,11 +144,11 @@ export default {
       }
 
       function _validate(descriptor, model) {
-        console.log(descriptor, model);
+        // console.log(descriptor, model);
         const validator = new AsyncValidator(descriptor);
         validator.validate(model, {suppressWarning: true, first: true}, function(errors, invalidFields) {
           if (errors) {
-            console.log(JSON.stringify(errors));
+            // console.log(JSON.stringify(errors));
             _this.errorMsg = errors[0].message;
             cb(false);
           } else {
