@@ -144,7 +144,10 @@
 
     props: {
       value: [String, Number],
-      size: String,
+      size: {
+        type: String,
+        default: 'small'
+      },
       resize: String,
       form: String,
       disabled: Boolean,

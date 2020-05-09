@@ -1,4 +1,4 @@
-import ElInputNumber from './src/input-number';
+import ElInputNumber from './src/main';
 
 /* istanbul ignore next */
 ElInputNumber.install = function(Vue) {
