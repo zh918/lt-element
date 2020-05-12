@@ -144,7 +144,7 @@ export default {
       }
 
       function _validate(descriptor, model) {
-        // console.log(descriptor, model);
+        console.log(descriptor, model);
         const validator = new AsyncValidator(descriptor);
         validator.validate(model, {suppressWarning: true, first: true}, function(errors, invalidFields) {
           if (errors) {

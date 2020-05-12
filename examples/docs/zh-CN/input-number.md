@@ -1,28 +1,47 @@
-## InputNumber 计数器
+## InputNumber 数字相关文本框
 
-仅允许输入标准的数字值，可定义范围
+仅允许输入标准的数字值，其它规则请在rules中进行自行校验
 
-### 基础用法
+### 基础用法 int、float、money 不做任何限制----无表单验证
 
 :::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
 ```html
 <template>
-  <el-input-number v-model="num" @change="handleChange" label="描述文字"></el-input-number>
+  <div>
+    <el-cell-container>
+      <el-title>基本信息</el-title>
+      <el-cell title="整数">
+        <el-input-number v-model="frm.intNumber" :tip="true" unit="%"></el-input-number>
+      </el-cell>
+      <el-cell title="浮点">
+        <el-input-number v-model="frm.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
+      </el-cell>
+      <el-cell title="金额">
+        <el-input-number v-model="frm.intMoney" type="money" :tip="true" :dot="3" unit="万元"></el-input-number>
+      </el-cell>
+      <el-cell title="大写金额">
+        <el-input-number v-model="frm.intMoney" type="money" :big="true" :tip="true" :dot="3" unit="万元"></el-input-number>
+      </el-cell>
+    </el-cell-container>
+  </div>
+  
   <el-button @click="handleSubmit">获取文本框的值</el-button>
 </template>
 <script>
   export default {
     data() {
       return {
-        num: 111111
+        frm: {
+          intNumber: null,
+          intFloat: null,
+          intMoney: null,
+        }
       };
     },
     methods: {
-      handleChange(val) {
-        console.log('父级组件', val);
-      },
       handleSubmit() {
-        alert(this.num);
+        let str = JSON.stringify(this.frm);
+        alert(str);
       }
     }
   };
@@ -30,32 +49,92 @@
 ```
 :::
 
+
+### 基础用法 int、float、money 不做任何限制----表单验证
+
+:::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
+```html
+<template>
+  <div>
+    <el-cell-container ref="frm_validate" :model="frm1" :rules="rules">
+      <el-title>基本信息</el-title>
+      <el-cell icon="*" title="整数" prop="intNumber">
+        <el-input-number v-model="frm1.intNumber" :tip="false" unit="%"></el-input-number>
+      </el-cell>
+      <el-cell title="非必填浮点" prop="intFloat">
+        <el-input-number v-model="frm1.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
+      </el-cell>
+    </el-cell-container>
+  </div>
+  
+  <el-button @click="handleValidateSubmit">获取文本框的值</el-button>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        frm1: {
+          intNumber: null,
+          intFloat: null,
+        },
+        rules: {
+          intNumber: [
+            {
+              validator: (rule, value) => {
+                return new Promise((resolve, reject) => {
+                  if (value <= 100) {
+                    reject("金额不能小于100，不能大于1000"); 
+                  } else if (value >= 1000) {
+                    reject("金额不能小于100，不能大于1000"); 
+                  } else {
+                    resolve();
+                  }
+                });
+              }
+            }
+          ],
+          intFloat: [
+            {
+              validator: (rule, value) => {
+                return new Promise((resolve, reject) => {
+                  if (!value) {
+                    resolve();
+                  } else if (1 <= value && value <= 100) {
+                    resolve();
+                  } else {
+                    reject("范围1-100"); 
+                  }
+                });
+              }
+            }
+          ]
+        }
+      };
+    },
+    methods: {
+      handleValidateSubmit() {
+        this.$refs["frm_validate"].validate(flag=>{
+          console.log(flag);
+          alert(flag);
+        });
+      }
+    }
+  };
+</script>
+```
+:::
+
+
+
+
+
+
 ### Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |----------|-------------- |----------|--------------------------------  |-------- |
-| value / v-model    | 绑定值         | number | — | 0 |
-| min      | 设置计数器允许的最小值 | number | — | -Infinity |
-| max      | 设置计数器允许的最大值 | number | — | Infinity |
-| step     | 计数器步长           | number   | — | 1 |
-| step-strictly | 是否只能输入 step 的倍数 | number   | — | false |
-| precision| 数值精度             | number   | — | — |
-| size     | 计数器尺寸           | string   | large, small | — |
-| disabled | 是否禁用计数器        | boolean | — | false |
-| controls | 是否使用控制按钮        | boolean | — | true |
-| controls-position | 控制按钮位置 | string | right | - |
-| name | 原生属性 | string | — | — |
-| label | 输入框关联的label文字 | string | — | — |
-| placeholder | 输入框默认 placeholder | string | - | - |
-
-### Events
-| 事件名称 | 说明 | 回调参数 |
-|---------|--------|---------|
-| change | 绑定值被改变时触发 | currentValue, oldValue |
-| blur | 在组件 Input 失去焦点时触发 | (event: Event) |
-| focus | 在组件 Input 获得焦点时触发 | (event: Event) |
-
-### Methods
-| 方法名 | 说明 | 参数 |
-| ---- | ---- | ---- |
-| focus | 使 input 获取焦点 | - |
-| select | 选中 input 中的文字 | — |
+| value / v-model    | 绑定值         | number | — |  |
+| type      | 运行键入的类型 | int/float/money | — |  |
+| tip      | 是否需要提示键入的内容 | boolean | true/false | false |
+| unit      | tip打开时，需要显示的单位 | string | -|元|
+| dot     | 当type为float或money时，可以指定小数点位数 | number | 1-9| 2|
+| big     | 当type为money并且tip为true时，如果需要显示大写金额，则需要设置该值|boolean|true/false|false|
