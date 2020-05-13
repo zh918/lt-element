@@ -45,6 +45,9 @@
       <el-cell icon="*" title="担保人电话" prop="otherObject.phone">
         <el-input v-model='frm.otherObject.phone' placeholder='请输入担保人电话' size='small'></el-input>
       </el-cell>
+      <el-cell icon="*" title="担保金额" prop="otherObject.money">
+        <el-input-number v-model="frm.otherObject.money" type="money" :tip="true" unit="元"></el-input-number>
+      </el-cell>
     </el-cell-container>
 
     <div>
@@ -70,7 +73,8 @@
           address: null,
           otherObject: {
             name: null,
-            phone: null
+            phone: null,
+            money: null
           }
         },
         rules: {
@@ -109,6 +113,20 @@
             phone: [
               { type:'string', required: true, message: '担保人电话不能为空'},
               { type:'string', len: 11, message: '担保人电话只能是11位'},
+            ],
+            money: [
+              { type:'string', required: true, message: '担保金额不能为空'},
+              {
+                validator: (rule, value) => {
+                  return new Promise((resolve, reject) => {
+                    if (1 <= value && value <= 1000) {
+                      resolve();
+                    } else {
+                      reject("担保金额范围1——1000");
+                    }
+                  });
+                }
+              }
             ]
           }
         }

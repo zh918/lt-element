@@ -94,7 +94,7 @@
             },
             {
               "path": "/input-number",
-              "title": "InputNumber 计数器"
+              "title": "InputNumber 输入框"
             },
             {
               "path": "/select",

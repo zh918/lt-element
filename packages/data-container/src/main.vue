@@ -82,6 +82,7 @@
     <slot name="list-container">
       <el-table 
         border
+        size="mini"
         v-loading="loading"
         element-loading-text="数据加载中"
         element-loading-spinner="el-icon-loading"

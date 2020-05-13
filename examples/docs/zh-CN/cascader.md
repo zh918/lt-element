@@ -95,7 +95,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -324,7 +324,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -538,7 +538,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -752,7 +752,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -1061,7 +1061,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -1326,7 +1326,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -1545,7 +1545,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
@@ -1759,7 +1759,7 @@
               label: 'Input 输入框'
             }, {
               value: 'input-number',
-              label: 'InputNumber 计数器'
+              label: 'InputNumber 输入框'
             }, {
               value: 'select',
               label: 'Select 选择器'
