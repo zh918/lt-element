@@ -107,7 +107,7 @@
                 v-for="(item, index) in tableContainer.operate"
                 @click.native.prevent="item.cb(scope.row)"
                 type="text"
-                size="small"
+                size="mini"
               >{{item.label}}</el-button>
             </slot>
           </template>
