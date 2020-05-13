@@ -94,17 +94,18 @@
           v-for="(item, index) in tableContainer.head"
           :label="item.label"
           :fixed="item.fixed == true"
+          :width="item.width"
         >
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
           </template>
         </el-table-column>
-        <el-table-column fixed="right" label="操作" width="220" v-if="tableContainer.operate">
+        <el-table-column :fixed="tableContainer.operate.fixed" :label="tableContainer.operate.label" :width="tableContainer.operate.width || 150" v-if="tableContainer.operate.list">
           <template slot-scope="scope">
             <slot name="operate" v-bind="scope.row">
               <el-button
                 :key="'operator_'+index"
-                v-for="(item, index) in tableContainer.operate"
+                v-for="(item, index) in tableContainer.operate.list"
                 @click.native.prevent="item.cb(scope.row)"
                 type="text"
                 size="mini"

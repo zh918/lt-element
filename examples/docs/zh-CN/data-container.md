@@ -49,17 +49,23 @@
         tableContainer: {
           selection:true,
           selectionChange: ()=>{},
-          operate: [
-            {
-              type: 'primary',
-              label: '删除',
-              cb: this.handleDel
-            }
-          ],
+          operate: {
+            label: "操作",
+            fixed: "right",
+            width: "80px",
+            list: [
+              {
+                type: 'primary',
+                label: '删除',
+                cb: this.handleDel
+              }
+            ]
+          },
           head: [
             {
               prop: "moduleCode",
-              label: "系统编号"
+              label: "系统编号",
+              width: "120px"
             },
             {
               prop: "moduleName",
