@@ -1,5 +1,7 @@
 @import "mixins/mixins";
 
+$cell-width: 350px;
+
 @include b(cell-box-container) {
     box-sizing: border-box;
     min-width: 0;
@@ -9,7 +11,7 @@
     float: left;
     display: flex;
     position: relative;
-    width: 350px;
+    width: $cell-width;
     min-height: 32px;
     line-height: 32px;
     margin: 0 20px 0 0;
@@ -80,11 +82,19 @@
 
 }
 
-.el-cell-box-container.full {
-  // width: calc(100% - 100px);
-  width: 100%;
-  // 这里需要动态计算出宽度，要看有多少列先出现，cell宽度*列数
+.el-cell-box-container.full-1 {
+  width: $cell-width * 1;
 }
+.el-cell-box-container.full-2 {
+  width: $cell-width * 2 + 20px;
+}
+.el-cell-box-container.full-3 {
+  width: $cell-width * 3 + 20px * 2;
+}
+.el-cell-box-container.full-4 {
+  width: $cell-width * 4 + 20px * 3;
+}
+
 
 // .el-cell-box-container .title.max {
 //     width: 150px;

@@ -17,7 +17,7 @@ export default {
     },
     cols: {
       type: Number,
-      default: -1
+      default: 1 // -1
     },
     model: Object,
     rules: Object

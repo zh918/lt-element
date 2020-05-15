@@ -1,5 +1,5 @@
 <template>
-  <div class="el-cell-box-container" :class="{'full':full,'el-cell-box-margin':margin}">
+  <div class="el-cell-box-container" :class="classObj">
     <div class="box-title" :class="'box-title-'+size+' box-title-'+align"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
     <div class="box-content">
       <slot></slot>
@@ -58,11 +58,20 @@ export default {
     parentEl() {
       let parent = this.$parent;
       let parentName = parent.$options.componentName;
+      if (!parentName) return null;
       while (parentName !== 'ElCellContainer') {
         parent = parent.$parent;
         parentName = parent.$options.componentName;
       }
       return parent;
+    },
+    classObj() {
+      let fullClass = `full-${this.parentEl.cols}`;
+      let classObject = {
+        'el-cell-box-margin': this.margin
+      };
+      classObject[fullClass] = this.full;
+      return classObject;
     },
     currentValue() {
       if (this.parentEl && this.parentEl.model) {
