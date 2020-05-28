@@ -4,6 +4,7 @@
       class="el-input__inner"
       type="text"
       ref="inputNumber"
+      :placeholder="placeholder"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -42,7 +43,8 @@
       big: {
         type: Boolean,
         default: false
-      }
+      },
+      placeholder: String
     },
     data() {
       return {
@@ -56,9 +58,17 @@
       this.currentValue = this.value;
       this._formatValue();
     },
+    watch: {
+      value(val) {
+        if (val === '' || val === null) {
+          this.currentValue = '';
+          let input = this.$refs.inputNumber;
+          input.value = '';
+        }
+      }
+    },
     methods: {
       handleInput(val) {
-        // console.log('input-->', val, val.data.charCodeAt());
         let input = this.$refs.inputNumber;
         if (val.data === null) {
           // del 键
@@ -91,8 +101,9 @@
       handleBlur() {
 
       },
-      handleChange() {
-        console.log('change');
+      handleChange(event) {
+        // console.log('change', event.target.value);
+        // this.$emit('change', event.target.value);
       },
       _formatValue() {
         let num = Number(this.currentValue);

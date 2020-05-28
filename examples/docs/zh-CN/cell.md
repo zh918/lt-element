@@ -12,7 +12,7 @@
     <el-cell-container ref="frm_validate" :model="frm" :rules="rules"  :auto="false" :cols="2">
       <el-title>基本信息</el-title>
 
-      <el-cell icon="*" title="姓名" prop="name">
+      <!-- <el-cell icon="*" title="姓名" prop="name">
         <el-input v-model='frm.name' placeholder='请输入姓名' size='small'></el-input>
       </el-cell>
       <el-cell icon="*" title="年龄" prop="age">
@@ -43,12 +43,12 @@
       
       <el-cell icon="*" title="担保人姓名" prop="otherObject.name">
         <el-input v-model='frm.otherObject.name' placeholder='请输入担保人姓名' size='small'></el-input>
-      </el-cell>
+      </el-cell> -->
       <el-cell icon="*" title="担保人电话" prop="otherObject.phone" :full="true">
         <el-input v-model='frm.otherObject.phone' placeholder='请输入担保人电话' size='small'></el-input>
       </el-cell>
       <el-cell icon="*" title="担保金额" prop="otherObject.money">
-        <el-input-number v-model="frm.otherObject.money" type="money" :tip="true" unit="元"></el-input-number>
+        <el-input-number v-model="frm.otherObject.money" type="money" placeholder='请输入担保金额' :tip="true" unit="元"></el-input-number>
       </el-cell>
     </el-cell-container>
 
@@ -68,13 +68,13 @@
           {label: '护照', value: 1}
         ],
         frm: {
-          name: null,
+          name: '张三丰',
           age: null,
           typeId: null,
           joinDate: null,
           address: null,
           otherObject: {
-            name: null,
+            name: '张三丰1',
             phone: null,
             money: null
           }

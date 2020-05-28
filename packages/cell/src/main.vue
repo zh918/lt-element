@@ -10,6 +10,7 @@
 
 <script>
 import AsyncValidator from 'async-validator';
+import { getPropByPath } from 'lt-element/src/utils/util';
 
 export default {
   name: 'ElCell',
@@ -46,12 +47,20 @@ export default {
   },
   data() {
     return {
-      errorMsg: null
+      errorMsg: null,
+      initValue: null,
+      validateDisabled: false
     };
   },
   created() {
     if (this.prop) {
       this.parentEl.$emit('cell.container.addField', this);
+    }
+  },
+  mounted() {
+    if (this.prop && this.parentEl.model) {
+      let p = getPropByPath(this.parentEl.model, this.prop, true);
+      this.initValue = p.v;
     }
   },
   computed: {
@@ -75,23 +84,28 @@ export default {
     },
     currentValue() {
       if (this.parentEl && this.parentEl.model) {
-        if (this.$props.prop.indexOf('.') !== -1) {
-          let propArray = this.$props.prop.split('.');
-          let tempModel = this.parentEl.model[propArray[0]];
-          let attrObj = {};
-          let returnModel = {};
+        // 方法一
+        // if (this.$props.prop.indexOf('.') !== -1) {
+        //   let propArray = this.$props.prop.split('.');
+        //   let tempModel = this.parentEl.model[propArray[0]];
+        //   let attrObj = {};
+        //   let returnModel = {};
 
-          for (let k in tempModel) {
-            if (k === propArray[1]) {
-              attrObj.k = tempModel[k];
-            }
-          }
+        //   for (let k in tempModel) {
+        //     if (k === propArray[1]) {
+        //       attrObj.k = tempModel[k];
+        //     }
+        //   }
 
-          returnModel[propArray[0]] = attrObj;
-          return {...returnModel};
-        } else {
-          return this.parentEl.model[this.$props.prop];
-        }
+        //   returnModel[propArray[0]] = attrObj;
+        //   return {...returnModel};
+        // } else {
+        //   return this.parentEl.model[this.$props.prop];
+        // }
+
+        // 方法二
+        let p = getPropByPath(this.parentEl.model, this.prop, true);
+        return p.v;
       } else {
         return null;
       }
@@ -100,8 +114,11 @@ export default {
   watch: {
     currentValue: {
       handler(val) {
-        // console.log('watch====>', this.$props.prop, val);
-        this.validate(()=>{});
+        if (!this.validateDisabled) {
+          this.validate(()=>{});
+        } else {
+          this.validateDisabled = false;
+        }
       },
       deep: true
     }
@@ -168,7 +185,16 @@ export default {
       }
     },
     resetField() {
-      this.errorMsg = '';
+      this.validateDisabled = true;
+      this._clear();
+      this.$nextTick(()=>{
+        this.errorMsg = '';
+      });
+    },
+    _clear() {
+      let model = this.parentEl.model;
+      let props = getPropByPath(model, this.prop, true);
+      props.o[props.k] = this.initValue;
     }
   },
   beforeDestroy() {
