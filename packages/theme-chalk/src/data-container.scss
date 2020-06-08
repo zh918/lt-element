@@ -20,7 +20,14 @@
 .data-table {
   width: 100%;
   font-size: 13px;
+
+  thead tr th{
+    font-family:MicrosoftYaHei;
+    background-color: #E4E7ED;
+    color: #999999;
+  }
 }
+ 
 
 .text-align-right {
   text-align: right;
@@ -55,3 +62,4 @@
 .pagination-container {
   margin-top: 20px;
 }
+
