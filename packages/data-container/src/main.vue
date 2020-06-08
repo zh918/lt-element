@@ -60,8 +60,8 @@
         </el-col>
 
         <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
-          <el-button id="btn_search" type="info" plain size="small" @click="handleBeginSearch">搜索</el-button>
-          <el-button id="btn_reset" type="info" plain size="small" @click="handleReset">重置</el-button>
+          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch">搜索</el-button>
+          <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
     </slot>
@@ -71,7 +71,7 @@
         <el-button
           :key="index"
           :type="(item.type || 'primary')"
-          :size="(item.size || 'mini')"
+          :size="(item.size || 'small')"
           :icon="(item.icon || '')"
           v-for="(item, index) in operatorContainer"
           @click="item.cb"
@@ -82,7 +82,7 @@
     <slot name="list-container">
       <el-table 
         border
-        size="mini"
+        size="small"
         v-loading="loading"
         element-loading-text="数据加载中"
         element-loading-spinner="el-icon-loading"
@@ -118,6 +118,7 @@
     <!-- 分页 -->
     <slot name="pagination-container" v-if="paginationContainer">
       <el-pagination
+        background
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="paginationContainer.pageNum"

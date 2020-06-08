@@ -42,7 +42,7 @@ export default {
     },
     align: {
       type: String,
-      default: 'left' // right/center/left
+      default: 'right' // right/center/left
     }
   },
   data() {

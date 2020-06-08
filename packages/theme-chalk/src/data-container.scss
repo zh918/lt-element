@@ -19,7 +19,7 @@
  
 .data-table {
   width: 100%;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .text-align-right {
@@ -50,4 +50,8 @@
     width: 250px;
     // max-width: 300px;
   }
+}
+
+.pagination-container {
+  margin-top: 20px;
 }
