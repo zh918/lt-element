@@ -9,7 +9,23 @@
 ```html
 <template> 
     <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer" :paginationContainer="paginationContainer">
-      
+      <!-- <template slot="operate" slot-scope="row">
+        <div>
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link">
+              详情
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item class="clearfix">
+                评论详情
+              </el-dropdown-item>
+              <el-dropdown-item class="clearfix">
+                回复详情
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </template> -->
     </el-data-container> 
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="el-title-container">
-    <div :class="'title-size-'+size+' title-align-'+align"><slot></slot></div>
+    <div :class="'title-size-'+size+' title-align-'+align+ ' title-weight-'+weight"><slot></slot></div>
   </div>
 </template>
 
@@ -11,11 +11,15 @@
     props: {
       size: {
         type: String,
-        default: 'h4' // h2/h3/h4
+        default: '2' // 1/2/3/4/5
       },
       align: {
         type: String,
         default: 'left' // left/center/right
+      },
+      weight: {
+        type: String,
+        default: 'regular' // blod/medium/regular
       }
     }
   };

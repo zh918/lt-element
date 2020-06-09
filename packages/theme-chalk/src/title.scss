@@ -15,19 +15,36 @@
   clear: both;
 }
 
-.title-size-h2 {
-  font-size: 28px;
+.title-size-1 {
+  font-size: 18px;
+}
+
+.title-size-2 {
+  font-size: 16px;
+}
+
+.title-size-3 {
+  font-size: 14px;
+}
+
+.title-size-4 {
+  font-size: 13px;
+}
+
+.title-size-5 {
+  font-size: 12px;
+}
+
+.title-weight-blod {
   font-weight: bold;
 }
 
-.title-size-h3 {
-  font-size: 22px;
-  font-weight: bold;
+.title-weight-medium {
+  font-weight: 500;
 }
 
-.title-size-h4 {
-  font-size: 19px;
-  font-weight: bold;
+.title-weight-regular {
+  font-weight: 400;
 }
 
 .title-align-left {
