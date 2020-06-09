@@ -69,8 +69,8 @@
     <slot name="operator-container" v-if="operatorContainer">
       <div class="operator-container">
         <el-button
+          plain
           :key="index"
-          :type="(item.type || 'primary')"
           :size="(item.size || 'small')"
           :icon="(item.icon || '')"
           v-for="(item, index) in operatorContainer"

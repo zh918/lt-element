@@ -11,7 +11,7 @@
     props: {
       size: {
         type: String,
-        default: '2' // 1/2/3/4/5
+        default: '4' // 1/2/3/4/5
       },
       align: {
         type: String,
@@ -19,7 +19,7 @@
       },
       weight: {
         type: String,
-        default: 'regular' // blod/medium/regular
+        default: 'medium' // blod/medium/regular
       }
     }
   };
