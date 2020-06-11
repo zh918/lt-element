@@ -60,6 +60,18 @@
   }
 }
 
+.item-box-field {
+  display: flex;
+  min-width: 270px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 13px;
+
+  .item-box-field-title {
+    min-width: 80px;
+  }
+}
+
 .pagination-container {
   margin-top: 20px;
 }

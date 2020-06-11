@@ -2,10 +2,10 @@
   <div class="el-data-container">
     <!-- 检索 -->
     <slot name="search-container" v-if="searchContainer">
-      <el-row :gutter="20">
+      <el-row :gutter="20" v-if="searchContainer.displayType == 'placeholder'">
         <el-col
           class="item-box"
-          :span="searchContainer.itemSpan"
+          :span="item.span ? item.span : searchContainer.itemSpan"
           :key="'col_' + index"
           v-for="(item,index) in searchContainer.list"
         >
@@ -17,9 +17,18 @@
             :placeholder="item.placeholder"
           ></el-input>
 
+          <!-- 数字框 -->
+          <el-input-number 
+            v-if="item.type=='number'" 
+            v-model="item.value" 
+            type="money" 
+            :placeholder='item.placeholder' 
+            :tip="false">
+          </el-input-number>
+
           <!-- 下拉框 -->
           <el-select
-            v-else-if="item.type==='select'"
+            v-if="item.type==='select'"
             size="small"
             v-model="item.value"
             :placeholder="item.placeholder"
@@ -38,7 +47,7 @@
 
           <!-- 时间 -->
           <el-date-picker
-            v-else-if="item.type==='date'"
+            v-if="item.type==='date'"
             size="small"
             v-model="item.value"
             type="date"
@@ -48,7 +57,7 @@
 
           <!-- 文本框 自动加载数据 -->
           <el-autocomplete
-            v-else-if="item.type==='autocomplete'"
+            v-if="item.type==='autocomplete'"
             size="small"
             class="inline-input"
             v-model="item.value"
@@ -64,6 +73,90 @@
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
+      <el-row :gutter="40" v-if="searchContainer.displayType == 'title'">
+        <el-col
+          class="item-box"
+          :span="item.span ? item.span : searchContainer.itemSpan"
+          :key="'col_' + index"
+          v-for="(item,index) in searchContainer.list"
+        >
+          <div class="item-box-field" v-if="item.type=='input'" >
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 文本框 -->
+            <el-input
+              v-model="item.value"
+              size="small"
+              :placeholder="item.placeholder"
+            ></el-input>
+          </div>
+
+
+          <div class="item-box-field" v-if="item.type=='number'" >
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 数字框 -->
+            <el-input-number
+              v-model="item.value" 
+              type="money" 
+              :placeholder='item.placeholder' 
+              :tip="false">
+            </el-input-number>
+          </div>
+
+          <div class="item-box-field" v-if="item.type==='select'">
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 下拉框 -->
+            <el-select
+              size="small"
+              v-model="item.value"
+              :placeholder="item.placeholder"
+              clearable
+              :disabled="item.disabled"
+              :filterable="item.filterable"
+              @change="(changeItem)=>!!item.change && item.change(changeItem)"
+            >
+              <el-option
+                v-for="(oitem,oi) in (item.options.length != 0 ? item.options : item.cb())"
+                :key="oi"
+                :label="oitem.label"
+                :value="oitem.value"
+              ></el-option>
+            </el-select>
+          </div>
+
+          <div class="item-box-field" v-if="item.type==='date'">
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 时间 -->
+            <el-date-picker
+              size="small"
+              v-model="item.value"
+              type="date"
+              :placeholder="item.placeholder"
+              clearable
+            ></el-date-picker>
+          </div>
+
+          <div class="item-box-field" v-if="item.type==='autocomplete'">
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 文本框 自动加载数据 -->
+            <el-autocomplete
+              size="small"
+              class="inline-input"
+              v-model="item.value"
+              :fetch-suggestions="item.fetch"
+              :placeholder="item.placeholder"
+              :trigger-on-focus="false"
+              @select="item.cb"
+            ></el-autocomplete>
+          </div>
+   
+        </el-col>
+        <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
+          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch">搜索</el-button>
+          <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
+        </el-col>
+      </el-row>
+
+
     </slot>
     <!-- 操作 -->
     <slot name="operator-container" v-if="operatorContainer">
@@ -100,7 +193,7 @@
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
           </template>
         </el-table-column>
-        <el-table-column :fixed="tableContainer.operate.fixed" :label="tableContainer.operate.label" :width="tableContainer.operate.width || 150" v-if="tableContainer.operate.list">
+        <el-table-column :fixed="tableContainer.operate.fixed" :label="tableContainer.operate.label" :width="tableContainer.operate.width || 180" v-if="tableContainer.operate.list">
           <template slot-scope="scope">
             <slot name="operate" v-bind="scope.row">
               <el-button
@@ -137,7 +230,8 @@ export default {
   componentName: 'ElDataContainer',
   props: {
     searchContainer: {
-      // isResetAutoSearch: false,
+      isResetAutoSearch: true,
+      displayType: 'placeholder' // placeholder,title
       // itemSpan: 4, // 请设置成偶数
       // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
     },
