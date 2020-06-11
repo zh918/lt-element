@@ -273,7 +273,9 @@ export default {
       let cols = 24;
       let len = 0;
       this.searchContainer.list.forEach((s, i) => {
-        if (this.searchContainer.itemSpan) {
+        if (s.span) {
+          len += Number(s.span);
+        } else if (this.searchContainer.itemSpan) {
           len += Number(this.searchContainer.itemSpan);
         } else {
           len += defaultSpan;
@@ -281,15 +283,45 @@ export default {
         }
       });
 
-      let p = defaultOperatorSpan; // 按钮栅格容器大小
-      let col = 0; // 剩余未填满的栅格数量
-      if (cols < len) col = cols - len % cols;
-      else col = cols - len;
-      if (col === p) this.btn.offset = 0;
-      else if (col > p) this.btn.offset = col - p;
-      else if (col < 0) this.btn.offset = cols - p - Math.abs(col);
-      else this.btn.offset = cols - p;
-      this.btn.span = p;
+      let rowCount = Math.ceil(len / cols);
+      let totalSpan = rowCount * 24;
+
+      if (len === totalSpan) {
+        // 另起一行
+        this.btn.offset = cols - defaultOperatorSpan;
+        this.btn.span = defaultOperatorSpan;
+      } else {
+        let rowArray = [];
+        for (let i = 0; i < rowCount; i++) {
+          rowArray.push({
+            maxSpan: 24,
+            overSpan: 24,
+            totalSpan: 0
+          });
+        }
+        console.log('初始行数据：', rowCount, rowArray);
+
+        let s = 0;
+        for (let i = 0, n = this.searchContainer.list.length; i < n; i++) {
+          let tempSpan = this.searchContainer.list[i].span || this.searchContainer.itemSpan;
+          if (rowArray[s].overSpan - tempSpan < 0) {
+            s++;
+          }
+
+          rowArray[s].totalSpan += tempSpan;
+          rowArray[s].overSpan -= tempSpan;
+        }
+
+        if (rowArray[s].overSpan === defaultOperatorSpan) {
+          this.btn.offset = 0;
+        } else if (rowArray[s].overSpan > defaultOperatorSpan) {
+          this.btn.offset = rowArray[s].overSpan - defaultOperatorSpan;
+        } else {
+          this.btn.offset = cols - defaultOperatorSpan;
+        }
+        this.btn.span = defaultOperatorSpan;
+        console.log('================数据：', rowCount, rowArray);
+      }
     },
     handleSearch() {
       this._getParms();

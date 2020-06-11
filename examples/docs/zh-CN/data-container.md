@@ -260,3 +260,127 @@
 </script>
 ```
 :::
+
+
+### 基础用法3
+
+
+:::demo 用于查询条件+列表+分页+其它操作按钮
+
+```html
+<template> 
+    <el-data-container :searchContainer="searchContainer2" @search="handleSearch" :operatorContainer="operatorContainer2" :tableContainer="tableContainer2" :paginationContainer="paginationContainer2">
+      <template slot="operate" slot-scope="row">
+        <div>
+          <el-dropdown :hide-on-click="false">
+            <span class="el-dropdown-link">
+              下拉查看1<i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>黄金糕</el-dropdown-item>
+              <el-dropdown-item>狮子头</el-dropdown-item>
+              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+              <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-dropdown :hide-on-click="false">
+            <span class="el-dropdown-link">
+              下拉查看2
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>黄金糕</el-dropdown-item>
+              <el-dropdown-item>狮子头</el-dropdown-item>
+              <el-dropdown-item>螺蛳粉</el-dropdown-item>
+              <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+              <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
+      </template>
+    </el-data-container> 
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        searchContainer2: {
+          isResetAutoSearch: false,
+          displayType: 'title',
+          itemSpan: 8,
+          list: [
+            { key: 'name1', type: 'input', class: '', title: '姓名', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name2', type: 'number', class: '', title: '年龄', placeholder: '年龄', value: '1', fetch: '', cb: ''},
+            { key: 'name3', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name4', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name5', type: 'input', span: 12, class: '', title: '其它其它其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+
+            { key: 'name6', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name7', type: 'input', class: '', title: '其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''}
+
+            
+          ]
+        },
+        operatorContainer2: [
+          { type: 'primary', text: '新增', cb: this.handleAdd},
+          { type: 'primary', text: '删除', cb: this.handleDel}
+        ],
+        tableContainer2: {
+          selection:true,
+          selectionChange: ()=>{},
+          operate: {
+            label: "操作",
+            fixed: "right",
+            width: "200px",
+            list: [
+              // {
+              //   type: 'primary',
+              //   label: '删除',
+              //   cb: this.handleDel
+              // }
+            ]
+          },
+          head: [
+            {
+              prop: "moduleCode",
+              label: "系统编号",
+              width: "120px"
+            },
+            {
+              prop: "moduleName",
+              label: "系统名称"
+            }
+          ],
+          data: [
+            {
+              moduleCode: '123',
+              moduleName: '333'
+            },
+            {
+              moduleCode: '444',
+              moduleName: '555'
+            }
+          ]
+        },
+        paginationContainer2: {
+          currentPage: 1,
+          total: 1
+        }
+      }
+    },
+    methods: {
+      handleSearch(parms) {
+        console.log('---', parms);
+      },
+      handleAdd() {
+        console.log('新增')
+      },
+      handleDel(row) {
+        console.log('删除', row)
+      }
+    }
+  }
+</script>
+```
+:::
