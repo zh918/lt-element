@@ -112,7 +112,7 @@
           ]
         },
         paginationContainer: {
-          currentPage: 1,
+          pageNum: 1,
           total: 1
         }
       }
@@ -240,7 +240,7 @@
           ]
         },
         paginationContainer1: {
-          currentPage: 1,
+          pageNum: 1,
           total: 1
         }
       }
@@ -270,6 +270,11 @@
 ```html
 <template> 
     <el-data-container :searchContainer="searchContainer2" @search="handleSearch" :operatorContainer="operatorContainer2" :tableContainer="tableContainer2" :paginationContainer="paginationContainer2">
+      <template slot="check" slot-scope="row">
+        <div>
+          <el-checkbox v-model="row.check"></el-checkbox>
+        </div>
+      </template>
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -323,8 +328,11 @@
           ]
         },
         operatorContainer2: [
-          { type: 'primary', text: '新增', cb: this.handleAdd},
-          { type: 'primary', text: '删除', cb: this.handleDel}
+          { text: '新增', children: [
+            { text: '新增1', cb: this.handleAdd },
+            { text: '新增2', cb: this.handleAdd }
+          ]},
+          { text: '删除', cb: this.handleDel}
         ],
         tableContainer2: {
           selection:true,
@@ -342,6 +350,11 @@
             ]
           },
           head: [
+            {
+              prop: "check",
+              label: "全选",
+              width: "45px"
+            },
             {
               prop: "moduleCode",
               label: "系统编号",
@@ -364,7 +377,7 @@
           ]
         },
         paginationContainer2: {
-          currentPage: 1,
+          pageNum: 1,
           total: 1
         }
       }
@@ -384,3 +397,82 @@
 </script>
 ```
 :::
+
+
+### 列表数据页关键属性说明
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| searchContainer     | 查询条件对象，必填，内部结构要完整        | object | - | - |
+| search     | 检索function        | function | - | - |
+| operatorContainer     | 表格顶部操作按钮组对象 （可选）       | object | - | - |
+| tableContainer     | 表格对象（必填）        | object | - | - |
+| paginationContainer     | 分页对象（可选）        | object | - | - |
+
+ 
+### searchContainer 页面查询条件对象
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| isResetAutoSearch     | 重置时是否触发检索        | boolean | true/false | left |
+| displayType | 展现形式，title会把标题显示出来 | string | placeholder/title | placeholder |
+| itemSpan | list下元素统一span; 选择权：itemSpan<list[n].span | number | 4/6/8 | 4 |
+| list | 条件集合对象 | array | - | - |
+|   [n].key | api对应字段 | string | - | - |
+|   [n].type | 呈现类型 | string | input/number/select/date/autocomplete | - |
+|   [n].title | 条件标题 | string | - |  |
+|   [n].value | 条件值 | string/number | - | - |
+|   [n].fetch | 用于autocomplete加载数据 | function | - | - |
+|   [n].cb | 用于autocomplete操作回调 | function | - | - |
+
+
+### operatorContainer 操作组
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   text | 按钮文本 | string | - | - |
+|   cb | 操作回调函数(可选) | function | - | - |
+|   children | 下拉按钮时，下拉项数组[{text:'',cb:()=>{}}] | array | - | - |
+
+
+
+### tableContainer 表格属性
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   .selection | 加粗 | string | blod/medium/regular | medium |
+|   .selectionChange | 加粗 | string | blod/medium/regular | medium |
+|   .operate | 加粗 | string | blod/medium/regular | medium |
+|   .head | 加粗 | string | blod/medium/regular | medium |
+|   .data | 加粗 | string | blod/medium/regular | medium |
+
+
+
+
+### tableContainer.operate 
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   .label | 列标题 | string | blod/medium/regular | medium |
+|   .fixed | 浮动固定位置 | string | blod/medium/regular | medium |
+|   .width | 宽度 | string | blod/medium/regular | medium |
+|   .list | 操作 | string | blod/medium/regular | medium |
+```html
+注意：如果操作栏需要自定义，请放在模板中处理 <template slot="operate" slot-scope="row"></template>;
+如果需要配置操作栏宽度，请初始化tableContainer.operate对象，并结合模板来达到目的
+```
+
+
+### tableContainer.head 列头
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   .prop | 字段名称 | string | - | - |
+|   .label | 列名 | string | - | - |
+|   .width | 列宽（可选） | string | - | 180px |
+
+
+### tableContainer.data 数据
+```html
+tableContainer.head列头中prop字段所组成的对象
+```
+
+### tableContainer.paginationContainer 翻页
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+| .pageNum | 页码 | number | - | - |
+| .total | 总条数 | number | - | - |

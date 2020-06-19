@@ -161,14 +161,22 @@
     <!-- 操作 -->
     <slot name="operator-container" v-if="operatorContainer">
       <div class="operator-container">
-        <el-button
-          plain
-          :key="index"
-          :size="(item.size || 'small')"
-          :icon="(item.icon || '')"
-          v-for="(item, index) in operatorContainer"
-          @click="item.cb"
-        >{{item.text}}</el-button>
+        <div class="operator-container-item" :key="index" v-for="(item, index) in operatorContainer">
+          <el-dropdown size="small" split-button v-if="item.children">
+            {{item.text}}
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item :key="cIndex" @click="childItem.cb" v-for="(childItem, cIndex) in item.children">{{childItem.text}}</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <el-button
+            v-else
+            plain
+            :size="(item.size || 'small')"
+            :icon="(item.icon || '')"
+            @click="item.cb"
+          >{{item.text}}</el-button>
+        </div>
+
       </div>
     </slot>
     <!-- 数据 -->
@@ -181,7 +189,13 @@
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)"
         :data="tableContainer.data"
-        class="data-table">
+        class="data-table"
+        @selection-change="tableContainer.selectionChange">
+        <el-table-column
+          v-if="tableContainer.selection"
+          type="selection"
+          width="40">
+        </el-table-column>
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"

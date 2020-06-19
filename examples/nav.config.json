@@ -194,8 +194,7 @@
               "title": "详情页"
             }
           ]
-        },
-        
+        }, 
         {
           "groupName": "Notice",
           "list": [
@@ -308,6 +307,34 @@
             {
               "path": "/drawer",
               "title": "Drawer 抽屉"
+            }
+          ]
+        },
+        {
+          "groupName": "扩展组件",
+          "list": [
+            {
+              "path": "/data-container",
+              "title": "列表页"
+            },{
+              "path": "/cell-container",
+              "title": "cell-container 字段展示及表单父容器"
+            },
+            {
+              "path": "/cell",
+              "title": "cell 容器中最小板块"
+            },
+            {
+              "path": "/label",
+              "title": "label 字段显示"
+            },
+            {
+              "path": "/title",
+              "title": "title 详情页板块标题"
+            },
+            {
+              "path": "/input-number",
+              "title": "input-number 数字相关输入框"
             }
           ]
         }

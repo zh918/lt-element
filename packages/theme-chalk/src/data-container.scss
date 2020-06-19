@@ -10,7 +10,12 @@
 }
 
 .operator-container {
+  display: flex;
   margin: 20px 0 10px 0;
+
+  .operator-container-item {
+    margin-right: 15px;
+  }
 }
 
 @include b(pagination) {
@@ -55,7 +60,7 @@
   display: flex;
 
   .item-box {
-    width: 320px;
+    // width: 320px;
     // max-width: 300px;
   }
 }
@@ -68,8 +73,10 @@
   font-size: 13px;
 
   .item-box-field-title {
-    padding-right: 10px;
-    width: 150px;
+    padding-right: 5px;
+    width: 180px;
+    text-align: right;
+    overflow: hidden;
   }
 }
 

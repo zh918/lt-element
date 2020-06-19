@@ -1,5 +1,5 @@
-## Cell 单列布局
-用于高效快捷搭建页面基础结构
+## Cell 组件
+用于el-cell-container组件中，快速搭建布局结构
 
 ### 基础用法
  
@@ -152,12 +152,13 @@
 
  
  
-### Attributes
+### cell Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | icon     | *号，前置符号           | string | — | — |
 | title     | 标题           | string | — | — |
-| full | 是否整列 | boolean | true/false | false |
+| align | title对齐方式 | string | right/center/left | right |
+| full | 是否整列，注意父容器cols必须指>1的值，full为true才有效 | boolean | true/false | false |
 | size | title的宽度配置 | string | large / medium / small / mini | small |
 | prop | 【组合】model中需要校验的属性key | string | - | - |
 | margin  | 【组合】表单录入时设置为true，详情展示时设置为false去除下间距           | boolean | true/false | true |
