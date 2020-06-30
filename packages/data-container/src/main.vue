@@ -55,6 +55,28 @@
             clearable
           ></el-date-picker>
 
+          <!-- 时间范围 -->
+          <el-date-picker
+            v-if="item.type==='daterange'"
+            size="small"
+            v-model="item.value"
+            type="daterange"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            clearable
+          ></el-date-picker>
+
+          <!-- 级联 -->
+          <el-cascader
+            clearable
+            size="small"
+            v-if="item.type==='cascader'"
+            v-model="item.value"
+            :placeholder="item.placeholder"
+            :options="item.options">
+          </el-cascader> 
+
           <!-- 文本框 自动加载数据 -->
           <el-autocomplete
             v-if="item.type==='autocomplete'"
@@ -135,6 +157,33 @@
             ></el-date-picker>
           </div>
 
+          <div class="item-box-field" v-if="item.type==='daterange'">
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 时间 -->
+            <el-date-picker
+              size="small"
+              v-model="item.value"
+              type="daterange"
+              range-separator="至"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+              clearable
+            ></el-date-picker>
+          </div>
+
+          <div class="item-box-field" v-if="item.type==='cascader'">
+            <div class="item-box-field-title">{{item.title}}</div>
+            <!-- 级联 -->
+            <el-cascader
+              clearable
+              size="small"
+              v-model="item.value"
+              :placeholder="item.placeholder"
+              :options="item.options">
+            </el-cascader> 
+          </div>
+ 
+
           <div class="item-box-field" v-if="item.type==='autocomplete'">
             <div class="item-box-field-title">{{item.title}}</div>
             <!-- 文本框 自动加载数据 -->
@@ -184,18 +233,11 @@
       <el-table 
         border
         size="small"
-        v-loading="loading"
         element-loading-text="数据加载中"
         element-loading-spinner="el-icon-loading"
         element-loading-background="rgba(0, 0, 0, 0.8)"
         :data="tableContainer.data"
-        class="data-table"
-        @selection-change="tableContainer.selectionChange">
-        <el-table-column
-          v-if="tableContainer.selection"
-          type="selection"
-          width="40">
-        </el-table-column>
+        class="data-table">
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
@@ -263,6 +305,7 @@ export default {
   },
   data() {
     return {
+      chk_all: false,
       btn: {
         span: 0,
         offset: 0

@@ -67,7 +67,9 @@
               { value: '选项1', label: '黄金糕1' },
               { value: '选项21', label: '黄金糕2' }
             ]},
-            { key: 'date', type: 'date', class: '', placeholder: '开始日期', value: '', fetch: '', cb: ''}
+            { key: 'date', type: 'date', class: '', placeholder: '开始日期', value: '', fetch: '', cb: ''},
+            { key: 'date', type: 'daterange', class: '', placeholder: '开始日期1', value: '', fetch: '', cb: ''},
+            { key: 'date', type: 'cascader', class: '', placeholder: '级联', value: '', fetch: '', cb: ''}
           ]
         },
         operatorContainer: [
@@ -75,8 +77,6 @@
           { type: 'primary', text: '删除', cb: this.handleDel}
         ],
         tableContainer: {
-          selection:true,
-          selectionChange: ()=>{},
           operate: {
             label: "操作",
             fixed: "right",
@@ -182,7 +182,7 @@
         searchContainer1: {
           isResetAutoSearch: false,
           displayType: 'title',
-          itemSpan: 8,
+          itemSpan: 6,
           list: [
             { key: 'name1', type: 'input', class: '', title: '姓名', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name2', type: 'number', class: '', title: '年龄', placeholder: '年龄', value: '1', fetch: '', cb: ''},
@@ -194,7 +194,7 @@
             { key: 'name7', type: 'input', class: '', title: '其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name8', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name9', type: 'input', class: '', title: '下单开始时间', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-
+            { key: 'date', type: 'daterange', class: '', span: 14, title: '下单日期', value: '', fetch: '', cb: ''}
             
           ]
         },
@@ -203,8 +203,6 @@
           { type: 'primary', text: '删除', cb: this.handleDel}
         ],
         tableContainer1: {
-          selection:true,
-          selectionChange: ()=>{},
           operate: {
             label: "操作",
             fixed: "right",
@@ -270,11 +268,6 @@
 ```html
 <template> 
     <el-data-container :searchContainer="searchContainer2" @search="handleSearch" :operatorContainer="operatorContainer2" :tableContainer="tableContainer2" :paginationContainer="paginationContainer2">
-      <template slot="check" slot-scope="row">
-        <div>
-          <el-checkbox v-model="row.check"></el-checkbox>
-        </div>
-      </template>
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -322,7 +315,8 @@
             { key: 'name5', type: 'input', span: 12, class: '', title: '其它其它其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
 
             { key: 'name6', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name7', type: 'input', class: '', title: '其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''}
+            { key: 'name7', type: 'input', class: '', title: '其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'date', type: 'cascader', class: '', title: '级联', value: '', fetch: '', cb: ''}
 
             
           ]
@@ -335,8 +329,6 @@
           { text: '删除', cb: this.handleDel}
         ],
         tableContainer2: {
-          selection:true,
-          selectionChange: ()=>{},
           operate: {
             label: "操作",
             fixed: "right",
@@ -350,11 +342,6 @@
             ]
           },
           head: [
-            {
-              prop: "check",
-              label: "全选",
-              width: "45px"
-            },
             {
               prop: "moduleCode",
               label: "系统编号",
@@ -417,7 +404,7 @@
 | itemSpan | list下元素统一span; 选择权：itemSpan<list[n].span | number | 4/6/8 | 4 |
 | list | 条件集合对象 | array | - | - |
 |   [n].key | api对应字段 | string | - | - |
-|   [n].type | 呈现类型 | string | input/number/select/date/autocomplete | - |
+|   [n].type | 呈现类型 | string | input/number/select/date/autocomplete/cascader | - |
 |   [n].title | 条件标题 | string | - |  |
 |   [n].value | 条件值 | string/number | - | - |
 |   [n].fetch | 用于autocomplete加载数据 | function | - | - |
@@ -436,8 +423,6 @@
 ### tableContainer 表格属性
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-|   .selection | 加粗 | string | blod/medium/regular | medium |
-|   .selectionChange | 加粗 | string | blod/medium/regular | medium |
 |   .operate | 加粗 | string | blod/medium/regular | medium |
 |   .head | 加粗 | string | blod/medium/regular | medium |
 |   .data | 加粗 | string | blod/medium/regular | medium |
