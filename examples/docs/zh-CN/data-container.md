@@ -410,7 +410,7 @@
 |   [n].fetch | 用于autocomplete加载数据 | function | - | - |
 |   [n].cb | 用于autocomplete操作回调 | function | - | - |
 |   [n].span | 当前条件容器宽度（选择权：itemSpan<list[n].span） | number | 1-24 | - |
-|   [n].size | displayType为title时，size为控制title宽度 | string | xlarge/large/medium/small | medium |
+|   [n].size | displayType为title时，size为控制title宽度 | string | super/xlarge/large/medium/small | medium |
 
 
 ### operatorContainer 操作组
