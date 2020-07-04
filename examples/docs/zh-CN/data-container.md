@@ -74,7 +74,7 @@
         },
         operatorContainer: [
           { type: 'primary', text: '新增', cb: this.handleAdd},
-          { type: 'primary', text: '删除', cb: this.handleDel}
+          { type: 'primary', text: '删除', cb: this.handleDel, isShow:()=>permission('code')}
         ],
         tableContainer: {
           operate: {
@@ -172,7 +172,7 @@
           </el-dropdown>
         </div>
       </template>
-    </el-data-container> 
+    </el-data-container>
 </template>
 
 <script>
@@ -182,19 +182,19 @@
         searchContainer1: {
           isResetAutoSearch: false,
           displayType: 'title',
-          itemSpan: 6,
+          itemSpan: 8,
           list: [
-            { key: 'name1', type: 'input', class: '', title: '姓名', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name2', type: 'number', class: '', title: '年龄', placeholder: '年龄', value: '1', fetch: '', cb: ''},
-            { key: 'name3', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name4', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name5', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name1', type: 'input', class: '', title: '姓名姓名姓名姓名姓名', placeholder: '姓名', value: '1', fetch: '', cb: '', size: 'xlarge'},
+            // { key: 'name2', type: 'number', class: '', title: '年龄', placeholder: '年龄', value: '1', fetch: '', cb: ''},
+            { key: 'name3', type: 'input', class: '', title: '其它1', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name4', type: 'input', class: '', title: '其它2', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name5', type: 'input', class: '', title: '其它3', placeholder: '姓名', value: '1', fetch: '', cb: '', size: 'xlarge'},
 
-            { key: 'name6', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name7', type: 'input', class: '', title: '其它其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name8', type: 'input', class: '', title: '其它', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'name9', type: 'input', class: '', title: '下单开始时间', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            { key: 'date', type: 'daterange', class: '', span: 14, title: '下单日期', value: '', fetch: '', cb: ''}
+            { key: 'name6', type: 'input', class: '', title: '其它4', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name7', type: 'input', class: '', title: '其它其它5', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name8', type: 'input', class: '', title: '其它6', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            { key: 'name9', type: 'input', class: '', title: '下单开始时间7', placeholder: '姓名', value: '1', fetch: '', cb: ''},
+            // { key: 'date', type: 'daterange', class: '', span: 14, title: '下单日期', value: '', fetch: '', cb: ''}
             
           ]
         },
@@ -395,7 +395,7 @@
 | tableContainer     | 表格对象（必填）        | object | - | - |
 | paginationContainer     | 分页对象（可选）        | object | - | - |
 
- 
+
 ### searchContainer 页面查询条件对象
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
@@ -409,6 +409,8 @@
 |   [n].value | 条件值 | string/number | - | - |
 |   [n].fetch | 用于autocomplete加载数据 | function | - | - |
 |   [n].cb | 用于autocomplete操作回调 | function | - | - |
+|   [n].span | 当前条件容器宽度（选择权：itemSpan<list[n].span） | number | 1-24 | - |
+|   [n].size | displayType为title时，size为控制title宽度 | string | xlarge/large/medium/small | medium |
 
 
 ### operatorContainer 操作组

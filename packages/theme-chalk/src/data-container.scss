@@ -74,10 +74,27 @@
 
   .item-box-field-title {
     padding-right: 5px;
-    width: 180px;
     text-align: right;
     overflow: hidden;
   }
+
+  .item-box-field-title-xlarge {
+    width: 200px;
+  }
+
+  .item-box-field-title-large {
+    width: 160px;
+  }
+
+  .item-box-field-title-medium {
+    width: 120px;
+  }
+
+  .item-box-field-title-small {
+    width: 80px;
+  }
+
+
 }
 
 .pagination-container {

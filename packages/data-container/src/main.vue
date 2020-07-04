@@ -95,7 +95,7 @@
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
-      <el-row :gutter="40" v-if="searchContainer.displayType == 'title'">
+      <el-row :gutter="20" v-if="searchContainer.displayType == 'title'">
         <el-col
           class="item-box"
           :span="item.span ? item.span : searchContainer.itemSpan"
@@ -103,7 +103,7 @@
           v-for="(item,index) in searchContainer.list"
         >
           <div class="item-box-field" v-if="item.type=='input'" >
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 文本框 -->
             <el-input
               v-model="item.value"
@@ -112,9 +112,8 @@
             ></el-input>
           </div>
 
-
           <div class="item-box-field" v-if="item.type=='number'" >
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 数字框 -->
             <el-input-number
               v-model="item.value" 
@@ -125,7 +124,7 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='select'">
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 下拉框 -->
             <el-select
               size="small"
@@ -146,7 +145,7 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='date'">
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 时间 -->
             <el-date-picker
               size="small"
@@ -158,7 +157,7 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='daterange'">
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 时间 -->
             <el-date-picker
               size="small"
@@ -172,7 +171,7 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='cascader'">
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 级联 -->
             <el-cascader
               clearable
@@ -185,7 +184,7 @@
  
 
           <div class="item-box-field" v-if="item.type==='autocomplete'">
-            <div class="item-box-field-title">{{item.title}}</div>
+            <div class="item-box-field-title" :class="{'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
             <!-- 文本框 自动加载数据 -->
             <el-autocomplete
               size="small"
