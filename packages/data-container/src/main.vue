@@ -210,21 +210,20 @@
     <slot name="operator-container" v-if="operatorContainer">
       <div class="operator-container">
         <div class="operator-container-item" :key="index" v-for="(item, index) in operatorContainer">
-          <el-dropdown size="small" split-button v-if="item.children">
+          <el-dropdown size="small" split-button v-if="item.children && (!item.isShow || item.isShow())">
             {{item.text}}
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :key="cIndex" @click="childItem.cb" v-for="(childItem, cIndex) in item.children">{{childItem.text}}</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-button
-            v-else
+            v-else-if="!item.children && (!item.isShow || item.isShow())"
             plain
             :size="(item.size || 'small')"
             :icon="(item.icon || '')"
             @click="item.cb"
           >{{item.text}}</el-button>
         </div>
-
       </div>
     </slot>
     <!-- 数据 -->
@@ -290,7 +289,11 @@ export default {
       // itemSpan: 4, // 请设置成偶数
       // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
     },
-    operatorContainer: [],
+    // operatorContainer: [],
+    operatorContainer: {
+      type: Array,
+      default: []
+    },
     tableContainer: {
       // operate: []
       // head: [],
@@ -317,7 +320,6 @@ export default {
     };
   },
   created() {
-    console.log('hello data container');
     this._resetOffset();
     this.handleSearch();
   },
@@ -355,7 +357,7 @@ export default {
             totalSpan: 0
           });
         }
-        console.log('初始行数据：', rowCount, rowArray);
+        // console.log('初始行数据：', rowCount, rowArray);
 
         let s = 0;
         for (let i = 0, n = this.searchContainer.list.length; i < n; i++) {
@@ -376,7 +378,7 @@ export default {
           this.btn.offset = cols - defaultOperatorSpan;
         }
         this.btn.span = defaultOperatorSpan;
-        console.log('================数据：', rowCount, rowArray);
+        // console.log('================数据：', rowCount, rowArray);
       }
     },
     handleSearch() {

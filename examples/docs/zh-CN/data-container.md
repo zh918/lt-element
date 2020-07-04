@@ -74,7 +74,7 @@
         },
         operatorContainer: [
           { type: 'primary', text: '新增', cb: this.handleAdd},
-          { type: 'primary', text: '删除', cb: this.handleDel, isShow:()=>permission('code')}
+          { type: 'primary', text: '删除', cb: this.handleDel, isShow:()=>this.handleShow()}
         ],
         tableContainer: {
           operate: {
@@ -126,6 +126,9 @@
       },
       handleDel(row) {
         console.log('删除', row)
+      },
+      handleShow() {
+        return false;
       }
     }
   }
@@ -419,6 +422,8 @@
 |   text | 按钮文本 | string | - | - |
 |   cb | 操作回调函数(可选) | function | - | - |
 |   children | 下拉按钮时，下拉项数组[{text:'',cb:()=>{}}] | array | - | - |
+|   isShow | 接收返回boolean类型函数，用于控制按钮呈现，非必填 | function | - | - |
+
 
 
 
