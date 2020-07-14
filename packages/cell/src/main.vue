@@ -165,7 +165,6 @@ export default {
         const model = {};
         const parentElModel = this.parentEl.model;
         model[this.prop] = parentElModel[this.prop];
-
         _validate(descriptor, model);
       }
 

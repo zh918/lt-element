@@ -60,7 +60,7 @@
 :::
 
 
-### 基础用法 int、float、money 不做任何限制----表单验证
+### 基础用法 int、float、money 不做任何限制----表单验证1
 
 :::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
 ```html
@@ -135,7 +135,66 @@
 :::
 
 
+### 基础用法 int、float、money 不做任何限制----表单验证2
 
+:::demo 要使用它，只需要在`el-input-number`元素中使用`v-model`绑定变量即可，变量的初始值即为默认值。
+```html
+<template>
+  <div>
+    <el-cell-container ref="frm_validate2" :model="frm2" :rules="rules2">
+      <el-title>基本信息</el-title>
+      <el-cell icon="*" title="整数" prop="intNumber">
+        <el-input-number v-model="frm2.intNumber" type="money" :tip="true" unit="%"></el-input-number>
+      </el-cell>
+      <el-cell icon="*" title="非必填浮点" prop="intFloat">
+        <el-input-number v-model="frm2.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
+      </el-cell>
+    </el-cell-container>
+  </div>
+  
+  <el-button @click="handleValidateSubmit">获取文本框的值</el-button>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        frm2: {
+          intNumber: null,
+          intFloat: null,
+        },
+        rules2: {
+          intNumber: [
+            { type:'number', required: true, message: 'intNumber不能为空'},
+          ],
+          intFloat: [
+            { type:'number', required: true, message: 'intFloat不能为空'},
+          ]
+        }
+      };
+    },
+    created() {
+      this.initData();
+    },
+    methods: {
+      initData() {
+        setTimeout(()=>{
+          this.frm2.intNumber = 11.33;
+          this.frm2.intFloat = 234;
+        }, 1000 * 3)
+      },
+      handleValidateSubmit() {
+        this.$refs["frm_validate2"].validate(flag=>{
+          console.log(this.frm2);
+          alert(flag);
+        });
+      }
+    }
+  };
+</script>
+```
+:::
+
+> 注意：input-number 不接受字符串值，只能接受值类型； input-number返回出来的值也是值类型，如果没有值，则返回null
 
 
 

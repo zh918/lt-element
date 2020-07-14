@@ -61,14 +61,14 @@
     watch: {
       value(val) {
         let input = this.$refs.inputNumber;
-
+        // console.log('--->', val);
         if (val === '' || val === null) {
           this.currentValue = '';
           input.value = '';
         } else {
           this.currentValue = val;
           this._formatValue();
-          input.value = this.currentValue;
+          input.value = this._tranValue(this.currentValue);
         }
       }
     },
@@ -79,24 +79,24 @@
           // del 键
           this.currentValue = input.value;
           this._formatValue();
-          this.$emit('input', this.currentValue);
+          this.$emit('input', this._tranValue(this.currentValue));
           return;
         }
         let code = val.data.charCodeAt();
         if ((this.type === 'float' || this.type === 'money') && (code === 46 || (code <= 57 && code >= 48))) {
           if (this.currentValue && this.currentValue.toString().indexOf('.') !== -1 && code === 46) {
-            input.value = this.currentValue;
+            input.value = this._tranValue(this.currentValue);
             return;
           }
           this.currentValue = input.value;
           this._formatValue();
-          this.$emit('input', this.currentValue);
+          this.$emit('input', this._tranValue(this.currentValue));
         } else if (this.type === 'int' && (code <= 57 && code >= 48)) {
           this.currentValue = input.value;
           this._formatValue();
-          this.$emit('input', this.currentValue);
+          this.$emit('input', this._tranValue(this.currentValue));
         } else {
-          input.value = this.currentValue;
+          input.value = this._tranValue(this.currentValue);
           return;
         }
       },
@@ -108,6 +108,13 @@
       },
       handleChange(event) {
         // this.$emit('change', event.target.value);
+      },
+      _tranValue(val) {
+        if (val === null || val === undefined || val === '') {
+          return null;
+        } else {
+          return Number(val);
+        }
       },
       _formatValue() {
         let num = Number(this.currentValue);
