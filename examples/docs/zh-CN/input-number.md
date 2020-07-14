@@ -16,10 +16,11 @@
       <el-cell title="浮点">
         <el-input-number v-model="frm.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
       </el-cell>
-      <el-cell title="金额">
+      <!-- <el-cell title="金额">
         <el-input-number v-model="frm.intMoney" type="money" :tip="true" :dot="3" unit="万元"></el-input-number>
-      </el-cell>
+      </el-cell> -->
       <el-cell title="大写金额">
+        {{frm.intMoney}}
         <el-input-number v-model="frm.intMoney" type="money" :big="true" :tip="true" :dot="3" unit="万元"></el-input-number>
       </el-cell>
     </el-cell-container>
@@ -38,7 +39,16 @@
         }
       };
     },
+    created() {
+      this.initData();
+    },
     methods: {
+      initData() {
+        setTimeout(()=>{
+          this.frm.intFloat = 88.88;
+          this.frm.intMoney = 8888888.88;
+        }, 1000 * 3)
+      },
       handleSubmit() {
         let str = JSON.stringify(this.frm);
         alert(str);
@@ -74,8 +84,8 @@
     data() {
       return {
         frm1: {
-          intNumber: null,
-          intFloat: null,
+          intNumber: 100,
+          intFloat: 100.88,
         },
         rules: {
           intNumber: [

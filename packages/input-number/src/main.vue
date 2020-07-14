@@ -60,10 +60,15 @@
     },
     watch: {
       value(val) {
+        let input = this.$refs.inputNumber;
+
         if (val === '' || val === null) {
           this.currentValue = '';
-          let input = this.$refs.inputNumber;
           input.value = '';
+        } else {
+          this.currentValue = val;
+          this._formatValue();
+          input.value = this.currentValue;
         }
       }
     },
@@ -102,7 +107,6 @@
 
       },
       handleChange(event) {
-        // console.log('change', event.target.value);
         // this.$emit('change', event.target.value);
       },
       _formatValue() {
