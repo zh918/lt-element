@@ -1,6 +1,19 @@
 <template>
-  <div class="el-input-number el-input--small">
+  <div class="el-input-number el-input--small" :class="{'el-input is-disabled': disabled}">
      <input
+      v-if="disabled"
+      class="el-input__inner"
+      type="text"
+      ref="inputNumber"
+      :placeholder="placeholder"
+      disabled="disabled"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @change="handleChange"
+    />
+    <input
+      v-else
       class="el-input__inner"
       type="text"
       ref="inputNumber"
@@ -44,7 +57,11 @@
         type: Boolean,
         default: false
       },
-      placeholder: String
+      placeholder: String,
+      disabled: {
+        type: Boolean,
+        default: false
+      }
     },
     data() {
       return {

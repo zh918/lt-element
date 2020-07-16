@@ -143,11 +143,11 @@
   <div>
     <el-cell-container ref="frm_validate2" :model="frm2" :rules="rules2">
       <el-title>基本信息</el-title>
-      <el-cell icon="*" title="整数" prop="intNumber">
+      <el-cell icon="*" title="整数" prop="intNumber" v-if="false">
         <el-input-number v-model="frm2.intNumber" type="money" :tip="true" unit="%"></el-input-number>
       </el-cell>
       <el-cell icon="*" title="非必填浮点" prop="intFloat">
-        <el-input-number v-model="frm2.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
+        <el-input-number v-model="frm2.intFloat" type="float" :tip="true" :dot="3" :disabled="true"></el-input-number>
       </el-cell>
     </el-cell-container>
   </div>
@@ -178,7 +178,7 @@
     methods: {
       initData() {
         setTimeout(()=>{
-          this.frm2.intNumber = 11.33;
+          // this.frm2.intNumber = 11.33;
           this.frm2.intFloat = 234;
         }, 1000 * 3)
       },
@@ -207,3 +207,4 @@
 | unit      | tip打开时，需要显示的单位 | string | -|元|
 | dot     | 当type为float或money时，可以指定小数点位数 | number | 1-9| 2|
 | big     | 当type为money并且tip为true时，如果需要显示大写金额，则需要设置该值|boolean|true/false|false|
+| disabled      | 是否禁用 | true/false | — | false |
