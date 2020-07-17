@@ -129,6 +129,13 @@ export default {
       let rules = {};
       let key = null;
 
+      let parent = this.$parent;
+      let isShow = parent.$children.some(p => p.prop === this.prop);
+      if (!isShow) {
+        cb(true);
+        return true;
+      }
+
       if (this.prop.indexOf('.') !== -1) {
         let model = {};
         let tempModel = {};

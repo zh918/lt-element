@@ -143,7 +143,7 @@
   <div>
     <el-cell-container ref="frm_validate2" :model="frm2" :rules="rules2">
       <el-title>基本信息</el-title>
-      <el-cell icon="*" title="整数" prop="intNumber" v-if="false">
+      <el-cell icon="*" title="整数" prop="intNumber" v-if="flag.isShow">
         <el-input-number v-model="frm2.intNumber" type="money" :tip="true" unit="%"></el-input-number>
       </el-cell>
       <el-cell icon="*" title="非必填浮点" prop="intFloat">
@@ -151,13 +151,16 @@
       </el-cell>
     </el-cell-container>
   </div>
-  
+  <el-button @click="flag.isShow = !flag.isShow">切换显示状态</el-button>
   <el-button @click="handleValidateSubmit">获取文本框的值</el-button>
 </template>
 <script>
   export default {
     data() {
       return {
+        flag: {
+          isShow: true
+        },
         frm2: {
           intNumber: null,
           intFloat: null,
@@ -184,8 +187,8 @@
       },
       handleValidateSubmit() {
         this.$refs["frm_validate2"].validate(flag=>{
-          console.log(this.frm2);
-          alert(flag);
+          console.log(flag);
+          // alert(flag);
         });
       }
     }
