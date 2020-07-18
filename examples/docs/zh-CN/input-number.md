@@ -180,10 +180,10 @@
     },
     methods: {
       initData() {
-        setTimeout(()=>{
-          // this.frm2.intNumber = 11.33;
-          this.frm2.intFloat = 234;
-        }, 1000 * 3)
+        // setTimeout(()=>{
+        //   // this.frm2.intNumber = 11.33;
+        //   this.frm2.intFloat = 234;
+        // }, 1000 * 3)
       },
       handleValidateSubmit() {
         this.$refs["frm_validate2"].validate(flag=>{

@@ -319,7 +319,6 @@ export default {
         if (!multiple && !checkStrictly && dropDownVisible) {
           this.toggleDropDownVisible(false);
         }
-
         this.$emit('input', val);
         this.$emit('change', val);
         this.dispatch('ElFormItem', 'el.form.change', [val]);
@@ -454,6 +453,8 @@ export default {
       this.$nextTick(this.updatePopper.bind(this));
       this.$emit('expand-change', value);
       this.$emit('active-item-change', value); // Deprecated
+      // by stephen 20200717
+      this.checkedValue = value;
     },
     focusFirstNode() {
       this.$nextTick(() => {
@@ -486,10 +487,13 @@ export default {
       });
     },
     computePresentText() {
-      const { checkedValue, config } = this;
+      // const { checkedValue, config } = this;
+      const { checkedValue } = this;
       if (!isEmpty(checkedValue)) {
         const node = this.panel.getNodeByValue(checkedValue);
-        if (node && (config.checkStrictly || node.isLeaf)) {
+        // by stephen 20200717
+        // if (node && (config.checkStrictly || node.isLeaf)) {
+        if (node) {
           this.presentText = node.getText(this.showAllLevels, this.separator);
           return;
         }
