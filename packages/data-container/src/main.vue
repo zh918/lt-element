@@ -71,12 +71,17 @@
           <el-cascader
             clearable
             size="small"
-            :props="{ checkStrictly: true }"
+            :props="{ checkStrictly: true, lazy: true, lazyLoad (node, resolve) {
+              if (item.options) {
+                item.options(node).then(result => {
+                  resolve(result);
+                });
+              }
+            }}"
             v-if="item.type==='cascader'"
             v-model="item.value"
-            :placeholder="item.placeholder"
-            :options="item.options">
-          </el-cascader> 
+            :placeholder="item.placeholder">
+          </el-cascader>
 
           <!-- 文本框 自动加载数据 -->
           <el-autocomplete
@@ -173,15 +178,20 @@
 
           <div class="item-box-field" v-if="item.type==='cascader'">
             <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
-            <!-- 级联 -->
+             
             <el-cascader
               clearable
               size="small"
-              :props="{ checkStrictly: true }"
+              :props="{ checkStrictly: true, lazy: true, lazyLoad (node, resolve) {
+                if (item.options) {
+                  item.options().then(result => {
+                    resolve(result);
+                  });
+                }
+              }}"
               v-model="item.value"
-              :placeholder="item.placeholder"
-              :options="item.options">
-            </el-cascader> 
+              :placeholder="item.placeholder">
+            </el-cascader>
           </div>
  
 
