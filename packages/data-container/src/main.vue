@@ -71,6 +71,7 @@
           <el-cascader
             clearable
             size="small"
+            :props="{ checkStrictly: true }"
             v-if="item.type==='cascader'"
             v-model="item.value"
             :placeholder="item.placeholder"
@@ -176,6 +177,7 @@
             <el-cascader
               clearable
               size="small"
+              :props="{ checkStrictly: true }"
               v-model="item.value"
               :placeholder="item.placeholder"
               :options="item.options">
