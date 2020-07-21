@@ -136,7 +136,7 @@ export default {
         return true;
       }
 
-      if (this.prop.indexOf('.') !== -1) {
+      if (this.prop && this.prop.indexOf('.') !== -1) {
         let model = {};
         let tempModel = {};
         let tempRules = {};
