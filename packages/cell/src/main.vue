@@ -83,7 +83,7 @@ export default {
       return classObject;
     },
     currentValue() {
-      if (this.parentEl && this.parentEl.model) {
+      if (this.parentEl && this.parentEl.model && this.prop) {
         // 方法一
         // if (this.$props.prop.indexOf('.') !== -1) {
         //   let propArray = this.$props.prop.split('.');

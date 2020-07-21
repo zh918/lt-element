@@ -184,7 +184,7 @@
               size="small"
               :props="{ checkStrictly: true, lazy: true, lazyLoad (node, resolve) {
                 if (item.options) {
-                  item.options().then(result => {
+                  item.options(node).then(result => {
                     resolve(result);
                   });
                 }
