@@ -185,11 +185,8 @@
           ? render({ node, data: node.data })
           : null;
 
-        // return (
-        //   <span class="el-cascader-node__label">{ vnode || node.label }</span>
-        // );
         return (
-          <span class="el-cascader-node__label" onClick={ this.handleCheckChange }>{ vnode || node.label }</span>
+          <span class="el-cascader-node__label">{ vnode || node.label }</span>
         );
       }
     },
@@ -224,27 +221,6 @@
         events.on.click = this.handleCheckChange;
       }
 
-      // return (
-      //   <li
-      //     role="menuitem"
-      //     id={ nodeId }
-      //     aria-expanded={ inActivePath }
-      //     tabindex={ disabled ? null : -1 }
-      //     class={{
-      //       'el-cascader-node': true,
-      //       'is-selectable': checkStrictly,
-      //       'in-active-path': inActivePath,
-      //       'in-checked-path': inCheckedPath,
-      //       'is-active': isChecked,
-      //       'is-disabled': disabled
-      //     }}
-      //     {...events}>
-      //     { this.renderPrefix(h) }
-      //     { this.renderContent(h) }
-      //     { this.renderPostfix(h) }
-      //   </li>
-      // );
-
       return (
         <li
           role="menuitem"
@@ -260,6 +236,7 @@
             'is-disabled': disabled
           }}
           {...events}>
+          { this.renderPrefix(h) }
           { this.renderContent(h) }
           { this.renderPostfix(h) }
         </li>

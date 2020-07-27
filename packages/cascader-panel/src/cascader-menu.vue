@@ -92,7 +92,6 @@ export default {
         const { hasChildren } = node;
         return (
           <cascader-node
-            class="1234"
             key={ node.uid }
             node={ node }
             node-id={ `${menuId}-${index}` }

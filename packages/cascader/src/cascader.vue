@@ -310,15 +310,17 @@ export default {
       }
     },
     checkedValue(val) {
-      const { value, dropDownVisible } = this;
-      const { checkStrictly, multiple } = this.config;
+      // const { value, dropDownVisible } = this;
+      // const { checkStrictly, multiple } = this.config;
+      const { value } = this;
 
       if (!isEqual(val, value) || isUndefined(value)) {
         this.computePresentContent();
         // hide dropdown when single mode
-        if (!multiple && !checkStrictly && dropDownVisible) {
-          this.toggleDropDownVisible(false);
-        }
+        // modify by stephen 什么都不做 20200727
+        // if (!multiple && !checkStrictly && dropDownVisible) {
+        //   this.toggleDropDownVisible(false);
+        // }
         this.$emit('input', val);
         this.$emit('change', val);
         this.dispatch('ElFormItem', 'el.form.change', [val]);

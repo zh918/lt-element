@@ -71,7 +71,7 @@
           <el-cascader
             clearable
             size="small"
-            :props="{ checkStrictly: true, lazy: true, lazyLoad (node, resolve) {
+            :props="{ lazy: true, lazyLoad (node, resolve) {
               if (item.options) {
                 item.options(node).then(result => {
                   resolve(result);
@@ -182,7 +182,7 @@
             <el-cascader
               clearable
               size="small"
-              :props="{ checkStrictly: true, lazy: true, lazyLoad (node, resolve) {
+              :props="{ lazy: true, lazyLoad (node, resolve) {
                 if (item.options) {
                   item.options(node).then(result => {
                     resolve(result);
@@ -406,6 +406,7 @@ export default {
     },
     handleReset() {
       this._clearn();
+      this._clearnPagination();
       if (this.searchContainer.isResetAutoSearch) this.handleSearch();
     },
     handleSizeChange() {
