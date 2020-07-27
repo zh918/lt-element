@@ -455,8 +455,6 @@ export default {
       this.$nextTick(this.updatePopper.bind(this));
       this.$emit('expand-change', value);
       this.$emit('active-item-change', value); // Deprecated
-      // by stephen 20200717
-      this.checkedValue = value;
     },
     focusFirstNode() {
       this.$nextTick(() => {
