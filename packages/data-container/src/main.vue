@@ -222,7 +222,7 @@
     <slot name="operator-container" v-if="operatorContainer">
       <div class="operator-container">
         <div class="operator-container-item" :key="index" v-for="(item, index) in operatorContainer">
-          <el-dropdown size="small" split-button v-if="item.children && (!item.isShow || item.isShow())">
+          <el-dropdown type="primary" size="small" split-button v-if="item.children && (!item.isShow || item.isShow())">
             {{item.text}}
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item :key="cIndex" @click="childItem.cb" v-for="(childItem, cIndex) in item.children">{{childItem.text}}</el-dropdown-item>
@@ -230,7 +230,7 @@
           </el-dropdown>
           <el-button
             v-else-if="!item.children && (!item.isShow || item.isShow())"
-            plain
+            type="primary"
             :size="(item.size || 'small')"
             :icon="(item.icon || '')"
             @click="item.cb"
