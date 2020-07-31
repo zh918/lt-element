@@ -99,7 +99,8 @@
           this.$emit('input', this._tranValue(this.currentValue));
           return;
         }
-        let code = val.data.charCodeAt();
+
+        let code = val.target.value.charCodeAt(); // val.data.charCodeAt();
         if ((this.type === 'float' || this.type === 'money') && (code === 46 || (code <= 57 && code >= 48))) {
           if (this.currentValue && this.currentValue.toString().indexOf('.') !== -1 && code === 46) {
             input.value = this._tranValue(this.currentValue);
