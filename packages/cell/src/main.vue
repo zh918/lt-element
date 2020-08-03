@@ -140,12 +140,10 @@ export default {
         let tempModel = {};
         let tempRules = {};
         let propArray = this.prop.split('.');
-        // console.log('属性：', propArray);
         propArray.forEach(k=>{
           if (!key) {
             tempModel = this.parentEl.model[k];
             tempRules = this.parentEl.rules[k];
-            // console.log('---->', tempModel, tempRules);
           } else {
             tempModel = tempModel[k];
             tempRules = tempRules[k];
@@ -154,7 +152,6 @@ export default {
         });
         model[key] = tempModel;
         rules[key] = tempRules;
-        // console.log('====>', model, rules);
         _validate(rules, model);
       } else {
         key = this.prop;
