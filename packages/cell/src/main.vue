@@ -128,7 +128,6 @@ export default {
       let _this = this;
       let rules = {};
       let key = null;
-
       let parent = this.$parent;
       let isShow = parent.$children.some(p => p.prop === this.prop);
       if (!isShow) {
@@ -165,7 +164,7 @@ export default {
         descriptor[this.prop] = rules;
 
         if (!rules || rules.length === 0) {
-          cb();
+          cb(true);
           return true;
         }
 
@@ -180,7 +179,6 @@ export default {
         const validator = new AsyncValidator(descriptor);
         validator.validate(model, {suppressWarning: true, first: true}, function(errors, invalidFields) {
           if (errors) {
-            // console.log(JSON.stringify(errors));
             _this.errorMsg = errors[0].message;
             cb(false);
           } else {

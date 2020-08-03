@@ -3,21 +3,18 @@
      <input
       v-if="disabled"
       class="el-input__inner"
-      type="text"
+      type="number"
       ref="inputNumber"
       :placeholder="placeholder"
       disabled="disabled"
-      @input="handleInput"
-      @focus="handleFocus"
-      @blur="handleBlur"
-      @change="handleChange"
     />
     <input
       v-else
       class="el-input__inner"
-      type="text"
+      type="number"
       ref="inputNumber"
       :placeholder="placeholder"
+      @keydown="handleInputKeydown"
       @input="handleInput"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -90,32 +87,75 @@
       }
     },
     methods: {
+      // handleInput(val) {
+      //   let input = this.$refs.inputNumber;
+      //   if (val.data === null) {
+      //     // del 键
+      //     this.currentValue = input.value;
+      //     this._formatValue();
+      //     this.$emit('input', this._tranValue(this.currentValue));
+      //     return;
+      //   }
+      //   let code = val.data.charCodeAt();
+      //   if ((this.type === 'float' || this.type === 'money') && (code === 46 || (code <= 57 && code >= 48))) {
+      //     if (this.currentValue && this.currentValue.toString().indexOf('.') !== -1 && code === 46) {
+      //       input.value = this._tranValue(this.currentValue);
+      //       return;
+      //     }
+      //     this.currentValue = input.value;
+      //     this._formatValue();
+      //     this.$emit('input', this._tranValue(this.currentValue));
+      //   } else if (this.type === 'int' && (code <= 57 && code >= 48)) {
+      //     this.currentValue = input.value;
+      //     this._formatValue();
+      //     this.$emit('input', this._tranValue(this.currentValue));
+      //   } else {
+      //     input.value = this._tranValue(this.currentValue);
+      //     return;
+      //   }
+      // },
       handleInput(val) {
         let input = this.$refs.inputNumber;
-        if (val.data === null) {
-          // del 键
-          this.currentValue = input.value;
+        this.currentValue = input.value;
+        if (this.type === 'float' || this.type === 'money') {
           this._formatValue();
-          this.$emit('input', this._tranValue(this.currentValue));
-          return;
         }
-
-        let code = val.target.value.charCodeAt(); // val.data.charCodeAt();
-        if ((this.type === 'float' || this.type === 'money') && (code === 46 || (code <= 57 && code >= 48))) {
-          if (this.currentValue && this.currentValue.toString().indexOf('.') !== -1 && code === 46) {
-            input.value = this._tranValue(this.currentValue);
-            return;
+        this.$emit('input', this._tranValue(this.currentValue));
+      },
+      handleInputKeydown(board) {
+        // let input = this.$refs.inputNumber;
+        const keycode = board.keyCode;
+        const min = 48; // 0
+        const max = 57; // 9
+        const point = 190; // .
+        const del = 46; // del
+        const backspace = 8;
+        // console.log(keycode, this.currentValue);
+        if (min <= keycode && keycode <= max) {
+          // this.currentValue = input.value;
+          // this._formatValue();
+          // this.$emit('input', this._tranValue(this.currentValue));
+        } else if (keycode === point && (this.type === 'float' || this.type === 'money')) {
+          if (this.currentValue && this.currentValue.toString().indexOf('.') === -1) {
+            // this.currentValue = input.value;
+            // this._formatValue();
+            // this.$emit('input', this._tranValue(this.currentValue));
+          } else {
+            window.event.returnValue = false;
+            if (window.event.preventDefault) {
+              window.event.preventDefault();
+            }
           }
-          this.currentValue = input.value;
-          this._formatValue();
-          this.$emit('input', this._tranValue(this.currentValue));
-        } else if (this.type === 'int' && (code <= 57 && code >= 48)) {
-          this.currentValue = input.value;
-          this._formatValue();
-          this.$emit('input', this._tranValue(this.currentValue));
+        } else if (keycode === del || keycode === backspace) {
+          // this.currentValue = input.value;
+          // this._formatValue();
+          // this.$emit('input', this._tranValue(this.currentValue));
         } else {
-          input.value = this._tranValue(this.currentValue);
-          return;
+          // console.log('keycode:', keycode);
+          window.event.returnValue = false;
+          if (window.event.preventDefault) {
+            window.event.preventDefault();
+          }
         }
       },
       handleFocus() {

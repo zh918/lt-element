@@ -52,6 +52,7 @@ export default {
         }
 
         let validatePass = true;
+        let passCount = _this.fields.length;
 
         if (_this.fields.length === 0 && cb) {
           cb(true);
@@ -60,12 +61,18 @@ export default {
 
         _this.fields.forEach(field=>{
           field.validate(pass=>{
+            passCount--;
             if (!pass) validatePass = false;
           });
         });
 
-        cb(validatePass);
-
+        let intervalId = null;
+        intervalId = setInterval(()=>{
+          if (passCount === 0) {
+            clearInterval(intervalId);
+            cb(validatePass);
+          }
+        }, 150);
       });
     },
     resetFields() {

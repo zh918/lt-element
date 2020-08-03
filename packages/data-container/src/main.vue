@@ -70,6 +70,7 @@
           <!-- 级联 -->
           <el-cascader
             clearable
+            filterable
             size="small"
             :props="{ lazy: true, lazyLoad (node, resolve) {
               if (item.options) {
@@ -180,6 +181,7 @@
             <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
              
             <el-cascader
+              filterable
               clearable
               size="small"
               :props="{ lazy: true, lazyLoad (node, resolve) {
