@@ -130,12 +130,17 @@
         const point = 190; // .
         const del = 46; // del
         const backspace = 8;
+
+        const b_min = 96; // 0
+        const b_max = 105; // 9
+        const b_point = 110; // .
+
         // console.log(keycode, this.currentValue);
-        if (min <= keycode && keycode <= max) {
+        if ((min <= keycode && keycode <= max) || (b_min <= keycode && keycode <= b_max)) {
           // this.currentValue = input.value;
           // this._formatValue();
           // this.$emit('input', this._tranValue(this.currentValue));
-        } else if (keycode === point && (this.type === 'float' || this.type === 'money')) {
+        } else if ((keycode === point || keycode === b_point) && (this.type === 'float' || this.type === 'money')) {
           if (this.currentValue && this.currentValue.toString().indexOf('.') === -1) {
             // this.currentValue = input.value;
             // this._formatValue();
