@@ -313,7 +313,6 @@ export default {
       // const { value, dropDownVisible } = this;
       // const { checkStrictly, multiple } = this.config;
       const { value } = this;
-
       if (!isEqual(val, value) || isUndefined(value)) {
         this.computePresentContent();
         // hide dropdown when single mode

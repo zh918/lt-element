@@ -196,7 +196,7 @@
         inActivePath,
         inCheckedPath,
         isChecked,
-        isLeaf,
+        // isLeaf,
         isDisabled,
         config,
         nodeId
@@ -217,7 +217,9 @@
           this.$emit('expand', e);
         };
       }
-      if (isLeaf && !isDisabled && !checkStrictly && !multiple) {
+      // 点击路径即可显示 by stephen 20200804
+      // if (isLeaf && !isDisabled && !checkStrictly && !multiple) {
+      if (!isDisabled && !checkStrictly && !multiple) {
         events.on.click = this.handleCheckChange;
       }
 
