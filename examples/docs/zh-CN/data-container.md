@@ -45,6 +45,7 @@
     data() {
       return {
         searchContainer: {
+          loading: false,
           isResetAutoSearch: false,
           displayType: 'placeholder',
           itemSpan: 6,
@@ -120,6 +121,9 @@
     methods: {
       handleSearch(parms) {
         console.log('---', parms);
+        setTimeout(()=>{
+          this.searchContainer.loading = false;
+        }, 2000)
       },
       handleAdd() {
         console.log('新增')

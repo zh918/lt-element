@@ -98,7 +98,7 @@
         </el-col>
 
         <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
-          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch">搜索</el-button>
+          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch"  :loading="searchContainer.loading">搜索</el-button>
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
@@ -213,12 +213,10 @@
    
         </el-col>
         <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
-          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch">搜索</el-button>
+          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch" :loading="searchContainer.loading">搜索</el-button>
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
-
-
     </slot>
     <!-- 操作 -->
     <slot name="operator-container" v-if="operatorContainer">
@@ -245,9 +243,6 @@
       <el-table 
         border
         size="small"
-        element-loading-text="数据加载中"
-        element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, 0.8)"
         :data="tableContainer.data"
         class="data-table">
         <el-table-column
@@ -298,6 +293,7 @@ export default {
   componentName: 'ElDataContainer',
   props: {
     searchContainer: {
+      loading: false,
       isResetAutoSearch: true,
       displayType: 'placeholder' // placeholder,title
       // itemSpan: 4, // 请设置成偶数
@@ -403,6 +399,7 @@ export default {
       });
     },
     handleBeginSearch() {
+      if (this.searchContainer.loading !== undefined) this.searchContainer.loading = true;
       this._clearnPagination();
       this.handleSearch();
     },
