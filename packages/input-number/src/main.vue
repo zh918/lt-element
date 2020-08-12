@@ -131,12 +131,16 @@
         const del = 46; // del
         const backspace = 8;
 
+        const min_board = 96; // 0
+        const max_board = 105; // 9
+        const point_board = 110; // .
+
         // console.log(keycode, this.currentValue);
-        if (min <= keycode && keycode <= max) {
+        if ((min <= keycode && keycode <= max) || (min_board <= keycode && keycode <= max_board)) {
           // this.currentValue = input.value;
           // this._formatValue();
           // this.$emit('input', this._tranValue(this.currentValue));
-        } else if (keycode === point && (this.type === 'float' || this.type === 'money')) {
+        } else if ((keycode === point || keycode === point_board) && (this.type === 'float' || this.type === 'money')) {
           if (this.currentValue && this.currentValue.toString().indexOf('.') === -1) {
             // this.currentValue = input.value;
             // this._formatValue();
