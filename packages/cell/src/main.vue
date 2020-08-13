@@ -153,7 +153,7 @@ export default {
         model[key] = tempModel;
         rules[key] = tempRules;
         _validate(rules, model);
-      } else {
+      } else if (this.prop) {
         key = this.prop;
         rules = this.parentEl.rules[this.prop];
 
@@ -169,6 +169,9 @@ export default {
         const parentElModel = this.parentEl.model;
         model[this.prop] = parentElModel[this.prop];
         _validate(descriptor, model);
+      } else {
+        cb(true);
+        return true;
       }
 
       function _validate(descriptor, model) {
