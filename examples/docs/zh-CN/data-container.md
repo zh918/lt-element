@@ -69,7 +69,7 @@
               { value: '选项21', label: '黄金糕2' }
             ]},
             { key: 'date', type: 'date', class: '', placeholder: '开始日期', value: '', fetch: '', cb: ''},
-            { key: 'date', type: 'daterange', class: '', placeholder: '开始日期1', value: '', fetch: '', cb: ''},
+            { key: 'date', type: 'daterange', class: '', placeholder: ['日期1','时期2'], value: '', fetch: '', cb: ''},
             { key: 'cascaderData', type: 'cascader', class: '', placeholder: '级联', value: '', fetch: '', cb: '',options: this.handleInitCascaderOption }
           ]
         },

@@ -62,8 +62,8 @@
             v-model="item.value"
             type="daterange"
             range-separator="至"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
+            :start-placeholder="!Array.isArray(item.placeholder)?'开始日期':item.placeholder[0]"
+            :end-placeholder="!Array.isArray(item.placeholder)?'结束日期':item.placeholder[1]"
             clearable
           ></el-date-picker>
 
@@ -171,8 +171,8 @@
               v-model="item.value"
               type="daterange"
               range-separator="至"
-              start-placeholder="开始日期"
-              end-placeholder="结束日期"
+              :start-placeholder="!Array.isArray(item.placeholder)?'开始日期':item.placeholder[0]"
+              :end-placeholder="!Array.isArray(item.placeholder)?'结束日期':item.placeholder[1]"
               clearable
             ></el-date-picker>
           </div>
