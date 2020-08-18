@@ -466,7 +466,7 @@ export default {
     handleSizeChange() {
       // 变更size pageNum 设置为1
       this._clearnPagination();
-      this.handleSearch();
+      this.handleSearch(); 
     },
     handleCurrentChange(val) {
       // 变更页码
