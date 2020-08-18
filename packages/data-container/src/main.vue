@@ -269,7 +269,7 @@
             </el-dropdown-menu>
           </el-dropdown>
           <el-button
-            v-else-if="!item.15915747845@139.com && !item.children && (!item.isShow || item.isShow())"
+            v-else-if="!item.classify && !item.children && (!item.isShow || item.isShow())"
             type="primary"
             :size="(item.size || 'small')"
             :icon="(item.icon || '')"
