@@ -279,11 +279,11 @@
             <!-- <span>{{setIn}}</span> -->
             <el-upload
               class="upload-demo"
-              :disabled="time > 0 && time < 100 ? true : false"
+              :disabled="item.progress > 0 && item.progress < 100 ? true : false"
               :http-request="item.cb"
               action="#">
-              <div class="upload-demo over-box" :style="{width: time+'%'}" v-if="time!=100">{{time > 0 ? time+'%' : ''}}</div>
-              <el-button size="small" :class="{'isShowBgc': time==0 || time==100}" :disabled="time > 0 && time < 100 ? true : false"><span :style="{opacity: time==0 || time==100 ? 1 : 0}">{{item.text}}</span></el-button>
+              <div class="upload-demo over-box" :style="{width: item.progress+'%'}" v-if="item.progress!=100">{{item.progress > 0 ? item.progress+'%' : ''}}</div>
+              <el-button size="small" :class="{'isShowBgc': item.progress==0 || item.progress==100}" :disabled="item.progress > 0 && item.progress < 100 ? true : false"><span :style="{opacity: item.progress==0 || item.progress==100 ? 1 : 0}">{{item.text}}</span></el-button>
             </el-upload>
           </div>
         </div>
@@ -386,16 +386,6 @@ export default {
   created() {
     this._resetOffset();
     this.handleSearch();
-    setInterval(()=>{
-      if (this.time < 100) {
-        this.time += 1;
-      }
-    }, 100);
-    // setTimeout(()=>{
-    //   if (this.time < 100) {
-    //     this.time = 100;
-    //   }
-    // }, 9000);
   },
   methods: {
     _resetOffset() {
