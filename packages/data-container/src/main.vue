@@ -340,7 +340,6 @@
 </template>
 
 <script>
-import { setInterval } from 'timers';
 export default {
   name: 'ElDataContainer',
   componentName: 'ElDataContainer',
