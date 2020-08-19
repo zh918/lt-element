@@ -279,6 +279,7 @@
             <!-- <span>{{setIn}}</span> -->
             <el-upload
               class="upload-demo"
+              :show-file-list="false"
               :disabled="item.progress > 0 && item.progress < 100 ? true : false"
               :http-request="item.cb"
               action="#">
