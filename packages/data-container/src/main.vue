@@ -257,7 +257,7 @@
             type="primary"
             size="small"
             split-button
-            v-if="item.type === 'primary' && item.children && (!item.isShow || item.isShow())"
+            v-if="(!item.type || item.type === 'primary' || item.type === 'dropdown') && item.children && (!item.isShow || item.isShow())"
           >
             {{item.text}}
             <el-dropdown-menu slot="dropdown">
@@ -269,20 +269,23 @@
             </el-dropdown-menu>
           </el-dropdown>
           <el-button
-            v-else-if="item.type === 'primary' && !item.children && (!item.isShow || item.isShow())"
+            v-else-if="(!item.type || item.type === 'primary' || item.type === 'button') && !item.children && (!item.isShow || item.isShow())"
             type="primary"
             :size="(item.size || 'small')"
             :icon="(item.icon || '')"
             @click="item.cb"
           >{{item.text}}</el-button>
-          <el-upload
-            v-else-if="item.type === 'upload' && !item.children && (!item.isShow || item.isShow())"
-            class="upload-demo"
-            :disabled="item.progress !== 1 ? true : false"
-            :http-request="item.cb"
-            action="#">
-            <el-button size="small" type="primary" :style="{opacity: item.progress,backgroundColor:'#409EFF',color:'#fff'}">{{item.text}}</el-button>
-          </el-upload>
+          <div class="upload-box" v-else-if="item.type === 'upload' && !item.children && (!item.isShow || item.isShow())">
+            <!-- <span>{{setIn}}</span> -->
+            <el-upload
+              class="upload-demo"
+              :disabled="time > 0 && time < 100 ? true : false"
+              :http-request="item.cb"
+              action="#">
+              <div class="upload-demo over-box" :style="{width: time+'%'}" v-if="time!=100">{{time > 0 ? time+'%' : ''}}</div>
+              <el-button size="small" :class="{'isShowBgc': time==0 || time==100}" :disabled="time > 0 && time < 100 ? true : false"><span :style="{opacity: time==0 || time==100 ? 1 : 0}">{{item.text}}</span></el-button>
+            </el-upload>
+          </div>
         </div>
       </div>
     </slot>
@@ -337,6 +340,7 @@
 </template>
 
 <script>
+import { setInterval } from 'timers';
 export default {
   name: 'ElDataContainer',
   componentName: 'ElDataContainer',
@@ -375,12 +379,23 @@ export default {
       pagination: {
         pageSize: this.paginationContainer.pageSize | 10,
         pageSizes: [10, 20, 50]
-      }
+      },
+      time: 0
     };
   },
   created() {
     this._resetOffset();
     this.handleSearch();
+    setInterval(()=>{
+      if (this.time < 100) {
+        this.time += 1;
+      }
+    }, 100);
+    // setTimeout(()=>{
+    //   if (this.time < 100) {
+    //     this.time = 100;
+    //   }
+    // }, 9000);
   },
   methods: {
     _resetOffset() {
@@ -497,6 +512,11 @@ export default {
     },
     _clearnPagination() {
       this.paginationContainer.pageNum = 1;
+    },
+    handleClickUpload() {
+      console.log(this.$refs.upload);
+      this.$refs.upload.style.height = 90 + 'px';
+      // document.querySelector('#upload').backgroundColor = 'pink';
     }
   }
 };

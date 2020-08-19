@@ -167,3 +167,29 @@ button, input, select, textarea {
     padding: 0 12px;
   }
 }
+.upload-box {
+  
+  max-width: 152px;
+  position: relative;
+  .over-box {
+    position: absolute;
+    /* width: 100%; */
+    border-radius: 3px;
+    height: 32px;
+    background-color: rgb(64,158,255);
+    z-index: 99999;
+    top: 0;
+    color: #fff;
+    font-size: 12px;
+    line-height: 32px;
+    cursor: not-allowed;
+  }
+}
+.isShowBgc {
+  background-color: rgb(64,158,255);
+  color: #fff;
+}
+.btn {
+  max-width: 152px;
+  height: 32px;
+}
