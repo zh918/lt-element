@@ -18,13 +18,13 @@
           ></el-input>
 
           <!-- 数字框 -->
-          <el-input-number 
-            v-if="item.type=='number'" 
-            v-model="item.value" 
-            type="money" 
-            :placeholder='item.placeholder' 
-            :tip="false">
-          </el-input-number>
+          <el-input-number
+            v-if="item.type=='number'"
+            v-model="item.value"
+            type="money"
+            :placeholder="item.placeholder"
+            :tip="false"
+          ></el-input-number>
 
           <!-- 下拉框 -->
           <el-select
@@ -81,8 +81,8 @@
             }}"
             v-if="item.type==='cascader'"
             v-model="item.value"
-            :placeholder="item.placeholder">
-          </el-cascader>
+            :placeholder="item.placeholder"
+          ></el-cascader>
 
           <!-- 文本框 自动加载数据 -->
           <el-autocomplete
@@ -98,7 +98,13 @@
         </el-col>
 
         <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
-          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch"  :loading="searchContainer.loading">搜索</el-button>
+          <el-button
+            id="btn_search"
+            type="primary"
+            size="small"
+            @click="handleBeginSearch"
+            :loading="searchContainer.loading"
+          >搜索</el-button>
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
@@ -109,29 +115,34 @@
           :key="'col_' + index"
           v-for="(item,index) in searchContainer.list"
         >
-          <div class="item-box-field" v-if="item.type=='input'" >
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+          <div class="item-box-field" v-if="item.type=='input'">
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 文本框 -->
-            <el-input
-              v-model="item.value"
-              size="small"
-              :placeholder="item.placeholder"
-            ></el-input>
+            <el-input v-model="item.value" size="small" :placeholder="item.placeholder"></el-input>
           </div>
 
-          <div class="item-box-field" v-if="item.type=='number'" >
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+          <div class="item-box-field" v-if="item.type=='number'">
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 数字框 -->
             <el-input-number
-              v-model="item.value" 
-              type="money" 
-              :placeholder='item.placeholder' 
-              :tip="false">
-            </el-input-number>
+              v-model="item.value"
+              type="money"
+              :placeholder="item.placeholder"
+              :tip="false"
+            ></el-input-number>
           </div>
 
           <div class="item-box-field" v-if="item.type==='select'">
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 下拉框 -->
             <el-select
               size="small"
@@ -152,7 +163,10 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='date'">
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 时间 -->
             <el-date-picker
               size="small"
@@ -164,7 +178,10 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='daterange'">
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 时间 -->
             <el-date-picker
               size="small"
@@ -178,8 +195,11 @@
           </div>
 
           <div class="item-box-field" v-if="item.type==='cascader'">
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
-             
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
+
             <el-cascader
               filterable
               clearable
@@ -192,13 +212,15 @@
                 }
               }}"
               v-model="item.value"
-              :placeholder="item.placeholder">
-            </el-cascader>
+              :placeholder="item.placeholder"
+            ></el-cascader>
           </div>
- 
 
           <div class="item-box-field" v-if="item.type==='autocomplete'">
-            <div class="item-box-field-title" :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }">{{item.title}}</div>
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
             <!-- 文本框 自动加载数据 -->
             <el-autocomplete
               size="small"
@@ -210,10 +232,15 @@
               @select="item.cb"
             ></el-autocomplete>
           </div>
-   
         </el-col>
         <el-col :span="btn.span" :offset="btn.offset" class="flex-auto-operator text-align-right">
-          <el-button id="btn_search" type="primary" size="small" @click="handleBeginSearch" :loading="searchContainer.loading">搜索</el-button>
+          <el-button
+            id="btn_search"
+            type="primary"
+            size="small"
+            @click="handleBeginSearch"
+            :loading="searchContainer.loading"
+          >搜索</el-button>
           <el-button id="btn_reset" plain size="small" @click="handleReset">重置</el-button>
         </el-col>
       </el-row>
@@ -221,30 +248,50 @@
     <!-- 操作 -->
     <slot name="operator-container" v-if="operatorContainer">
       <div class="operator-container">
-        <div class="operator-container-item" :key="index" v-for="(item, index) in operatorContainer">
-          <el-dropdown type="primary" size="small" split-button v-if="item.children && (!item.isShow || item.isShow())">
+        <div
+          class="operator-container-item"
+          :key="index"
+          v-for="(item, index) in operatorContainer"
+        >
+          <el-dropdown
+            type="primary"
+            size="small"
+            split-button
+            v-if="(!item.type || item.type === 'primary' || item.type === 'dropdown') && item.children && (!item.isShow || item.isShow())"
+          >
             {{item.text}}
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item :key="cIndex" @click="childItem.cb" v-for="(childItem, cIndex) in item.children">{{childItem.text}}</el-dropdown-item>
+              <el-dropdown-item
+                :key="cIndex"
+                @click="childItem.cb"
+                v-for="(childItem, cIndex) in item.children"
+              >{{childItem.text}}</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-button
-            v-else-if="!item.children && (!item.isShow || item.isShow())"
+            v-else-if="(!item.type || item.type === 'primary' || item.type === 'button') && !item.children && (!item.isShow || item.isShow())"
             type="primary"
             :size="(item.size || 'small')"
             :icon="(item.icon || '')"
             @click="item.cb"
           >{{item.text}}</el-button>
+          <div class="upload-box" v-else-if="item.type === 'upload' && !item.children && (!item.isShow || item.isShow())">
+            <!-- <span>{{setIn}}</span> -->
+            <el-upload
+              class="upload-demo"
+              :disabled="item.progress > 0 && item.progress < 100 ? true : false"
+              :http-request="item.cb"
+              action="#">
+              <div class="upload-demo over-box" :style="{width: item.progress+'%'}" v-if="item.progress!=100">{{item.progress > 0 ? item.progress+'%' : ''}}</div>
+              <el-button size="small" :class="{'isShowBgc': item.progress==0 || item.progress==100}" :disabled="item.progress > 0 && item.progress < 100 ? true : false"><span :style="{opacity: item.progress==0 || item.progress==100 ? 1 : 0}">{{item.text}}</span></el-button>
+            </el-upload>
+          </div>
         </div>
       </div>
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table 
-        border
-        size="small"
-        :data="tableContainer.data"
-        class="data-table">
+      <el-table border size="small" :data="tableContainer.data" class="data-table">
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
@@ -256,7 +303,12 @@
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
           </template>
         </el-table-column>
-        <el-table-column :fixed="tableContainer.operate.fixed" :label="tableContainer.operate.label" :width="tableContainer.operate.width || 180" v-if="tableContainer.operate.list">
+        <el-table-column
+          :fixed="tableContainer.operate.fixed"
+          :label="tableContainer.operate.label"
+          :width="tableContainer.operate.width || 180"
+          v-if="tableContainer.operate.list"
+        >
           <template slot-scope="scope">
             <slot name="operate" v-bind="scope.row">
               <el-button
@@ -288,6 +340,7 @@
 </template>
 
 <script>
+import { setInterval } from 'timers';
 export default {
   name: 'ElDataContainer',
   componentName: 'ElDataContainer',
@@ -326,7 +379,8 @@ export default {
       pagination: {
         pageSize: this.paginationContainer.pageSize | 10,
         pageSizes: [10, 20, 50]
-      }
+      },
+      time: 0
     };
   },
   created() {
@@ -371,7 +425,8 @@ export default {
 
         let s = 0;
         for (let i = 0, n = this.searchContainer.list.length; i < n; i++) {
-          let tempSpan = this.searchContainer.list[i].span || this.searchContainer.itemSpan;
+          let tempSpan =
+            this.searchContainer.list[i].span || this.searchContainer.itemSpan;
           if (rowArray[s].overSpan - tempSpan < 0) {
             s++;
           }
@@ -429,7 +484,6 @@ export default {
         _this.searchContainer.list.forEach(function(obj, i) {
           if (obj.key) _this.parameter[obj.key] = obj.value;
         });
-
       }
     },
     _clearn() {
@@ -448,6 +502,11 @@ export default {
     },
     _clearnPagination() {
       this.paginationContainer.pageNum = 1;
+    },
+    handleClickUpload() {
+      console.log(this.$refs.upload);
+      this.$refs.upload.style.height = 90 + 'px';
+      // document.querySelector('#upload').backgroundColor = 'pink';
     }
   }
 };

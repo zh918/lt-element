@@ -75,7 +75,8 @@
         },
         operatorContainer: [
           { type: 'primary', text: '新增', cb: this.handleAdd},
-          { type: 'primary', text: '删除', cb: this.handleDel, isShow:()=>this.handleShow()}
+          { type: 'primary', text: '删除', cb: this.handleDel, isShow:()=>this.handleShow()},
+          { type: 'upload', text: '手动导入工资代扣数据', cb: this.handleImport, progress:0}
         ],
         tableContainer: {
           operate: {
@@ -130,6 +131,9 @@
       },
       handleDel(row) {
         console.log('删除', row)
+      },
+      handleImport() {
+        console.log('导入')
       },
       handleShow() {
         return false;
