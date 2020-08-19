@@ -8,7 +8,7 @@
 
 ```html
 <template> 
-    <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer" :paginationContainer="paginationContainer">
+    <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer">
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -113,10 +113,10 @@
             }
           ]
         },
-        paginationContainer: {
-          pageNum: 1,
-          total: 1
-        }
+        // paginationContainer: {
+        //   pageNum: 1,
+        //   total: 1
+        // }
       }
     },
     methods: {

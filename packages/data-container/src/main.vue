@@ -328,6 +328,7 @@
     <slot name="pagination-container" v-if="paginationContainer">
       <el-pagination
         background
+        v-if="paginationContainer"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="paginationContainer.pageNum"
@@ -363,10 +364,20 @@ export default {
       // data: []
     },
     paginationContainer: {
-      pageNum: 1,
-      total: 0,
-      layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
+      type: Object,
+      default: () => {
+        return {
+          pageNum: 1,
+          total: 0,
+          layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
+        };
+      }
     }
+    // paginationContainer: {
+    //   pageNum: 1,
+    //   total: 0,
+    //   layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
+    // }
   },
   data() {
     return {
@@ -377,7 +388,7 @@ export default {
       },
       parameter: {},
       pagination: {
-        pageSize: this.paginationContainer.pageSize | 10,
+        pageSize: !this.paginationContainer ? 10 : this.paginationContainer.pageSize || 10,
         pageSizes: [10, 20, 50]
       },
       time: 0
@@ -387,6 +398,10 @@ export default {
     this._resetOffset();
     this.handleSearch();
   },
+  // mounted() {
+  //   this._resetOffset();
+  //   this.handleSearch();
+  // },
   methods: {
     _resetOffset() {
       if (!this.searchContainer || !this.searchContainer.list) return;
