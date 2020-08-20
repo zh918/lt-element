@@ -21,6 +21,7 @@
       @change="handleChange"
     />
     <div class="input-format-money-container" v-if="tip && value">{{currentFormatValue}}{{unit}}</div>
+    <div class="input-number-unit" v-if="unit">{{unit}}</div>
   </div>
 </template>
 
@@ -40,7 +41,7 @@
       },
       unit: {
         type: String,
-        default: '元'
+        default: ''
       },
       tip: {
         type: Boolean,

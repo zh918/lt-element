@@ -9,9 +9,9 @@
 <template>
   <div>
     <el-cell-container>
-      <el-title>基本信息</el-title>
+      <el-title>基本信息1</el-title>
       <el-cell title="整数">
-        <el-input-number v-model="frm.intNumber" :tip="true" unit="%"></el-input-number>
+        <el-input-number v-model="frm.intNumber"></el-input-number>
       </el-cell>
       <el-cell title="浮点">
         <el-input-number v-model="frm.intFloat" type="float" :tip="true" :dot="3"></el-input-number>
