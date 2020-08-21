@@ -69,6 +69,8 @@
               { value: '选项21', label: '黄金糕2' }
             ]},
             { key: 'date', type: 'date', class: '', placeholder: '开始日期', value: '', fetch: '', cb: ''},
+            { key: 'month', type: 'month', class: '', placeholder: '月份', value: '', fetch: '', cb: ''},
+            { key: 'monthrange', type: 'monthrange', class: '', placeholder: '月份范围', value: '', fetch: '', cb: ''},
             { key: 'date', type: 'daterange', class: '', placeholder: ['日期1','时期2'], value: '', fetch: '', cb: ''},
             { key: 'cascaderData', type: 'cascader', class: '', placeholder: '级联', value: '', fetch: '', cb: '',options: this.handleInitCascaderOption }
           ]
@@ -418,7 +420,8 @@
             { key: 'name7', type: 'input', class: '', title: '其它其它5', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name8', type: 'input', class: '', title: '其它6', placeholder: '姓名', value: '1', fetch: '', cb: ''},
             { key: 'name9', type: 'input', class: '', title: '下单开始时间7', placeholder: '姓名', value: '1', fetch: '', cb: ''},
-            // { key: 'date', type: 'daterange', class: '', span: 14, title: '下单日期', value: '', fetch: '', cb: ''}
+            { key: 'month', type: 'month', class: '', placeholder: '月份', value: '', fetch: '', cb: ''},
+            { key: 'monthrange', type: 'monthrange', class: '', placeholder: '月份范围', value: '', fetch: '', cb: ''},
             
           ]
         },

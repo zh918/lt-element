@@ -67,6 +67,28 @@
             clearable
           ></el-date-picker>
 
+          <!-- 月份 -->
+          <el-date-picker
+            v-if="item.type==='month'"
+            size="small"
+            v-model="item.value"
+            type="month"
+            :placeholder="item.placeholder"
+            clearable
+          ></el-date-picker>
+
+          <!-- 月份范围 -->
+          <el-date-picker
+            v-if="item.type==='monthrange'"
+            size="small"
+            v-model="item.value"
+            type="monthrange"
+            range-separator="至"
+            :start-placeholder="!Array.isArray(item.placeholder)?'开始月份':item.placeholder[0]"
+            :end-placeholder="!Array.isArray(item.placeholder)?'结束月份':item.placeholder[1]"
+            clearable
+          ></el-date-picker>
+
           <!-- 级联 -->
           <el-cascader
             clearable
@@ -194,6 +216,38 @@
             ></el-date-picker>
           </div>
 
+          <div class="item-box-field" v-if="item.type==='month'">
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
+            <!-- 时间 -->
+            <el-date-picker
+              size="small"
+              v-model="item.value"
+              type="month"
+              :placeholder="item.placeholder"
+              clearable
+            ></el-date-picker>
+          </div>
+
+          <div class="item-box-field" v-if="item.type==='monthrange'">
+            <div
+              class="item-box-field-title"
+              :class="{'item-box-field-title-super': item.size === 'super', 'item-box-field-title-xlarge': item.size === 'xlarge', 'item-box-field-title-large': item.size === 'large', 'item-box-field-title-medium': (item.size === 'medium' || !item.size), 'item-box-field-title-small': item.size === 'small' }"
+            >{{item.title}}</div>
+            <!-- 时间 -->
+            <el-date-picker
+              size="small"
+              v-model="item.value"
+              type="monthrange"
+              range-separator="至"
+              :start-placeholder="!Array.isArray(item.placeholder)?'开始月份':item.placeholder[0]"
+              :end-placeholder="!Array.isArray(item.placeholder)?'结束月份':item.placeholder[1]"
+              clearable
+            ></el-date-picker>
+          </div>
+          
           <div class="item-box-field" v-if="item.type==='cascader'">
             <div
               class="item-box-field-title"
