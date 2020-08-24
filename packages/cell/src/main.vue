@@ -1,6 +1,7 @@
 <template>
   <div class="el-cell-box-container" :class="classObj">
-    <div class="box-title" :class="'box-title-'+size+' box-title-'+align"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
+    <div class="box-title box-title-align" v-if="size=='custom'" :class="'box-title-'+align" :style="'width:' + width + 'px;'"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
+    <div class="box-title" v-else :class="'box-title-'+size+' box-title-'+align"><span v-if="icon" class="title-icon">{{icon}}</span>{{title}}</div>
     <div class="box-content">
       <slot></slot>
     </div>
@@ -34,7 +35,11 @@ export default {
     },
     size: {
       type: String,
-      default: 'small'
+      default: 'small' // custom
+    },
+    width: {
+      type: Number,
+      default: 0
     },
     prop: {
       type: String || Object,

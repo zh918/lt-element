@@ -365,7 +365,7 @@
 ```
 :::
 
-### 固定列数布局——详情展示
+### 固定列数布局——详情展示111
 
 :::demo 适用于单页、dialog、及自定义
 ```html
@@ -376,7 +376,7 @@
       <el-cell title="姓名" :margin="false" align="right">
         <el-label :value="frm3.name"></el-label>
       </el-cell>
-      <el-cell title="年龄" :margin="false" align="right">
+      <el-cell title="年龄" :margin="false" align="right" size="custom" :width="100">
         <el-label :value="frm3.age"></el-label>
       </el-cell>
       <el-cell title="证件类型" :margin="false" align="right">
