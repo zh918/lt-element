@@ -142,7 +142,7 @@
           // this._formatValue();
           // this.$emit('input', this._tranValue(this.currentValue));
         } else if ((keycode === point || keycode === point_board) && (this.type === 'float' || this.type === 'money')) {
-          if (this.currentValue && this.currentValue.toString().indexOf('.') === -1) {
+          if ((this.currentValue || this.currentValue === 0) && this.currentValue.toString().indexOf('.') === -1) {
             // this.currentValue = input.value;
             // this._formatValue();
             // this.$emit('input', this._tranValue(this.currentValue));
