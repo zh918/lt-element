@@ -362,14 +362,14 @@
 
 
 
-### 基础用法2
+### 基础用法2 1111111
 
 
 :::demo 用于查询条件+列表+分页+其它操作按钮
 
 ```html
 <template> 
-    <el-data-container :searchContainer="searchContainer1" @search="handleSearch" :operatorContainer="operatorContainer1" :tableContainer="tableContainer1" :paginationContainer="paginationContainer1">
+    <el-data-container :searchContainer="searchContainer1" @search="handleSearch" :operatorContainer="operatorContainer1" :tableContainer="tableContainer1" :paginationContainer="paginationContainer1" @hover="handleCellMouseEnter" @leave="handleCellMouseLeave">
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -471,6 +471,12 @@
       }
     },
     methods: {
+      handleCellMouseEnter(events) {
+        console.log("mhover1", events);
+      },
+      handleCellMouseLeave(events) {
+        console.log("mleave1", events);
+      },
       handleSearch(parms) {
         console.log('---', parms);
       },

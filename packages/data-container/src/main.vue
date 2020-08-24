@@ -346,7 +346,11 @@
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table border size="small" :data="tableContainer.data" class="data-table">
+      <el-table border size="small" 
+          :data="tableContainer.data" 
+          class="data-table"
+          @cell-mouse-enter="handleCellMouseEnter"
+          @cell-mouse-leave="handleCellMouseLeave">
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
@@ -457,6 +461,12 @@ export default {
   //   this.handleSearch();
   // },
   methods: {
+    handleCellMouseEnter(row, column, cell, event) {
+      this.$emit('hover', {row, column, cell, event});
+    },
+    handleCellMouseLeave(row, column, cell, event) {
+      this.$emit('leave', {row, column, cell, event});
+    },
     _resetOffset() {
       if (!this.searchContainer || !this.searchContainer.list) return;
       let defaultSpan = 4;
