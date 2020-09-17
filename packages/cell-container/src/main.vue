@@ -1,6 +1,6 @@
 <template>
   <div class="el-cell-container">
-    <div :class="{'el-cell-auto-container':auto, 'el-cell-2-cols-container':cols==2 && auto==false, 'el-cell-3-cols-container':cols==3 && auto==false, 'el-cell-4-cols-container':cols==4 && auto==false,'el-cell-1-cols-container': (cols == -1 || cols == 1) && auto==false }" >
+    <div :class="{'el-cell-auto-container':auto, 'el-cell-auto-max-width-1': auto && cols == 1, 'el-cell-auto-max-width-2': auto && cols == 2, 'el-cell-auto-max-width-3': auto && cols == 3, 'el-cell-auto-max-width-4': auto && cols == 4, 'el-cell-2-cols-container':cols==2 && auto==false, 'el-cell-3-cols-container':cols==3 && auto==false, 'el-cell-4-cols-container':cols==4 && auto==false,'el-cell-1-cols-container': (cols == -1 || cols == 1) && auto==false }" >
       <slot></slot>
     </div>
   </div>

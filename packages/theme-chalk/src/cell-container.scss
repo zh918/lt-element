@@ -11,6 +11,25 @@
   overflow: hidden;
 }
 
+.el-cell-auto-max-width-1 {
+  // width: 370px;
+}
+
+.el-cell-auto-max-width-2 {
+  // width: 740px;
+  max-width: 740px;
+}
+
+.el-cell-auto-max-width-3 {
+  // width: 1110px;
+  max-width: 1110px;
+}
+
+.el-cell-auto-max-width-4 {
+  // width: 1480px;
+  max-width: 1480px;
+}
+
 .el-cell-1-cols-container {
   overflow: hidden;
 

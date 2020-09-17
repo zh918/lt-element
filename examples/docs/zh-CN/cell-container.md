@@ -247,7 +247,7 @@
 ```html
 <template>
   <div>
-    <el-cell-container ref="frm2_validate" :model="frm2" :rules="rules2" :auto="false" :cols="1">
+    <el-cell-container ref="frm2_validate" :model="frm2" :rules="rules2" :auto="true" :cols="3">
       <el-title align="right">基本信息</el-title>
       <el-cell icon="*" title="姓名" prop="name">
         <el-input v-model='frm2.name' placeholder='请输入姓名' size='small'></el-input>
@@ -376,7 +376,7 @@
       <el-cell title="姓名" :margin="false" align="right">
         <el-label :value="frm3.name"></el-label>
       </el-cell>
-      <el-cell title="年龄" :margin="false" align="right" size="custom" :width="100">
+      <el-cell title="年龄" :margin="false" align="right" size="custom">
         <el-label :value="frm3.age"></el-label>
       </el-cell>
       <el-cell title="证件类型" :margin="false" align="right">
