@@ -9,6 +9,11 @@
 ```html
 <template> 
     <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer">
+      <template slot="chk1"  slot-scope="row">
+        <div>
+          <input type="checkbox">{{}}
+        </div>
+      </template>
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -81,6 +86,10 @@
           { type: 'upload', text: '手动导入工资代扣数据', cb: this.handleImport, progress:0}
         ],
         tableContainer: {
+          selection: {
+            
+            change:(val)=>{}
+          },
           operate: {
             label: "操作",
             fixed: "right",
@@ -94,6 +103,16 @@
             ]
           },
           head: [
+            {
+              prop: "chk1",
+              label: "",
+              width: "50px"
+            },
+            {
+              prop: "chk2",
+              label: "",
+              width: "50px"
+            },
             {
               prop: "moduleCode",
               label: "系统编号",
