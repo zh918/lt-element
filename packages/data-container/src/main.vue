@@ -354,6 +354,7 @@
           @cell-mouse-leave="handleCellMouseLeave">
         <el-table-column  v-if="tableContainer.selection"
           type="selection"
+          :selectable="handleSelectable"
           :width="tableContainer.selection.width | 40"
         >
         </el-table-column>
@@ -482,6 +483,10 @@ export default {
           });
         }
       }
+    },
+    handleSelectable(row, index) {
+      if (row.isDisabled) return false;
+      else return true;
     },
     handleCellMouseEnter(row, column, cell, event) {
       this.$emit('hover', {row, column, cell, event});

@@ -82,7 +82,7 @@
         ],
         tableContainer: {
           selection: {
-            width: '50'
+            width: '50px'
           },
           operate: {
             label: "操作",
@@ -131,7 +131,8 @@
       setTimeout(()=>{
         this.tableContainer.data = [{
               moduleCode: '123',
-              moduleName: '333'
+              moduleName: '333',
+              isDisabled: false
             },
             {
               moduleCode: '444',
@@ -690,8 +691,15 @@
 |   .operate | 加粗 | string | blod/medium/regular | medium |
 |   .head | 加粗 | string | blod/medium/regular | medium |
 |   .data | 加粗 | string | blod/medium/regular | medium |
+|   .selection | 多选框 | object | Object | - |
 
 
+### tableContainer.selection 
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   .width | 宽度 | string | blod/medium/regular | 40px |
+
+> selection 属性存在时，会在首列出现checkbox复选框，通过数据属性来控制是否选中， isCheck：true选中 false非选中，isDisabled：true表示禁用不能选则，false表示可以选择
 
 
 ### tableContainer.operate 
