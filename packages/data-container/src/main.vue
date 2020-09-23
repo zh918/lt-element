@@ -462,21 +462,25 @@ export default {
     this._resetOffset();
     this.handleSearch();
   },
-  // mounted() {
-  //   this._resetOffset();
-  //   this.handleSearch();
-  // },
   methods: {
     handleSelectionChange(rows) {
+      this.tableContainer.data.forEach(d => {
+        d.isCheck = false;
+      });
+      rows.forEach(r => {
+        r.isCheck = true;
+      });
       this.$emit('selectionChange', rows);
     },
-    toggleSelection(rows) {
-      if (rows && rows instanceof Array) {
-        rows.forEach(row => {
-          this.$refs.multipleTable.toggleRowSelection(row);
-        });
-      } else {
-        this.$refs.multipleTable.clearSelection();
+    initSelection() {
+      let _this = this;
+      if (this.tableContainer.data) {
+        let tempList = _this.tableContainer.data.filter(d=>d.isCheck);
+        if (tempList) {
+          tempList.forEach(l => {
+            _this.$refs.multipleTable.toggleRowSelection(l, true);
+          });
+        }
       }
     },
     handleCellMouseEnter(row, column, cell, event) {
@@ -604,6 +608,16 @@ export default {
       console.log(this.$refs.upload);
       this.$refs.upload.style.height = 90 + 'px';
       // document.querySelector('#upload').backgroundColor = 'pink';
+    }
+  },
+  watch: {
+    tableContainer: {
+      handler: function(obj) {
+        this.$nextTick(() => {
+          this.initSelection();
+        });
+      },
+      deep: true
     }
   }
 };

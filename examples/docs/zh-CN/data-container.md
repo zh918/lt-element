@@ -4,16 +4,11 @@
 ### 基础用法
 
 
-:::demo 用于查询条件+列表+分页+其它操作按钮
+:::demo 用于查询条件+列表+分页+其它操作按钮111
 
 ```html
 <template> 
-    <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer">
-      <template slot="chk1"  slot-scope="row">
-        <div>
-          <input type="checkbox">{{}}
-        </div>
-      </template>
+    <el-data-container ref="data-container-test1" :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer" @selectionChange="handleSelectionChange">
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -87,8 +82,7 @@
         ],
         tableContainer: {
           selection: {
-            
-            change:(val)=>{}
+            width: '50'
           },
           operate: {
             label: "操作",
@@ -124,14 +118,7 @@
             }
           ],
           data: [
-            {
-              moduleCode: '123',
-              moduleName: '333'
-            },
-            {
-              moduleCode: '444',
-              moduleName: '555'
-            }
+            
           ]
         },
         // paginationContainer: {
@@ -140,7 +127,28 @@
         // }
       }
     },
+    created() {
+      setTimeout(()=>{
+        this.tableContainer.data = [{
+              moduleCode: '123',
+              moduleName: '333'
+            },
+            {
+              moduleCode: '444',
+              moduleName: '555',
+              isCheck: true
+            }
+      ];
+      }, 1000 * 2.5);
+    },
     methods: {
+      handleSelectionChange(rows) {
+
+        console.log('选中', rows);
+      },
+      handleGetSelection() {
+        console.log('外层获取选中', this.tableContainer.data);
+      },
       handleSearch(parms) {
         console.log('---', parms);
         setTimeout(()=>{
@@ -148,7 +156,7 @@
         }, 2000)
       },
       handleAdd() {
-        console.log('新增')
+        console.log('新增', this.tableContainer.data.filter(d=>d.isCheck))
       },
       handleDel(row) {
         console.log('删除', row)
