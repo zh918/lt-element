@@ -346,11 +346,18 @@
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table border size="small" 
+      <el-table ref="multipleTable" border size="small" 
           :data="tableContainer.data" 
           class="data-table"
+          @selection-change="handleSelectionChange"
           @cell-mouse-enter="handleCellMouseEnter"
           @cell-mouse-leave="handleCellMouseLeave">
+        <el-table-column  v-if="tableContainer.selection"
+          type="selection"
+          :selectable="handleSelectable"
+          :width="tableContainer.selection.width | 40"
+        >
+        </el-table-column>
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
@@ -360,7 +367,7 @@
         >
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
-          </template>
+          </template> 
         </el-table-column>
         <el-table-column
           :fixed="tableContainer.operate.fixed"
@@ -456,11 +463,31 @@ export default {
     this._resetOffset();
     this.handleSearch();
   },
-  // mounted() {
-  //   this._resetOffset();
-  //   this.handleSearch();
-  // },
   methods: {
+    handleSelectionChange(rows) {
+      this.tableContainer.data.forEach(d => {
+        d.isCheck = false;
+      });
+      rows.forEach(r => {
+        r.isCheck = true;
+      });
+      this.$emit('selectionChange', rows);
+    },
+    initSelection() {
+      let _this = this;
+      if (this.tableContainer.data) {
+        let tempList = _this.tableContainer.data.filter(d=>d.isCheck);
+        if (tempList) {
+          tempList.forEach(l => {
+            _this.$refs.multipleTable.toggleRowSelection(l, true);
+          });
+        }
+      }
+    },
+    handleSelectable(row, index) {
+      if (row.isDisabled) return false;
+      else return true;
+    },
     handleCellMouseEnter(row, column, cell, event) {
       this.$emit('hover', {row, column, cell, event});
     },
@@ -586,6 +613,16 @@ export default {
       console.log(this.$refs.upload);
       this.$refs.upload.style.height = 90 + 'px';
       // document.querySelector('#upload').backgroundColor = 'pink';
+    }
+  },
+  watch: {
+    tableContainer: {
+      handler: function(obj) {
+        this.$nextTick(() => {
+          this.initSelection();
+        });
+      },
+      deep: true
     }
   }
 };

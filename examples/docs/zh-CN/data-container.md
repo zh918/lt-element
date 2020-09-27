@@ -4,11 +4,11 @@
 ### 基础用法
 
 
-:::demo 用于查询条件+列表+分页+其它操作按钮
+:::demo 用于查询条件+列表+分页+其它操作按钮111
 
 ```html
 <template> 
-    <el-data-container :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer">
+    <el-data-container ref="data-container-test1" :searchContainer="searchContainer" @search="handleSearch" :operatorContainer="operatorContainer" :tableContainer="tableContainer" @selectionChange="handleSelectionChange">
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -81,6 +81,9 @@
           { type: 'upload', text: '手动导入工资代扣数据', cb: this.handleImport, progress:0}
         ],
         tableContainer: {
+          selection: {
+            width: '50px'
+          },
           operate: {
             label: "操作",
             fixed: "right",
@@ -95,6 +98,16 @@
           },
           head: [
             {
+              prop: "chk1",
+              label: "",
+              width: "50px"
+            },
+            {
+              prop: "chk2",
+              label: "",
+              width: "50px"
+            },
+            {
               prop: "moduleCode",
               label: "系统编号",
               width: "120px"
@@ -105,14 +118,7 @@
             }
           ],
           data: [
-            {
-              moduleCode: '123',
-              moduleName: '333'
-            },
-            {
-              moduleCode: '444',
-              moduleName: '555'
-            }
+            
           ]
         },
         // paginationContainer: {
@@ -121,7 +127,29 @@
         // }
       }
     },
+    created() {
+      setTimeout(()=>{
+        this.tableContainer.data = [{
+              moduleCode: '123',
+              moduleName: '333',
+              isDisabled: false
+            },
+            {
+              moduleCode: '444',
+              moduleName: '555',
+              isCheck: true
+            }
+      ];
+      }, 1000 * 2.5);
+    },
     methods: {
+      handleSelectionChange(rows) {
+
+        console.log('选中', rows);
+      },
+      handleGetSelection() {
+        console.log('外层获取选中', this.tableContainer.data);
+      },
       handleSearch(parms) {
         console.log('---', parms);
         setTimeout(()=>{
@@ -129,7 +157,7 @@
         }, 2000)
       },
       handleAdd() {
-        console.log('新增')
+        console.log('新增', this.tableContainer.data.filter(d=>d.isCheck))
       },
       handleDel(row) {
         console.log('删除', row)
@@ -663,8 +691,15 @@
 |   .operate | 加粗 | string | blod/medium/regular | medium |
 |   .head | 加粗 | string | blod/medium/regular | medium |
 |   .data | 加粗 | string | blod/medium/regular | medium |
+|   .selection | 多选框 | object | Object | - |
 
 
+### tableContainer.selection 
+| 参数      | 说明          | 类型      | 可选值                           | 默认值  |
+|---------- |-------------- |---------- |--------------------------------  |-------- |
+|   .width | 宽度 | string | blod/medium/regular | 40px |
+
+> selection 属性存在时，会在首列出现checkbox复选框，通过数据属性来控制是否选中， isCheck：true选中 false非选中，isDisabled：true表示禁用不能选则，false表示可以选择
 
 
 ### tableContainer.operate 
