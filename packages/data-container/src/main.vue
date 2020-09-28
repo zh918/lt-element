@@ -413,7 +413,7 @@ export default {
   props: {
     maxHeight: {
       type: String | Number,
-      default: ''
+      default: null
     },
     searchContainer: {
       loading: false,
