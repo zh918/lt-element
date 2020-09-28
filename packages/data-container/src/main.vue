@@ -346,7 +346,7 @@
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table ref="multipleTable" border size="small" 
+      <el-table ref="multipleTable" border size="small"  :max-height="maxHeight"
           :data="tableContainer.data" 
           class="data-table"
           @selection-change="handleSelectionChange"
@@ -411,6 +411,10 @@ export default {
   name: 'ElDataContainer',
   componentName: 'ElDataContainer',
   props: {
+    maxHeight: {
+      type: String | Number,
+      default: ''
+    },
     searchContainer: {
       loading: false,
       isResetAutoSearch: true,

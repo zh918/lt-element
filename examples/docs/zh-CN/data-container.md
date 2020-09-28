@@ -655,6 +655,7 @@
 | operatorContainer     | 表格顶部操作按钮组对象 （可选）       | object | - | - |
 | tableContainer     | 表格对象（必填）        | object | - | - |
 | paginationContainer     | 分页对象（可选）        | object | - | - |
+| maxHeight    | Table 的最大高度。合法的值为数字或者单位为 px 的高度。 | string/number |
 
 
 ### searchContainer 页面查询条件对象
