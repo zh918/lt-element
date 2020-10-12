@@ -171,10 +171,6 @@
           if (window.event.preventDefault) {
             window.event.preventDefault();
           }
-        } else {
-          // this.currentValue = input.value;
-          // this._formatValue();
-          // this.$emit('input', this._tranValue(this.currentValue));
         }
       },
       handleFocus() {
