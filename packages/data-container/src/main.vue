@@ -472,15 +472,16 @@ export default {
   methods: {
     initEvent() {
       // 当前页面监视键盘回车键输入
-      const _this = this;
       if (this.searchContainer && this.searchContainer.isEnterToSearch) {
         document.onkeydown = undefined;
-        document.onkeydown = function(e) {
-          let e1 = e || window.event;
-          if (e1 && e1.keyCode === 13) {
-            _this.handleBeginSearch();
-          }
-        };
+        document.onkeydown = this.enterEvent;
+      }
+    },
+    enterEvent(e) {
+      const _this = this;
+      let e1 = e || window.event;
+      if (e1 && e1.keyCode === 13) {
+        _this.handleBeginSearch();
       }
     },
     handleSelectionChange(rows) {
@@ -643,9 +644,6 @@ export default {
       },
       deep: true
     }
-  },
-  destroyed() {
-    document.onkeydown = undefined;
   }
 };
 </script>
