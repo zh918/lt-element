@@ -416,6 +416,7 @@ export default {
       default: null
     },
     searchContainer: {
+      isEnterToSearch: false,
       loading: false,
       isResetAutoSearch: true,
       displayType: 'placeholder' // placeholder,title
@@ -466,8 +467,22 @@ export default {
   created() {
     this._resetOffset();
     this.handleSearch();
+    this.initEvent();
   },
   methods: {
+    initEvent() {
+      // 当前页面监视键盘回车键输入
+      const _this = this;
+      if (this.searchContainer && this.searchContainer.isEnterToSearch) {
+        document.onkeydown = undefined;
+        document.onkeydown = function(e) {
+          let e1 = e || window.event;
+          if (e1 && e1.keyCode === 13) {
+            _this.handleBeginSearch();
+          }
+        };
+      }
+    },
     handleSelectionChange(rows) {
       this.tableContainer.data.forEach(d => {
         d.isCheck = false;
@@ -628,6 +643,9 @@ export default {
       },
       deep: true
     }
+  },
+  destroyed() {
+    document.onkeydown = undefined;
   }
 };
 </script>

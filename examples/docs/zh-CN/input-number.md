@@ -211,4 +211,4 @@
 | dot     | 当type为float或money时，可以指定小数点位数 | number | 1-9| 2|
 | big     | 当type为money并且tip为true时，如果需要显示大写金额，则需要设置该值|boolean|true/false|false|
 | disabled      | 是否禁用 | true/false | — | false |
-| minusAble      | 是否允许输入符号 | true/false | — | false |
+| minusAble      | 是否允许输入负号 | true/false | — | false |
