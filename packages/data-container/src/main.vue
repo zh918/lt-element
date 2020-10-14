@@ -487,10 +487,15 @@ export default {
       this.tableContainer.data.forEach(d => {
         d.isCheck = false;
       });
-      rows.forEach(r => {
-        r.isCheck = true;
+      if (rows) {
+        rows.forEach(r => {
+          r.isCheck = true;
+        });
+      }
+      
+      this.$nextTick(()=>{
+        this.$emit('selectionChange', rows);
       });
-      this.$emit('selectionChange', rows);
     },
     initSelection() {
       let _this = this;
