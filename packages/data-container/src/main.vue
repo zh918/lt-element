@@ -346,7 +346,7 @@
     </slot>
     <!-- 数据 -->
     <slot name="list-container">
-      <el-table ref="multipleTable" border size="small" 
+      <el-table ref="multipleTable" border size="small"  :max-height="maxHeight"
           :data="tableContainer.data" 
           class="data-table"
           @selection-change="handleSelectionChange"
@@ -411,7 +411,12 @@ export default {
   name: 'ElDataContainer',
   componentName: 'ElDataContainer',
   props: {
+    maxHeight: {
+      type: String | Number,
+      default: null
+    },
     searchContainer: {
+      isEnterToSearch: false,
       loading: false,
       isResetAutoSearch: true,
       displayType: 'placeholder' // placeholder,title
@@ -462,16 +467,35 @@ export default {
   created() {
     this._resetOffset();
     this.handleSearch();
+    this.initEvent();
   },
   methods: {
+    initEvent() {
+      // 当前页面监视键盘回车键输入
+      const _this = this;
+      if (this.searchContainer && this.searchContainer.isEnterToSearch) {
+        document.onkeydown = undefined;
+        document.onkeydown = function(e) {
+          let e1 = e || window.event;
+          if (e1 && e1.keyCode === 13) {
+            _this.handleBeginSearch();
+          }
+        };
+      }
+    },
     handleSelectionChange(rows) {
       this.tableContainer.data.forEach(d => {
         d.isCheck = false;
       });
-      rows.forEach(r => {
-        r.isCheck = true;
+      if (rows) {
+        rows.forEach(r => {
+          r.isCheck = true;
+        });
+      }
+      
+      this.$nextTick(()=>{
+        this.$emit('selectionChange', rows);
       });
-      this.$emit('selectionChange', rows);
     },
     initSelection() {
       let _this = this;
@@ -624,6 +648,9 @@ export default {
       },
       deep: true
     }
+  },
+  destroyed() {
+    document.onkeydown = undefined;
   }
 };
 </script>

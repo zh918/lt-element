@@ -59,12 +59,17 @@
       disabled: {
         type: Boolean,
         default: false
+      },
+      minusAble: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
       return {
         currentValue: '',
-        currentFormatValue: ''
+        currentFormatValue: '',
+        inputValue: ''
       };
     },
     mounted() {
@@ -131,33 +136,37 @@
         const point = 190; // .
         const del = 46; // del
         const backspace = 8;
+        const minus = 189; // -
 
         const min_board = 96; // 0
         const max_board = 105; // 9
         const point_board = 110; // .
+        const minus_board = 109; // -
+
+        let inputDisabled = false;
 
         // console.log(keycode, this.currentValue);
         if ((min <= keycode && keycode <= max) || (min_board <= keycode && keycode <= max_board)) {
-          // this.currentValue = input.value;
-          // this._formatValue();
-          // this.$emit('input', this._tranValue(this.currentValue));
+          inputDisabled = false;
         } else if ((keycode === point || keycode === point_board) && (this.type === 'float' || this.type === 'money')) {
           if ((this.currentValue || this.currentValue === 0) && this.currentValue.toString().indexOf('.') === -1) {
-            // this.currentValue = input.value;
-            // this._formatValue();
-            // this.$emit('input', this._tranValue(this.currentValue));
+            inputDisabled = false;
           } else {
-            window.event.returnValue = false;
-            if (window.event.preventDefault) {
-              window.event.preventDefault();
-            }
+            inputDisabled = true;
+          }
+        } else if ((keycode === minus || keycode === minus_board) && this.minusAble) {
+          if (!this.currentValue) {
+            inputDisabled = false;
+          } else {
+            inputDisabled = true;
           }
         } else if (keycode === del || keycode === backspace) {
-          // this.currentValue = input.value;
-          // this._formatValue();
-          // this.$emit('input', this._tranValue(this.currentValue));
+          inputDisabled = false;
         } else {
-          // console.log('keycode:', keycode);
+          inputDisabled = true;
+        }
+
+        if (inputDisabled) {
           window.event.returnValue = false;
           if (window.event.preventDefault) {
             window.event.preventDefault();
