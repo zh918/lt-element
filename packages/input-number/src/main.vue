@@ -155,11 +155,7 @@
             inputDisabled = true;
           }
         } else if ((keycode === minus || keycode === minus_board) && this.minusAble) {
-          if (!this.currentValue) {
-            inputDisabled = false;
-          } else {
-            inputDisabled = true;
-          }
+          inputDisabled = true;
         } else if (keycode === del || keycode === backspace) {
           inputDisabled = false;
         } else {
