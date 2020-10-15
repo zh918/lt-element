@@ -45,7 +45,7 @@
     data() {
       return {
         searchContainer: {
-          isEnterToSearch:false,
+          isEnterToSearch: true,
           loading: false,
           isResetAutoSearch: false,
           displayType: 'placeholder',

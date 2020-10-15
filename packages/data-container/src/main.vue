@@ -492,7 +492,6 @@ export default {
           r.isCheck = true;
         });
       }
-      
       this.$nextTick(()=>{
         this.$emit('selectionChange', rows);
       });
@@ -648,9 +647,6 @@ export default {
       },
       deep: true
     }
-  },
-  destroyed() {
-    document.onkeydown = undefined;
   }
 };
 </script>

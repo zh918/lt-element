@@ -155,11 +155,7 @@
             inputDisabled = true;
           }
         } else if ((keycode === minus || keycode === minus_board) && this.minusAble) {
-          if (!this.currentValue) {
-            inputDisabled = false;
-          } else {
-            inputDisabled = true;
-          }
+          inputDisabled = true;
         } else if (keycode === del || keycode === backspace) {
           inputDisabled = false;
         } else {
@@ -171,6 +167,10 @@
           if (window.event.preventDefault) {
             window.event.preventDefault();
           }
+        } else {
+          // this.currentValue = input.value;
+          // this._formatValue();
+          // this.$emit('input', this._tranValue(this.currentValue));
         }
       },
       handleFocus() {
