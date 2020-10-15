@@ -492,6 +492,7 @@ export default {
           r.isCheck = true;
         });
       }
+      
       this.$nextTick(()=>{
         this.$emit('selectionChange', rows);
       });
