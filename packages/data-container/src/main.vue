@@ -419,6 +419,7 @@ export default {
       isEnterToSearch: false,
       loading: false,
       isResetAutoSearch: true,
+      isAutoSearch: true,
       displayType: 'placeholder' // placeholder,title
       // itemSpan: 4, // 请设置成偶数
       // list: [{ type: 'input', class: '', size: '', placeholder: '', defaultValue: '', fetch: '', cb: '', span: ''}],
@@ -466,7 +467,7 @@ export default {
   },
   created() {
     this._resetOffset();
-    this.handleSearch();
+    if (this.isAutoSearch) this.handleSearch();
     this.initEvent();
   },
   methods: {
