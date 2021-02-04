@@ -137,6 +137,7 @@
         const del = 46; // del
         const backspace = 8;
         const minus = 189; // -
+        const tap = 9; // tap
 
         const min_board = 96; // 0
         const max_board = 105; // 9
@@ -155,8 +156,10 @@
             inputDisabled = true;
           }
         } else if ((keycode === minus || keycode === minus_board) && this.minusAble) {
-          inputDisabled = true;
+          inputDisabled = false;
         } else if (keycode === del || keycode === backspace) {
+          inputDisabled = false;
+        } else if (keycode === tap) {
           inputDisabled = false;
         } else {
           inputDisabled = true;

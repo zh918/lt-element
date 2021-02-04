@@ -171,6 +171,7 @@
               v-model="item.value"
               :placeholder="item.placeholder"
               clearable
+              multiple
               :disabled="item.disabled"
               :filterable="item.filterable"
               @change="(changeItem)=>!!item.change && item.change(changeItem)"
@@ -355,7 +356,7 @@
         <el-table-column  v-if="tableContainer.selection"
           type="selection"
           :selectable="handleSelectable"
-          :width="tableContainer.selection.width | 40"
+          :width="tableContainer.selection.width || 40"
         >
         </el-table-column>
         <el-table-column
@@ -467,10 +468,22 @@ export default {
   },
   created() {
     this._resetOffset();
-    if (this.isAutoSearch) this.handleSearch();
+    if (this.checkAutoSearch()) {
+      this.handleSearch();
+    }
     this.initEvent();
   },
   methods: {
+    checkAutoSearch() {
+      if (this.searchContainer && this.searchContainer.isAutoSearch === undefined) {
+        this.searchContainer.isAutoSearch = true;
+      }
+      if (this.searchContainer && this.searchContainer.isAutoSearch) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     initEvent() {
       // 当前页面监视键盘回车键输入
       const _this = this;
