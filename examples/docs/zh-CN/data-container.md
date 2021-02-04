@@ -664,6 +664,7 @@
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | isEnterToSearch     | 按下enter键是否触发检索        | boolean | true/false | false |
 | isResetAutoSearch     | 重置时是否触发检索        | boolean | true/false | true |
+| isAutoSearch     | 是否加载后自动检索        | boolean | true/false | true |
 | displayType | 展现形式，title会把标题显示出来 | string | placeholder/title | placeholder |
 | itemSpan | list下元素统一span; 选择权：itemSpan<list[n].span | number | 4/6/8 | 4 |
 | list | 条件集合对象 | array | - | - |
