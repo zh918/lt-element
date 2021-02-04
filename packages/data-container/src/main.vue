@@ -32,6 +32,7 @@
             size="small"
             v-model="item.value"
             :placeholder="item.placeholder"
+            :multiple="item.multiple"
             clearable
             :disabled="item.disabled"
             :filterable="item.filterable"
@@ -171,7 +172,7 @@
               v-model="item.value"
               :placeholder="item.placeholder"
               clearable
-              multiple
+              :multiple="item.multiple"
               :disabled="item.disabled"
               :filterable="item.filterable"
               @change="(changeItem)=>!!item.change && item.change(changeItem)"
