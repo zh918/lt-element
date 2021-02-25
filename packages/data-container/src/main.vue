@@ -442,6 +442,7 @@ export default {
         return {
           pageNum: 1,
           total: 0,
+          pageSize: 10,
           layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
         };
       }
@@ -462,7 +463,7 @@ export default {
       parameter: {},
       pagination: {
         pageSize: !this.paginationContainer ? 10 : this.paginationContainer.pageSize || 10,
-        pageSizes: [10, 20, 50]
+        pageSizes: [5, 10, 20, 50]
       },
       time: 0
     };
