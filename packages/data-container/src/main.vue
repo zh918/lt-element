@@ -392,6 +392,7 @@
       </el-table>
     </slot>
     <!-- 分页 -->
+    <div class="line-space"></div>
     <slot name="pagination-container" v-if="paginationContainer">
       <el-pagination
         background
