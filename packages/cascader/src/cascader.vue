@@ -304,13 +304,13 @@ export default {
       this.computePresentContent();
     },
     value(val) {
-      debugger
-      this.checkedValue = val;
-      this.computePresentContent();
       // if (!isEqual(val, this.checkedValue)) {
       //   this.checkedValue = val;
       //   this.computePresentContent();
       // }
+      debugger
+      this.checkedValue = val;
+      this.computePresentContent();
     },
     checkedValue(val) {
       // const { value, dropDownVisible } = this;
