@@ -353,7 +353,9 @@
           class="data-table"
           @selection-change="handleSelectionChange"
           @cell-mouse-enter="handleCellMouseEnter"
-          @cell-mouse-leave="handleCellMouseLeave">
+          @cell-mouse-leave="handleCellMouseLeave"
+          @sort-change="sortChange"
+          >
         <el-table-column  v-if="tableContainer.selection"
           type="selection"
           :selectable="handleSelectable"
@@ -366,6 +368,8 @@
           :label="item.label"
           :fixed="item.fixed == true"
           :width="item.width"
+          :prop="item.prop"
+          :sortable="item.sortable"
         >
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
@@ -464,7 +468,7 @@ export default {
       parameter: {},
       pagination: {
         pageSize: !this.paginationContainer ? 10 : this.paginationContainer.pageSize || 10,
-        pageSizes: [5, 10, 20, 50]
+        pageSizes: [5, 10, 20, 50, 100]
       },
       time: 0
     };
@@ -609,8 +613,9 @@ export default {
       this._clearnPagination();
       if (this.searchContainer.isResetAutoSearch) this.handleSearch();
     },
-    handleSizeChange() {
+    handleSizeChange(val) {
       // 变更size pageNum 设置为1
+      this.pagination.pageSize = val;
       this._clearnPagination();
       this.handleSearch();
     },
@@ -653,6 +658,9 @@ export default {
       console.log(this.$refs.upload);
       this.$refs.upload.style.height = 90 + 'px';
       // document.querySelector('#upload').backgroundColor = 'pink';
+    },
+    sortChange(row) {
+      this.$emit('sortChange', row);
     }
   },
   watch: {
