@@ -529,7 +529,7 @@
 
 ```html
 <template> 
-    <el-data-container :searchContainer="searchContainer2" @search="handleSearch" :operatorContainer="operatorContainer2" :tableContainer="tableContainer2" :paginationContainer="paginationContainer2">
+    <el-data-container @sortChange="sortChange" :searchContainer="searchContainer2" @search="handleSearch" :operatorContainer="operatorContainer2" :tableContainer="tableContainer2" :paginationContainer="paginationContainer2">
       <template slot="operate" slot-scope="row">
         <div>
           <el-dropdown :hide-on-click="false">
@@ -607,7 +607,8 @@
             {
               prop: "moduleCode",
               label: "系统编号",
-              width: "120px"
+              width: "120px",
+              sortable:'custom'
             },
             {
               prop: "moduleName",
@@ -632,6 +633,9 @@
       }
     },
     methods: {
+      sortChange(parms){
+        console.log('异步排序=====>',parms)
+      },
       handleSearch(parms) {
         console.log('---', parms);
       },
@@ -725,6 +729,7 @@
 |   .prop | 字段名称 | string | - | - |
 |   .label | 列名 | string | - | - |
 |   .width | 列宽（可选） | string | - | 180px |
+|   .sortable | 排序，需要在table接收sortChange事件 | string | custom | - |
 
 
 ### tableContainer.data 数据
@@ -737,3 +742,4 @@ tableContainer.head列头中prop字段所组成的对象
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | .pageNum | 页码 | number | - | - |
 | .total | 总条数 | number | - | - |
+| .layout | 组件布局，逗号分隔 | String | sizes, prev, pager, next | prev, pager, next |

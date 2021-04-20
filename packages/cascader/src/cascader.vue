@@ -308,7 +308,7 @@ export default {
       //   this.checkedValue = val;
       //   this.computePresentContent();
       // }
-      debugger
+      // debugger
       this.checkedValue = val;
       this.computePresentContent();
     },
