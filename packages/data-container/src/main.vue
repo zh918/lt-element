@@ -32,6 +32,7 @@
             size="small"
             v-model="item.value"
             :placeholder="item.placeholder"
+            :multiple="item.multiple"
             clearable
             :disabled="item.disabled"
             :filterable="item.filterable"
@@ -171,7 +172,7 @@
               v-model="item.value"
               :placeholder="item.placeholder"
               clearable
-              multiple
+              :multiple="item.multiple"
               :disabled="item.disabled"
               :filterable="item.filterable"
               @change="(changeItem)=>!!item.change && item.change(changeItem)"
@@ -391,6 +392,7 @@
       </el-table>
     </slot>
     <!-- 分页 -->
+    <div class="line-space"></div>
     <slot name="pagination-container" v-if="paginationContainer">
       <el-pagination
         background
@@ -441,6 +443,7 @@ export default {
         return {
           pageNum: 1,
           total: 0,
+          pageSize: 10,
           layout: 'prev, pager, next' // "total, sizes, prev, pager, next, jumper"
         };
       }
@@ -461,7 +464,7 @@ export default {
       parameter: {},
       pagination: {
         pageSize: !this.paginationContainer ? 10 : this.paginationContainer.pageSize || 10,
-        pageSizes: [10, 20, 50]
+        pageSizes: [5, 10, 20, 50]
       },
       time: 0
     };
