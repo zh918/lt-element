@@ -296,7 +296,10 @@ export default {
       node.loading = true;
       const resolve = dataList => {
         const parent = node.root ? null : node;
-        dataList && dataList.length && this.store.appendNodes(dataList, parent);
+        if (dataList.isJump !== true) {
+          dataList && dataList.length && this.store.appendNodes(dataList, parent);
+        }
+        // dataList && dataList.length && this.store.appendNodes(dataList, parent); by stephen 20210310
         node.loading = false;
         node.loaded = true;
 
