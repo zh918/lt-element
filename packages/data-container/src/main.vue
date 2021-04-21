@@ -95,13 +95,7 @@
             clearable
             filterable
             size="small"
-            :props="{ lazy: true, lazyLoad (node, resolve) {
-              if (item.options) {
-                item.options(node).then(result => {
-                  resolve(result);
-                });
-              }
-            }}"
+            :props="getCascaderProps(item)"
             v-if="item.type==='cascader'"
             v-model="item.value"
             :placeholder="item.placeholder"
@@ -260,13 +254,7 @@
               filterable
               clearable
               size="small"
-              :props="{ lazy: true, lazyLoad (node, resolve) {
-                if (item.options) {
-                  item.options(node).then(result => {
-                    resolve(result);
-                  });
-                }
-              }}"
+              :props="getCascaderProps(item)"
               v-model="item.value"
               :placeholder="item.placeholder"
             ></el-cascader>
@@ -661,6 +649,21 @@ export default {
     },
     sortChange(row) {
       this.$emit('sortChange', row);
+    },
+
+    getCascaderProps(item) {
+      let options = {
+        lazy: true, lazyLoad(node, resolve) {
+          if (item.options) {
+            item.options(node).then(result => {
+              resolve(result);
+            });
+          }
+        }};
+      if (item.multiple) {
+        options.multiple = true;
+      }
+      return options;
     }
   },
   watch: {

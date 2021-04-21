@@ -680,6 +680,7 @@
 |   [n].cb | 用于autocomplete操作回调 | function | - | - |
 |   [n].span | 当前条件容器宽度（选择权：itemSpan<list[n].span） | number | 1-24 | - |
 |   [n].size | displayType为title时，size为控制title宽度 | string | super/xlarge/large/medium/small | medium |
+|   [n].multiple | 是否开启级联多选功能，当type为cascader有效 | boolen | true/false | false |
 
 
 ### operatorContainer 操作组
