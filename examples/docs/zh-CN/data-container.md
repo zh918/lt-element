@@ -72,7 +72,7 @@
             { key: 'date', type: 'date', class: '', placeholder: '开始日期', value: '', fetch: '', cb: ''},
             { key: 'month', type: 'month', class: '', placeholder: '月份', value: '', fetch: '', cb: ''},
             { key: 'monthrange', type: 'monthrange', class: '', placeholder: '月份范围', value: '', fetch: '', cb: ''},
-            { key: 'date', type: 'daterange', class: '', placeholder: ['日期1','时期2'], value: '', fetch: '', cb: ''},
+            { key: 'date', type: 'daterange', class: '', placeholder: ['日期1','时期2'], pickerOptions:this.pickerOptions(), value: '', fetch: '', cb: ''},
             { key: 'cascaderData', type: 'cascader', class: '', placeholder: '级联', value: '', fetch: '', cb: '',options: this.handleInitCascaderOption }
           ]
         },
@@ -381,6 +381,35 @@
               resolve(options);
 
         });
+      },
+      pickerOptions(){
+        return {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        }
       }
     }
   }
@@ -673,7 +702,7 @@
 | itemSpan | list下元素统一span; 选择权：itemSpan<list[n].span | number | 4/6/8 | 4 |
 | list | 条件集合对象 | array | - | - |
 |   [n].key | api对应字段 | string | - | - |
-|   [n].type | 呈现类型 | string | input/number/select/date/autocomplete/cascader | - |
+|   [n].type | 呈现类型 | string | input/number/select/date/daterange/autocomplete/cascader | - |
 |   [n].title | 条件标题 | string | - |  |
 |   [n].value | 条件值 | string/number | - | - |
 |   [n].fetch | 用于autocomplete加载数据 | function | - | - |
@@ -681,6 +710,7 @@
 |   [n].span | 当前条件容器宽度（选择权：itemSpan<list[n].span） | number | 1-24 | - |
 |   [n].size | displayType为title时，size为控制title宽度 | string | super/xlarge/large/medium/small | medium |
 |   [n].multiple | 是否开启级联多选功能，当type为cascader有效 | boolen | true/false | false |
+|   [n].pickerOptions | 日期快捷选择，返回快捷选择日期范围规则，当type为daterange有效 | Object |  | null |
 
 
 ### operatorContainer 操作组

@@ -66,6 +66,7 @@
             :start-placeholder="!Array.isArray(item.placeholder)?'开始日期':item.placeholder[0]"
             :end-placeholder="!Array.isArray(item.placeholder)?'结束日期':item.placeholder[1]"
             clearable
+            :picker-options="item.pickerOptions"
           ></el-date-picker>
 
           <!-- 月份 -->
@@ -95,6 +96,7 @@
             clearable
             filterable
             size="small"
+            collapse-tags
             :props="getCascaderProps(item)"
             v-if="item.type==='cascader'"
             v-model="item.value"
@@ -209,6 +211,7 @@
               :start-placeholder="!Array.isArray(item.placeholder)?'开始日期':item.placeholder[0]"
               :end-placeholder="!Array.isArray(item.placeholder)?'结束日期':item.placeholder[1]"
               clearable
+              :picker-options="item.pickerOptions"
             ></el-date-picker>
           </div>
 
@@ -254,6 +257,7 @@
               filterable
               clearable
               size="small"
+              collapse-tags
               :props="getCascaderProps(item)"
               v-model="item.value"
               :placeholder="item.placeholder"
