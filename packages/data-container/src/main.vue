@@ -357,12 +357,18 @@
         <el-table-column
           :key="index"
           v-for="(item, index) in tableContainer.head"
-          :label="item.label"
           :fixed="item.fixed == true"
           :width="item.width"
           :prop="item.prop"
           :sortable="item.sortable"
         >
+          <template slot="header" slot-scope="scope">
+            <span>{{item.label}}</span>
+            <el-tooltip v-if="!!item.tip" placement="right">
+              <div v-html="item.tip" slot="content"></div>
+              <i class="el-icon-question"></i>
+            </el-tooltip>
+          </template>
           <template slot-scope="scope">
             <slot :name="item.prop" v-bind="scope.row">{{ scope.row[item.prop] }}</slot>
           </template> 

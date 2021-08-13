@@ -111,7 +111,8 @@
             {
               prop: "moduleCode",
               label: "系统编号",
-              width: "120px"
+              width: "120px",
+              tip: "提示信息展示<br/>第二行"
             },
             {
               prop: "moduleName",
